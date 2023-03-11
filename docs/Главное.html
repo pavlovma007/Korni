@@ -1,0 +1,824 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
+
+@include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext);
+
+/* =========== */
+
+/* pt-serif-regular - latin */
+/* pt-serif-italic - latin */
+/* pt-serif-700 - latin */
+/* pt-serif-700italic - latin */
+:root {
+	--active-file-bg-color: #dadada;
+	--active-file-bg-color: rgba(32, 43, 51, 0.63);
+	--active-file-text-color: white;
+	--bg-color: #f3f2ee;
+	--text-color: #1f0909;
+	--control-text-color: #444;
+	--rawblock-edit-panel-bd: #e5e5e5;
+
+	--select-text-bg-color: rgba(32, 43, 51, 0.63);
+  --select-text-font-color: white;
+}
+
+pre {
+	--select-text-bg-color: #36284e;
+	--select-text-font-color: #fff;
+}
+
+html {
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+}
+
+html, body {
+	background-color: #f3f2ee;
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+	color: #1f0909;
+	line-height: 1.5em;
+}
+
+/*#write {
+	overflow-x: auto;
+    max-width: initial;
+	padding-left: calc(50% - 17em);
+    padding-right: calc(50% - 17em);
+}
+
+@media (max-width: 36em) {
+ 	#write {
+ 		padding-left: 1em;
+    	padding-right: 1em;
+ 	}
+}*/
+
+#write {
+	max-width: 40em;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+			max-width: 914px;
+	}
+}
+
+ol li {
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+ul li {
+	list-style-type: disc;
+	list-style-position: outside;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* styles */
+
+/* ====== */
+
+/* headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: bold;
+}
+h1 {
+	font-size: 1.875em;
+	/*30 / 16*/
+	line-height: 1.6em;
+	/* 48 / 30*/
+	margin-top: 2em;
+}
+h2,
+h3 {
+	font-size: 1.3125em;
+	/*21 / 16*/
+	line-height: 1.15;
+	/*24 / 21*/
+	margin-top: 2.285714em;
+	/*48 / 21*/
+	margin-bottom: 1.15em;
+	/*24 / 21*/
+}
+h3 {
+	font-weight: normal;
+}
+h4 {
+	font-size: 1.125em;
+	/*18 / 16*/
+	margin-top: 2.67em;
+	/*48 / 18*/
+}
+h5,
+h6 {
+	font-size: 1em;
+	/*16*/
+}
+h1 {
+	border-bottom: 1px solid;
+	margin-bottom: 1.875em;
+	padding-bottom: 0.8125em;
+}
+/* links */
+
+a {
+	text-decoration: none;
+	color: #065588;
+}
+a:hover,
+a:active {
+	text-decoration: underline;
+}
+/* block spacing */
+
+p,
+blockquote,
+.md-fences {
+	margin-bottom: 1.5em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 1.5em;
+}
+/* blockquote */
+
+blockquote {
+	font-style: italic;
+	border-left: 5px solid;
+	margin-left: 2em;
+	padding-left: 1em;
+}
+/* lists */
+
+ul,
+ol {
+	margin: 0 0 1.5em 1.5em;
+}
+/* tables */
+.md-meta,.md-before, .md-after {
+	color:#999;
+}
+
+table {
+	margin-bottom: 1.5em;
+	/*24 / 16*/
+	font-size: 1em;
+	/* width: 100%; */
+}
+thead th,
+tfoot th {
+	padding: .25em .25em .25em .4em;
+	text-transform: uppercase;
+}
+th {
+	text-align: left;
+}
+td {
+	vertical-align: top;
+	padding: .25em .25em .25em .4em;
+}
+
+code,
+.md-fences {
+	background-color: #dadada;
+}
+
+code {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.md-fences {
+	margin-left: 2em;
+	margin-bottom: 3em;
+	padding-left: 1ch;
+	padding-right: 1ch;
+}
+
+pre,
+code,
+tt {
+	font-size: .875em;
+	line-height: 1.714285em;
+}
+/* some fixes */
+
+h1 {
+	line-height: 1.3em;
+	font-weight: normal;
+	margin-bottom: 0.5em;
+}
+
+p + ul,
+p + ol{
+	margin-top: .5em;
+}
+
+h3 + ul,
+h4 + ul,
+h5 + ul,
+h6 + ul,
+h3 + ol,
+h4 + ol,
+h5 + ol,
+h6 + ol {
+	margin-top: .5em;
+}
+
+li > ul,
+li > ol {
+	margin-top: inherit;
+	margin-bottom: 0;
+}
+
+li ol>li {
+	list-style-type: lower-alpha;
+}
+
+li li ol>li{
+	list-style-type: lower-roman;
+}
+
+h2,
+h3 {
+	margin-bottom: .75em;
+}
+hr {
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid;
+	border-left: none;
+}
+h1 {
+	border-color: #c5c5c5;
+}
+blockquote {
+	border-color: #bababa;
+	color: #656565;
+}
+
+blockquote ul,
+blockquote ol {
+	margin-left:0;
+}
+
+.ty-table-edit {
+	background-color: transparent;
+}
+thead {
+	background-color: #dadada;
+}
+tr:nth-child(even) {
+	background: #e8e7e7;
+}
+hr {
+	border-color: #c5c5c5;
+}
+.task-list{
+	padding-left: 1rem;
+}
+
+.md-task-list-item {
+	padding-left: 1.5rem;
+	list-style-type: none;
+}
+
+.md-task-list-item > input:before {
+	content: '\221A';
+	display: inline-block;
+	width: 1.25rem;
+  	height: 1.6rem;
+	vertical-align: middle;
+	text-align: center;
+	color: #ddd;
+	background-color: #F3F2EE;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	color: inherit;
+}
+
+#write pre.md-meta-block {
+	min-height: 1.875rem;
+	color: #555;
+	border: 0px;
+	background: transparent;
+	margin-top: -4px;
+	margin-left: 1em;
+	margin-top: 1em;
+}
+
+.md-image>.md-meta {
+	color: #9B5146;
+}
+
+.md-image>.md-meta{
+	font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
+}
+
+
+#write>h3.md-focus:before{
+	left: -1.5rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h4.md-focus:before{
+	left: -1.5rem;
+	top: .25rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h5.md-focus:before{
+	left: -1.5rem;
+	top: .0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h6.md-focus:before{
+	left: -1.5rem;
+	top: 0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+.md-toc-content:empty:before{
+	color: #065588;
+}
+.md-toc-item {
+	color: #065588;
+}
+#write div.md-toc-tooltip {
+	background-color: #f3f2ee;
+}
+
+#typora-sidebar {
+	background-color: #f3f2ee;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+}
+
+.pin-outline #typora-sidebar {
+	background: inherit;
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+.pin-outline #typora-sidebar:hover .outline-title-wrapper {
+	border-left:1px dashed;
+}
+
+.outline-item:hover {
+  background-color: #dadada;
+  border-left: 28px solid #dadada;
+  border-right: 18px solid #dadada;
+}
+
+.typora-node .outline-item:hover {
+  	border-right: 28px solid #dadada;
+}
+
+.outline-expander:before {
+  content: "\f0da";
+  font-family: FontAwesome;
+  font-size:14px;
+  top: 1px;
+}
+
+.outline-expander:hover:before,
+.outline-item-open>.outline-item>.outline-expander:before {
+  content: "\f0d7";
+}
+
+.modal-content {
+	background-color: #f3f2ee;
+}
+
+.auto-suggest-container ul li {
+	list-style-type: none;
+}
+
+/** UI for electron */
+
+.megamenu-menu,
+#top-titlebar, #top-titlebar *,
+.megamenu-content {
+	background: #f3f2ee;
+	color: #1f0909;
+}
+
+.megamenu-menu-header {
+	border-bottom: 1px dashed #202B33;
+}
+
+.megamenu-menu {
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+header, .context-menu, .megamenu-content, footer {
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+    color: #1f0909;
+}
+
+#megamenu-back-btn {
+	color: #1f0909;
+	border-color: #1f0909;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title:before {
+	color: #1f0909;
+}
+
+.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+	color: inherit;
+	background-color: #e8e7df;
+}
+
+.long-btn:hover {
+	background-color: #e8e7df;
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: transparent !important;
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    color: inherit;
+}
+
+.megamenu-menu-panel .btn {
+	background-color: #D2D1D1;
+}
+
+.btn-default {
+	background-color: transparent;
+}
+
+.typora-sourceview-on #toggle-sourceview-btn,
+.ty-show-word-count #footer-word-count {
+	background: #c7c5c5;
+}
+
+#typora-quick-open {
+    background-color: inherit;
+}
+
+.md-diagram-panel {
+	margin-top: 8px;
+}
+
+.file-list-item-file-name {
+	font-weight: initial;
+}
+
+.file-list-item-summary {
+	opacity: 1;
+}
+
+.file-list-item {
+	color: #777;
+}
+
+.file-list-item.active {
+	background-color: inherit;
+	color: black;
+}
+
+.ty-side-sort-btn.active {
+	background-color: inherit;
+}
+
+.file-list-item.active .file-list-item-file-name  {
+	font-weight: bold;
+}
+
+.file-list-item{
+    opacity:1 !important;
+}
+
+.file-library-node.active>.file-node-background{
+	background-color: rgba(32, 43, 51, 0.63);
+	background-color: var(--active-file-bg-color);
+}
+
+.file-tree-node.active>.file-node-content{
+	color: white;
+	color: var(--active-file-text-color);
+}
+
+.md-task-list-item>input {
+	margin-left: -1.7em;
+	margin-top: calc(1rem - 12px);
+	-webkit-appearance: button;
+}
+
+input {
+	border: 1px solid #aaa;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title,
+.megamenu-menu-header:hover, 
+.megamenu-menu-header:focus {
+	color: inherit;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+	opacity: 1;
+}
+
+/* https://github.com/typora/typora-issues/issues/2046 */
+.os-windows-7 strong,
+.os-windows-7 strong  {
+	font-weight: 760;
+}
+
+.ty-preferences .btn-default {
+	background: transparent;
+}
+
+.ty-preferences .window-header {
+	border-bottom: 1px dashed #202B33;
+	box-shadow: none;
+}
+
+#sidebar-loading-template, #sidebar-loading-template.file-list-item {
+	color: #777;
+}
+
+.searchpanel-search-option-btn.active {
+	background: #777;
+	color: white;
+}
+
+.export-detail, .light .export-detail, 
+.light .export-item.active, 
+.light .export-items-list-control {
+	background: #e0e0e0;
+	border-radius: 2px;
+	font-weight: 700;
+	color: inherit
+}
+
+
+</style><title>&#39;Главное про Korni3 и сетевые коммуникации&#39;</title>
+</head>
+<body class='typora-export typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#главное-про-korni3-и-сетевые-коммуникации">Главное про Korni3 и сетевые коммуникации</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#главные-моменты">Главные моменты</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#что-собой-технически-представляют-файлы-korni3">Что собой технически представляют файлы korni3</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#прочие-технологии-коммуникации">Прочие технологии коммуникации</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#обязывающая-лицензия-контента">"обязывающая лицензия контента"</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#лицензия-оферта-запроса-файлов">Лицензия-оферта запроса файлов</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h4"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#общая-схема-ещё-раз">Общая схема ещё раз</a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#немного-другая-оферта">немного другая оферта</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#cryptomator">"Cryptomator"</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#темная-сеть">темная сеть</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#анонимный--месенджер">анонимный  месенджер</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#почта-для-всех-законных-целей">почта для всех (законных целей)</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#облачные-хранилища-файлов-для-законных-целей">облачные хранилища файлов (для законных целей)</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#php-хостинг-для-сайта--для-относительно-законного">php хостинг для сайта  (для относительно законного)</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#ipfs-подобные-решения">ipfs подобные решения</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h3"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#vpn-свой-или-арендованный">VPN свой или арендованный </a></div><ul class="outline-children"></ul></li></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#перечисление-методов-синхронизации-файлов">Перечисление методов синхронизации файлов</a></div><ul class="outline-children"></ul></li></div></div><div id='write'  class=''><h2 id='главное-про-korni3-и-сетевые-коммуникации'><span>Главное про Korni3 и сетевые коммуникации</span></h2><p>&nbsp;</p><h3 id='главные-моменты'><span>Главные моменты</span></h3><blockquote><p><span>Основной враг общества - цензура, модерация, ложь. Цензура - это средство манипуляции народом, способ скрыть альтернативные аргументы, способ лгать. Цензура - санкции в области информации. в США, например, цензура выключила из инфополя российские каналы, российская точка зрения не звучит, сми обосновывают ликующим народным массам военные вторжения в страны (Афганистан, Ирак, Ливия, Россия, Югославия, Украина,...) Люди верят сми и готовы даже одобрить применение ЯО властями. Все это результат наличия самой возможности цензуры. Цензуры не должно быть ни у кого, вообще не у кого. Опыт показывает, что цензура становится инструментом для лжи и манипуляции. </span></p></blockquote><ol start='' ><li><p><span>Главная проблема , решаемая korni3 - проблема цензуры, точнее : &quot;исключает блокировку доступа к контенту&quot;. Метод решения юридический, а не технический - все копии данных для приложений у пользователей есть локально, принадлежат пользователю, а все приложения НЕ работаю через сеть самостоятельно - поэтому их можно публично развивать, обновлять итд. С каким именно контентом они работают локально при этом не известно.  korni3 сводит коммуникацию к простому обмену файлами по сети. </span></p></li><li><p><span>korni3 имеет просветительскую миссию. Мы бесплатно распространяем знания и курсы по сетевой безопасности, редкие книги, исторические сведения, интервью, исторические документы, резервируем доступ к сканам, полит информацию по теории власти, политическую и экономическую аналитику, компьютерные технологии, фото и видео произведений искусства, исторические подписанные и легитимные приказы, влияющие на жизнь общества итд.  Мы хотим дать людям инструмент личного цифрового суверенитета. Суверенный интернет начинается с личного суверенитета и свободы доступа к знаниям для каждого человека. </span></p></li><li><p><span>Борьба с цензурой и модерацией на этом не заканчивается - остаётся проблема анонимности. </span></p><ol start='' ><li><p><span>korni3 предлагает не предлагает конкретный сетевой транспорт, наоборот , предлагается использовать все виды сетевого транспорта. можно использовать любые способы передачи файлов, анонимные в том числе. </span></p></li><li><p><span>мы создадим скрипты, которые позволят использовать все возможные способы синхронизации файлов. </span></p></li><li><p><span>полностью Анонимная передача на данный момент не в первом приоритете, но уверяю: достаточно легко реализовать анонимность например средствами вида vpn , vds servers,...  тем людям, которых это действительно волнует. Мы уважаем индивидуальную степень паранойи каждого человека. </span></p></li><li><p><span>Важным методом борьбы с цензурой является изобретенная мной &quot;обязывающая лицензия контента&quot; (требуется коллективное обсуждение этой идеи и возможно, ее доработка, всё таки я не юрист по образованию и что -то мог упустить.)</span></p></li></ol></li><li><p><span>Я ищу способы усилить экономику своей страны, сделать людей богаче сильнее и независимее. У нас в стране много предателей и саботажников. Я работал много лет в области науки, технологий, электроники, программ, управлял сложными проектами, создавал системы планирования, управления и управления знаниями, занимался робототехникой и др. Нам требуется запустить &quot;настоящий народный инвестиционный процесс&quot; для модернизации страны и себя, освободив часть связанных средств. Нужно исключить всех паразитов из производственных и торговых цепочек, убрать все комиссии, любые платежи которые мы не хотим платить итд.  Для этого надо переделать интернет торговлю, мы должны для этого даже изменить суть и название. ( и, считаю : это должно перестать быть торговлей, это может быть равнозначный обмен, в котором не будет прибыли и наценок). Но конечно люди должны решать как и чем это должно быть, поэтому в базе я просто создаю приложение для поиска поставщиков и покупателей и обеспечиваю возможности им связаться. Тут важно цензура и модерация так же не может быть осуществлена в такой системе.</span></p></li><li><p><span>Цензура и модерация на выборах - страшный для кармы злодея способ сломать жизни многих людей и крупная общественно значимая ложь. Наука создала способы, чтобы избежать мошенничества на цифровых голосованиях. уже сейчас есть способы как провести голосования и честные цифровые легитимные референдумы. Такая возможность планируется к запуску в рамках системы korni. Я вижу пока уровень голосования &quot;мы жители района Х против свалки Y&quot;, в котором невозможность подделать результат и возможность получить юридически значимый результат - это и есть ценная правда - лучший враг лжи. </span></p></li></ol><p><span>Читай так же </span></p><ul><li><p><a href=''><span>Корни - Часто задаваемые вопросы</span></a><span>  TODO link</span></p></li><li><p><a href=''><span>Korni3</span></a><span> TODO линк на документацию к утилите</span></p></li></ul><p>&nbsp;</p><h3 id='что-собой-технически-представляют-файлы-korni3'><span>Что собой технически представляют файлы korni3</span></h3><p><span>файлы korni3 - результат работы утилиты korni3 . Утилита манипулирует данными по командам прикладных приложений , для которых korni3 является системой хранения данных. </span></p><p><span>Другими словами можно сказать, что действия над базами данных многих прикладных приложений превращаются утилитой korni3 в множество файлов. Приложения могут поставляться разными поставщиками, это могут быть даже скрипты управления данными пользователя которые пользователь сам сочинил. </span></p><p><span>По самим файлам невозможно точно сказать частью какой базы данных какого приложения они являются, это можно только предположить и на какое конкретное множество файлов разбита эта база. </span></p><p><span>Невозможно определить и утверждать так же для одной и той же базы одного и того же приложения с многими пользователями является ли она единой или это две и более не связанные базы разных группы пользователей, вплодь до отдельных баз каждого пользователя.</span></p><p><span>Невозможно даже, имея  на руках все эти базы, только по ним доказать как именно коммуницировали пользователи и коммуницировали ли вообще (даже случайные ссылки друг на друга в текстах могут быть фейком и симуляцией коммуникации, которой реально могло не быть). </span></p><p><span>Для системы управления данными korni3 сеть не является необходимой. Korni3 может работать без сети, приложения на этой системе строятся так, чтобы специально не использовать сеть. </span></p><p><span>korni3 полагается на сторонние способы обмена данными. Все коммуникации сводятся к свободному обмену файлами. Для обмена файлами существует множество публичных и анонимных способов, так, korni3  рекомендует кооперацию между системами, и развивает партнерское сотрудничество с сетевыми транспортами решающих задачи обмена файлов. обмениваться файлами korni3 можно даже просто меняясь флешками и жесткими дисками в случае если весь интернет заблокируют или на войсковой передовой, где использование радио связи ограничено и опасно для жизни бойцов из-за военных действий неприятеля.</span></p><p><span>korni3 сильно защищен от цензуры т.к. копии необходимых файлов есть у каждого их владельца на личном персональном носителе и могут передаваться неисчислимым множеством способов. </span></p><p><span>база данных korni3 формируется из отдельных изменений распределенных по файлам, она содержит сумму изменений и правок. каждая правка имеет метку времени, автора в виде аккаунта korni3 , и цифровую подпись. изменения складываются в таблицы базы данных. Приложения видят все правки, а не только последнюю. Консистентность данных обеспечивается приложением а не системой хранения, для этого существуют отдельные методы. (на базовом уровне например можно реализовать swarm транзакции, таких методов довольно много). korni3 как система хранения не обеспечивает транзакций и консистентности т.о. и многоверсионна - каждый пользователь может иметь разный набор данных в приложениях. </span></p><p>&nbsp;</p><p>&nbsp;</p><h2 id='прочие-технологии-коммуникации'><span>Прочие технологии коммуникации</span></h2><p>&nbsp;</p><h3 id='обязывающая-лицензия-контента'><span>&quot;обязывающая лицензия контента&quot;</span></h3><p><span>Одна из нескольких технологий корректной синхронизации файлов опирается на такие основания. </span></p><blockquote><ul><li><p><span>Подарки получать можно всегда. Подарки не запрещены. Получить подарок неожиданно может кто угодно. </span></p></li><li><p><span>Если не знаешь, что в коробке подарка то получение такого подарка никогда не может быть нарушением. </span></p></li><li><p><span>Дарить можно анонимно. Анонимный человек имеет право озвучить ультиматум и имеет право быть выслушан. </span></p></li><li><p><span>Ультиматум может содержать оферту. </span></p></li><li><p><span>Если ситуация внезапно сложилась так , что Вы обязаны - нужно исполнить обязательство. (казино, спор, страховой случай, контракт ... )</span></p></li><li><p><span>Нужно по возможности исполнить свое обязательство: &quot;выслать владельцу его собственность, если она находится у Вас&quot;</span></p></li><li><p><span>Любой человек может выставить обществу свои требования (пусть даже и смехотворные)</span></p></li><li><p><span>Отдельный человек может игнорировать требования другого человека ко всему обществу. </span></p></li><li><p><span>Каждый человек вправе отказаться исполнять свои обязательства, оценив риски. </span></p></li></ul></blockquote><p><span>Чтобы запретить обмен по этому способу необходимо (но не достаточно), как минимум, разрушить эту опору. </span></p><p>&nbsp;</p><h4 id='лицензия-оферта-запроса-файлов'><span>Лицензия-оферта запроса файлов</span></h4><p><span>имеет такое общее содержание: </span></p><blockquote><ul><li><p><span>Я - человек, из плоти, крови и костей, рожденный и живущий на планете Земля, желаю остаться анонимным. Я интересуюсь содержимым перечисленных ниже файлов в личных целях. Предполагаю, что файлы распространяются по Common Public License т.е. являются &quot;всеобщим достоянием&quot;, на этом основании я хочу их получить. Если файлы являются Вашей собственностью, то согласно данной оферте Вы теперь обязаны добровольно передать их копии мне в дар на общих основаниях без условий и гарантий. Считаю, что все копии файлов в этом списке являются Вашими, даже если Вы не знакомы с их содержанием и не знаете откуда они у Вас возникли и Вы можете их копировать для меня, если я получу их любым способом, то буду считать их копии своими и Вы с этим согласны. Считаю, что имею право владеть пользоваться и распоряжаться копиями этих файлов. Я никак не могу убедиться, что после получения мной мои копии файлов с такими именами будут равны вашим копиям файлов с такими же именами и Вы тоже не можете быть в этом уверены и мы оба принимаем этот факт. (Имя файлов не обязано всегда соответствовать одному и тому же содержанию файла). С момента, как только Вы создадите копию файла и/или получите эту оферту (не важно по каким причинам), я автоматически считаю, что это уже моя копия файла и Вы обязаны передать её мне, решение о передаче своего файла Вам принимать не нужно, Вы лишь обязаны передать мне мою копию. Мой ультиматум вам: Если Вы решите не выполнять свою обязанность по данной оферте (т.е. оставить теперь уже мои копии файлов у себя), то делайте это так, чтобы ни я, и никто другой, об этом вашем нарушении условий данной оферты никак не узнал - для Вас это безопасное решение, никаких последствий не последует. такой отказ от оферты - влечет отказ от обязательств.</span></p></li></ul><p><span>&lt;список файлов&gt;</span></p></blockquote><p><span>Комментарии к тексту лицензии: </span></p><p><span>У файла есть владелец и автор. в тексте фигурирует как &quot;файл&quot; так и &quot;копия файла&quot;. </span></p><p><span>Имя файла в некотором роде идентифицирует файл, но лучше всего идентифицирует файл его содержимое, которое не известно стороне получателя. </span></p><p><span>завяленная цель получателя (получатель не гарантирует ее достижение): ознакомиться с содержимым и завладеть копией файла. Владелец может так же копировать свой файл и отдавать его копию кому-то. Будет ли цель достигнута до или после этих событий - личное дело каждого получателя. Получатель ничего не гарантирует, запрашивая файл, даже не гарантирует, что у него будет в результате такая же копия как у отправителя. </span></p><p><span>Равенство так называемых копий не волнует в целом никого в этой паре , ни отправителя ни получателя по таким причинам: </span></p><ol start='' ><li><p><span>если файл идентифицируется хешами контента в имени файла, то получатель может после получения проверить это соответствие заново вычислив хеши. </span></p></li><li><p><span>если же файл кроме прочего внутри себя содержит микро-документы с наборами изменений таблиц данных, то эти наборы сами по себе содержат цифровые подписи и все нужные атрибуты чтобы не беспокоится о корректности этих данных. некорректные данные система игнорирует. проверка подписей позволяет исключить поддельные записи, а если файл содержит бесполезные данные то пользы в нем нет и он может быть удален. </span></p></li><li><p><span>если отправитель не сообщил все изменения которые у него имеются - он вправе сделать это. т.к. это его копии и ему решать передавать ли их вообще и передавать ли их полностью. Спасибо, как говориться , и на том, что передал. </span></p></li><li><p><span>атака типа &quot;человек по середине&quot; не имеет смысла в этом случае т.к. получатель может проверить сам все полученные данные на корректность</span></p></li></ol><p><span>Правомерность передачи данных. </span></p><p><span>Обращаю внимание, что системы обмена файлами работают с данными а не с информацией. Для них файлы - это сущности без смысла и такие системы нигде и никогда смысл данных не анализируют и не принимают никаких решений. </span></p><p><span>Копия файла попадает получателю потому, что он захотел и заявил о условиях передачи, а не потому, что кто-то рассылал их.  По этим условиям отправитель становится обладателем копии файла принадлежащей получателю в момент копирования файла еще до того, как он, возможно принял решение отправить файл (причина копирования своего файла у него может быть абсолютно любая, так же причиной является получение офферты). Далее  отправителю уже нет необходимости принимать решение о передаче копии файла т.к. по условиям заявленной и прочитанной лицензии это будет уже не его копия, а копия файла, владельцем которой является получатель, который заранее обязал отправителя отправить копию получателю или не отправлять её (без объяснения причин). с правовой точки зрения здесь нет и не может быть распространения отправителем, но возможно нарушение обязательств отправителя отправлять получателю его собственность, о котором никто не узнает, и получатель об этом никуда не заявит, если это нарушение обязательств произойдет. </span></p><p><span>Данные (копии файлов) которые перечислены в списке файлов отправитель обязан передать получателю, можно передать уже  любым способом, включая даже выкладку на любые промежуточные внешние ресурсы. </span></p><p><span>Обвинить в их содержимом нельзя ни получателя ни отправителя ни посредников передачи т.к. : </span></p><ol start='' ><li><p><span>получателя нельзя обвинить т.к. он не знает, что ему отправят и не знает, что получит и возможно при передаче его обманут и он получит искаженные данные. Он не имеет никакого умысла. только желание  получить свои копии файлов и, возможно, ознакомиться с ними, если ему удастся как-то открыть эти файлы и когда либо вообще получить технические возможности и условия увидеть какое-то содержимое которое в них закодировано прямо или косвенно. </span></p></li><li><p><span>отправителя нельзя обвинить т.к. он делает то, что обязан сделать по условиям лицензии (открытая оферта). он передает не свои копии файлов владельцу этих копий по запросу владельца - это типичное исполнение контракта. Содержимое файлов системы передачи файлов не анализируют никогда. (+ Система корни кодирует данные так, чтобы не было однозначного соответствия отображаемым в приложениях данных, содержимому индексной базы данных и файлов с наборами изменений т.е. это кодирование осуществляется на ином уровне, данные распределяются по многим файлам с непонятным именем сформированным машиной). Списки имен запрошенных получателем файлов и списки имен имеющихся у отправителя файлов не имеют в общем случае никакой связи, получатель мог заинтересоваться ими, получив имена, напрмимер, и из других источников, но, впрочем, в публикации непонятных имен файлов нет никакого нарушения - это только имена файлов созданных машиной по стандартному шаблону удобному самой машине. Нет возможности понять связь этих имен и данных которые есть в приложении.</span></p></li><li><p><span>нельзя обвинить посредников в способствованию передаче т.к. передача и её условия заранее согласованы. её сторонами  является получатель и отправитель, посредник только обеспечивает техническую возможность, если его привлекли к этому процессу (оба согласились, что это возможно). Для посредника это чужие файлы и он не имеет права заглядывать в них. при необходимости файлы шифруются, чтобы посредник не мог их прочитать при &quot;лишнем любопытстве&quot;. Если вдруг посредник решит препятствовать передаче - в этом нет проблемы, оба участника к этому готовы (выберут иного посредника). </span></p></li></ol><h4 id='общая-схема-ещё-раз'><span>Общая схема ещё раз</span></h4><p><span>Отправитель : публикует списки файлов которые у него есть , имена файлов сфоромированы машиной и по ним понять ничего нельзя. </span></p><p><span>Получатель : откуда то узнал эти имена, захотел ознакомиться и завладеть предположительно копиями файлов с такими именами. </span></p><p><span>Получатель: опубликовал оферту - соглашение в котором её текст, список файлов, и предпочтительный способ получения файлов. Получатель обращается к любому из абонентов. </span></p><p><span>Отправитель : поинтересовался лицензией-офертой, ознакомился с ней. В результате Узнал, что обязан создать копии своих файлов, которые автоматически тут же становятся копиями получателя, которые затем уже обязан отправить их владельцу-получателю.  От этих обязательств и копирования и отправки отправитель может отказаться без последствий. </span></p><p><span>Передача: напрямую , указанным получателем способом, или через посредника , вероятнее всего шифрованная &quot;копия файлов&quot; попадает к получателю от кого-то из множества абонентов, получивших оферту.  Удостовериться, что &quot;копия файла&quot;, действительно является копией никто достоверно не может и это всех устраивает.  Утверждать, что передавалось именно такое содержимое тоже никто не может и это всех участников устраивает. Получатель вправе выдавать свою копию за оригинал и это тоже всех устраивает (любой человек вправе выдавать свои файлы за оригинал и давать им любые имена). Утверждать, что у получателя оказалась конкретная копия файла от конкретного отправителя нельзя, ведь читали оферту и получили по ней обязательства сразу несколько абонентов. Утверждать, что файлы полученные получателем в результате имеют такой или иной контент по конкретной причине никто не может по причинам указанным выше и утверждать что-то про &quot;контент&quot; тоже ничего нельзя т.к. на уровне &quot;данных&quot; такого понятия нет. </span></p><blockquote><p><span>Не смотря на все, казалось бы, нарушения &quot;привычной логики&quot;  система корни корректно обрабатывает все эти ситуации и надежно работает. </span></p></blockquote><p>&nbsp;</p><h3 id='немного-другая-оферта'><span>немного другая оферта</span></h3><p><span>Другой вариант Оферты: </span></p><blockquote><p><span>Я человек рожденный и живущий на планете Земля из крови, плоти и костей предлагаю  Всем читателям сего оферту: По этой оферте у Вас обязательно возникают обязанности. Вы вправе отказаться от своих обязательно возникающих обязанностей по этой оферте без последствий. Если Вы получили эту оферту или у Вас имеются любые из файлов с именами из списка ниже (это акцепт), то Вы дополнительно обязуетесь 1) создать для меня копию каждого совпадающего по имени файла, которая в этот миг (начало копирования) становится моей 2) передать мне мою копию файла по указанному мной адресу, указанным мной способом, 3) а я обязуюсь её принять. Что находится в этих моих копиях файлов я не знаю и Вы, вероятно, тоже и меня это не интересует т.к. я понимаю, что в процессе передачи файлы могут быть искажены. Проверить соответствие моей копии и вашей я не могу и вы не можете. Ни я ни Вы не обязаны доверять друг другу и такая задача перед Вами и мной не ставится. Никаких гарантий ни я ни Вы не даём. Я вправе владеть пользоваться распоряжаться моими копиями файлов. &quot;Копии файлов&quot;, которые я получу в результате могут отличаться по содержанию и быть не равны Вашим копиям файлов и мы оба принимаем этот факт. Отказаться от обязательств Вы может как полностью по всем файлам, так и частично - по некоторым файлам, без последствий. Отказ от исполнения обязательств влечет отказ от оферты.</span></p></blockquote><p>&nbsp;</p><h3 id='cryptomator'><span>&quot;Cryptomator&quot;</span></h3><ol start='' ><li><p><span>папка с файлами шифруется , в том числе имена файлов подвергаются шифрованию и премешиваются (как например делает приложение Cryptomator)</span></p></li><li><p><span>системы синхронизации синхронизируют файлы результатов шифрования между абонентами. </span></p></li></ol><p><em><span>Анализ рисков.</span></em><span> </span></p><p><span>Допустим злоумышленник, который хочет обвинить участников в обмене узнал ключ шифрования и  вошел в группу в которой происходит обмен. Он получил копию общей папки с файлами. </span></p><p><span>Может ли он понять какие файлы кто распространил?  </span></p><ul><li><p><span>установить соответствие файла в расшифрованной папке и файла в шифрованном контейнере сложно но можно. но это ничего не даёт</span></p></li><li><p><span>в korni3 файлы наборов изменений имеют автора - это автор изменений , идентифицируется публичным ключем а системе korni3. однако на транспотрном уровне такие адреса отсутствуют. задача в теории выполнимая, но на практике может оказаться не выполнимой. </span></p></li></ul><p><span>если использовать вместо/вместе с cryptomator IPFS то файлы бьются на блоки а имена кодируются в других блоках.... блоки именуются по хешам ... роутинг в ipfs оверлейный и отследить в оверлее откуда пришел тот или иной блок сложнее. </span></p><blockquote><p><span>Правильное кодирование имен файлов и шифрование с разбиением на блоки - надежный хороший способ развязать имена файлов в системе korni3 и блоки ... но и тут есть методы найти соответствие файла и реального адреса. </span></p></blockquote><p>&nbsp;</p><h3 id='темная-сеть'><span>темная сеть</span></h3><p><span>чтобы никак не установить связь с физическим сетевым адресом надо использовать сервисы ftp например в i2p . </span></p><p>&nbsp;</p><h3 id='анонимный--месенджер'><span>анонимный  месенджер</span></h3><p><span>в bitmessage например делается публичный известный всем канал. туда анонимно можно публиковать свои списки файлов и способы получения файла , или torrent файлы слепков своих контейнеров </span></p><p><span>Там могут быть адреса... но это дело каждого как получать файлы... Тут важно, что не пришить ничего потому, что человек не обязательно автор всех раздаваемых файлов, связь тут такую не установить. </span></p><p>&nbsp;</p><h3 id='почта-для-всех-законных-целей'><span>почта для всех (законных целей)</span></h3><p><em><span>Вариант когда почтовый ящик = копия хранилища</span></em></p><ul><li><p><span>заводим на любом сайте почтовый ящик. заводим там аккаунт гость, под которым любой может смотреть почту. </span></p></li><li><p><span>клиент ПО заходит на почту и смотрит письма не удаляя их. в них файлы - их получает. </span></p></li><li><p><span>либо пишем сам- себе , вкладывая в письма файлы. </span></p></li></ul><p><span>Почтовые ящики бывают 100 ГБ и очень недорогие. заблокировали - легко перешли на новый почтовый адрес. </span></p><p><span>да, почтовый сервис на провайдере хранит адреса и цифровой след. но это </span><strong><span>для относительно законных дел.</span></strong><span> </span></p><p>&nbsp;</p><p><em><span>Вариант , когда почтовый ящик - способ сообщить p2p адрес для обмена.</span></em><span> </span></p><p><span>у абонентов может быть почта. </span></p><ul><li><p><span>приложение korni3 может в аккаунте korni3 хранить и почту абонента - тогда абонент деанонимизирован. Или </span></p></li><li><p><span>или в приложении есть анонимное множество почтовых адресов, предположительно абонентов этой группы. </span></p></li></ul><p><span>сетевой синхронизатор может осуществлять по почте  примерно такой диалог: </span></p><ol start='' ><li><p><span>я прошу список файлов. прошу файлы</span></p></li><li><p><span>ответ содержит адрес где их можно взять , сами файлы пересылать не нужно - это может стать причиной блокировки почты.</span></p></li><li><p><span>человеку пользоваться этим ящиком не обязательно. </span></p></li></ol><p><span>Преимущества : почтовые сервера - реально самая старая и рабочая децентрализованная система коммуникаций, но тут она работает против цензуры для любых приложений. </span></p><p>&nbsp;</p><h3 id='облачные-хранилища-файлов-для-законных-целей'><span>облачные хранилища файлов (для законных целей)</span></h3><ul><li><p><span>делается публичный контейнер с формой для загрузки файла. </span></p></li><li><p><span>все (без авторизации) туда шлют свои файлы - они складываются в контейнер с автоматически придуманными именами. </span></p></li><li><p><span>софт сканирует файлы в облачном контейнере начиная с даты - и забирает те. которых не хватает. </span></p></li></ul><p><span>тут хорошо что аккаунта на хранилище не нужно заводить. </span></p><p><span>заблокировать могут.... но придется блокировать большие хостинги, целые датацентры , где денные корпораций и госкорпораций - возмущений слишком много будет тогда. </span></p><p>&nbsp;</p><h3 id='php-хостинг-для-сайта--для-относительно-законного'><span>php хостинг для сайта  (для относительно законного)</span></h3><ul><li><p><span>на любом хостинге делается сайт из 1-2 х php форм для принятия файлов определенного типа. </span></p></li><li><p><span>клиенты шлют на формы файл. скрипт их проверяет и складывает на диск. </span></p></li><li><p><span>всем виден набор этих файлов и их можно скачать. </span></p></li></ul><p><span>Могут заблокировать, но создать такой новый сайт скриптом - секунды. </span></p><p><span>Причем его новый адрес в общий канал (или даже по почте) клиенты его подхватывают и все работает дальше.  опять же : если есть шпион то его легко вычислить: надо чаще самому менять сайт и даже делать их много и например одним клиентам давать одни сайты а другим - другие и смотреть кого блокируют а кого нет. </span></p><p><span>Тут важно, что система может работать на обычных почтовых аккаунтах. </span></p><p><u><em><span>Другой вариант</span></em></u><span> </span></p><p><span>надо php положить на сайт а файлы отсылать в другое место, чтобы к сайту было не придраться - там данных никаких нет вообще. тогда легко менять место хранения быстрее чем заблокируют, хоть каждые 5 минут менять адрес - никаких проблем. А сайт со скриптом никаких данных содержать не будет.</span></p><p>&nbsp;</p><h3 id='ipfs-подобные-решения'><span>ipfs подобные решения</span></h3><p><span>Global File System - проект открытого сообщества, который сам по себе обладает защищенностью от атак. Он решает задачу &quot;присутствия моих файлов в глобальной сети&quot; без серверов. Проект имеет gateway&#39;s но их легко запустить на любых адресах одной командой и не они обеспечивают основной способ коммуникации там. Фактически это глобальный файловый оверлей поверх DHT. Запрет DHT в теории возможен, но ipfs может использовать любые адреса dht bootstrap узлов которые легко менять. </span></p><h3 id='vpn-свой-или-арендованный'><span>VPN свой или арендованный </span></h3><p><span>на ssh машине можно запустить vpn , создав на нем свой и несколько гостевых аккаунтов. </span></p><p><span>можно соединятся с участниками анонимно (от провайдеров и других лиц) внутри сети vpn. если отключаться и подключаться к разным хабам vpn - можно обмениваться файлами достаточно анонимно. </span></p><p>&nbsp;</p><h2 id='перечисление-методов-синхронизации-файлов'><span>Перечисление методов синхронизации файлов</span></h2><p><span>Читайте статью </span><a href=''><span>Методы синхронизации файлов</span></a><span> TODO link - методы которые могут быть задействованы пользователем для удобного обмена файлами korni3</span></p><p>&nbsp;</p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script><script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(87491348, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript></noscript><div><img src="https://mc.yandex.ru/watch/87491348" style="position:absolute; left:-9999px;" alt=""></div>
+<!-- /Yandex.Metrika counter --></body>
+</html>

@@ -1,0 +1,833 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+
+
+/* meyer reset -- http://meyerweb.com/eric/tools/css/reset/ , v2.0 | 20110126 | License: none (public domain) */
+
+@include-when-export url(https://fonts.loli.net/css?family=PT+Serif:400,400italic,700,700italic&subset=latin,cyrillic-ext,cyrillic,latin-ext);
+
+/* =========== */
+
+/* pt-serif-regular - latin */
+/* pt-serif-italic - latin */
+/* pt-serif-700 - latin */
+/* pt-serif-700italic - latin */
+:root {
+	--active-file-bg-color: #dadada;
+	--active-file-bg-color: rgba(32, 43, 51, 0.63);
+	--active-file-text-color: white;
+	--bg-color: #f3f2ee;
+	--text-color: #1f0909;
+	--control-text-color: #444;
+	--rawblock-edit-panel-bd: #e5e5e5;
+
+	--select-text-bg-color: rgba(32, 43, 51, 0.63);
+  --select-text-font-color: white;
+}
+
+pre {
+	--select-text-bg-color: #36284e;
+	--select-text-font-color: #fff;
+}
+
+html {
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+}
+
+html, body {
+	background-color: #f3f2ee;
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+	color: #1f0909;
+	line-height: 1.5em;
+}
+
+/*#write {
+	overflow-x: auto;
+    max-width: initial;
+	padding-left: calc(50% - 17em);
+    padding-right: calc(50% - 17em);
+}
+
+@media (max-width: 36em) {
+ 	#write {
+ 		padding-left: 1em;
+    	padding-right: 1em;
+ 	}
+}*/
+
+#write {
+	max-width: 40em;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+			max-width: 914px;
+	}
+}
+
+ol li {
+	list-style-type: decimal;
+	list-style-position: outside;
+}
+ul li {
+	list-style-type: disc;
+	list-style-position: outside;
+}
+
+ol,
+ul {
+	list-style: none;
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* styles */
+
+/* ====== */
+
+/* headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: bold;
+}
+h1 {
+	font-size: 1.875em;
+	/*30 / 16*/
+	line-height: 1.6em;
+	/* 48 / 30*/
+	margin-top: 2em;
+}
+h2,
+h3 {
+	font-size: 1.3125em;
+	/*21 / 16*/
+	line-height: 1.15;
+	/*24 / 21*/
+	margin-top: 2.285714em;
+	/*48 / 21*/
+	margin-bottom: 1.15em;
+	/*24 / 21*/
+}
+h3 {
+	font-weight: normal;
+}
+h4 {
+	font-size: 1.125em;
+	/*18 / 16*/
+	margin-top: 2.67em;
+	/*48 / 18*/
+}
+h5,
+h6 {
+	font-size: 1em;
+	/*16*/
+}
+h1 {
+	border-bottom: 1px solid;
+	margin-bottom: 1.875em;
+	padding-bottom: 0.8125em;
+}
+/* links */
+
+a {
+	text-decoration: none;
+	color: #065588;
+}
+a:hover,
+a:active {
+	text-decoration: underline;
+}
+/* block spacing */
+
+p,
+blockquote,
+.md-fences {
+	margin-bottom: 1.5em;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 1.5em;
+}
+/* blockquote */
+
+blockquote {
+	font-style: italic;
+	border-left: 5px solid;
+	margin-left: 2em;
+	padding-left: 1em;
+}
+/* lists */
+
+ul,
+ol {
+	margin: 0 0 1.5em 1.5em;
+}
+/* tables */
+.md-meta,.md-before, .md-after {
+	color:#999;
+}
+
+table {
+	margin-bottom: 1.5em;
+	/*24 / 16*/
+	font-size: 1em;
+	/* width: 100%; */
+}
+thead th,
+tfoot th {
+	padding: .25em .25em .25em .4em;
+	text-transform: uppercase;
+}
+th {
+	text-align: left;
+}
+td {
+	vertical-align: top;
+	padding: .25em .25em .25em .4em;
+}
+
+code,
+.md-fences {
+	background-color: #dadada;
+}
+
+code {
+	padding-left: 2px;
+	padding-right: 2px;
+}
+
+.md-fences {
+	margin-left: 2em;
+	margin-bottom: 3em;
+	padding-left: 1ch;
+	padding-right: 1ch;
+}
+
+pre,
+code,
+tt {
+	font-size: .875em;
+	line-height: 1.714285em;
+}
+/* some fixes */
+
+h1 {
+	line-height: 1.3em;
+	font-weight: normal;
+	margin-bottom: 0.5em;
+}
+
+p + ul,
+p + ol{
+	margin-top: .5em;
+}
+
+h3 + ul,
+h4 + ul,
+h5 + ul,
+h6 + ul,
+h3 + ol,
+h4 + ol,
+h5 + ol,
+h6 + ol {
+	margin-top: .5em;
+}
+
+li > ul,
+li > ol {
+	margin-top: inherit;
+	margin-bottom: 0;
+}
+
+li ol>li {
+	list-style-type: lower-alpha;
+}
+
+li li ol>li{
+	list-style-type: lower-roman;
+}
+
+h2,
+h3 {
+	margin-bottom: .75em;
+}
+hr {
+	border-top: none;
+	border-right: none;
+	border-bottom: 1px solid;
+	border-left: none;
+}
+h1 {
+	border-color: #c5c5c5;
+}
+blockquote {
+	border-color: #bababa;
+	color: #656565;
+}
+
+blockquote ul,
+blockquote ol {
+	margin-left:0;
+}
+
+.ty-table-edit {
+	background-color: transparent;
+}
+thead {
+	background-color: #dadada;
+}
+tr:nth-child(even) {
+	background: #e8e7e7;
+}
+hr {
+	border-color: #c5c5c5;
+}
+.task-list{
+	padding-left: 1rem;
+}
+
+.md-task-list-item {
+	padding-left: 1.5rem;
+	list-style-type: none;
+}
+
+.md-task-list-item > input:before {
+	content: '\221A';
+	display: inline-block;
+	width: 1.25rem;
+  	height: 1.6rem;
+	vertical-align: middle;
+	text-align: center;
+	color: #ddd;
+	background-color: #F3F2EE;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before{
+	color: inherit;
+}
+
+#write pre.md-meta-block {
+	min-height: 1.875rem;
+	color: #555;
+	border: 0px;
+	background: transparent;
+	margin-top: -4px;
+	margin-left: 1em;
+	margin-top: 1em;
+}
+
+.md-image>.md-meta {
+	color: #9B5146;
+}
+
+.md-image>.md-meta{
+	font-family: Menlo, 'Ubuntu Mono', Consolas, 'Courier New', 'Microsoft Yahei', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', serif;
+}
+
+
+#write>h3.md-focus:before{
+	left: -1.5rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h4.md-focus:before{
+	left: -1.5rem;
+	top: .25rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h5.md-focus:before{
+	left: -1.5rem;
+	top: .0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+#write>h6.md-focus:before{
+	left: -1.5rem;
+	top: 0.3125rem;
+	color:#999;
+	border-color:#999;
+}
+
+.md-toc:focus .md-toc-content{
+	margin-top: 19px;
+}
+
+.md-toc-content:empty:before{
+	color: #065588;
+}
+.md-toc-item {
+	color: #065588;
+}
+#write div.md-toc-tooltip {
+	background-color: #f3f2ee;
+}
+
+#typora-sidebar {
+	background-color: #f3f2ee;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+  	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.375);
+}
+
+.pin-outline #typora-sidebar {
+	background: inherit;
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+.pin-outline #typora-sidebar:hover .outline-title-wrapper {
+	border-left:1px dashed;
+}
+
+.outline-item:hover {
+  background-color: #dadada;
+  border-left: 28px solid #dadada;
+  border-right: 18px solid #dadada;
+}
+
+.typora-node .outline-item:hover {
+  	border-right: 28px solid #dadada;
+}
+
+.outline-expander:before {
+  content: "\f0da";
+  font-family: FontAwesome;
+  font-size:14px;
+  top: 1px;
+}
+
+.outline-expander:hover:before,
+.outline-item-open>.outline-item>.outline-expander:before {
+  content: "\f0d7";
+}
+
+.modal-content {
+	background-color: #f3f2ee;
+}
+
+.auto-suggest-container ul li {
+	list-style-type: none;
+}
+
+/** UI for electron */
+
+.megamenu-menu,
+#top-titlebar, #top-titlebar *,
+.megamenu-content {
+	background: #f3f2ee;
+	color: #1f0909;
+}
+
+.megamenu-menu-header {
+	border-bottom: 1px dashed #202B33;
+}
+
+.megamenu-menu {
+	box-shadow: none;
+	border-right: 1px dashed;
+}
+
+header, .context-menu, .megamenu-content, footer {
+	font-family: "PT Serif", 'Times New Roman', Times, serif;
+    color: #1f0909;
+}
+
+#megamenu-back-btn {
+	color: #1f0909;
+	border-color: #1f0909;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title:before {
+	color: #1f0909;
+}
+
+.megamenu-menu-list li a:hover, .megamenu-menu-list li a.active {
+	color: inherit;
+	background-color: #e8e7df;
+}
+
+.long-btn:hover {
+	background-color: #e8e7df;
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: transparent !important;
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    color: inherit;
+}
+
+.megamenu-menu-panel .btn {
+	background-color: #D2D1D1;
+}
+
+.btn-default {
+	background-color: transparent;
+}
+
+.typora-sourceview-on #toggle-sourceview-btn,
+.ty-show-word-count #footer-word-count {
+	background: #c7c5c5;
+}
+
+#typora-quick-open {
+    background-color: inherit;
+}
+
+.md-diagram-panel {
+	margin-top: 8px;
+}
+
+.file-list-item-file-name {
+	font-weight: initial;
+}
+
+.file-list-item-summary {
+	opacity: 1;
+}
+
+.file-list-item {
+	color: #777;
+}
+
+.file-list-item.active {
+	background-color: inherit;
+	color: black;
+}
+
+.ty-side-sort-btn.active {
+	background-color: inherit;
+}
+
+.file-list-item.active .file-list-item-file-name  {
+	font-weight: bold;
+}
+
+.file-list-item{
+    opacity:1 !important;
+}
+
+.file-library-node.active>.file-node-background{
+	background-color: rgba(32, 43, 51, 0.63);
+	background-color: var(--active-file-bg-color);
+}
+
+.file-tree-node.active>.file-node-content{
+	color: white;
+	color: var(--active-file-text-color);
+}
+
+.md-task-list-item>input {
+	margin-left: -1.7em;
+	margin-top: calc(1rem - 12px);
+	-webkit-appearance: button;
+}
+
+input {
+	border: 1px solid #aaa;
+}
+
+.megamenu-menu-header #megamenu-menu-header-title,
+.megamenu-menu-header:hover, 
+.megamenu-menu-header:focus {
+	color: inherit;
+}
+
+.dropdown-menu .divider {
+	border-color: #e5e5e5;
+	opacity: 1;
+}
+
+/* https://github.com/typora/typora-issues/issues/2046 */
+.os-windows-7 strong,
+.os-windows-7 strong  {
+	font-weight: 760;
+}
+
+.ty-preferences .btn-default {
+	background: transparent;
+}
+
+.ty-preferences .window-header {
+	border-bottom: 1px dashed #202B33;
+	box-shadow: none;
+}
+
+#sidebar-loading-template, #sidebar-loading-template.file-list-item {
+	color: #777;
+}
+
+.searchpanel-search-option-btn.active {
+	background: #777;
+	color: white;
+}
+
+.export-detail, .light .export-detail, 
+.light .export-item.active, 
+.light .export-items-list-control {
+	background: #e0e0e0;
+	border-radius: 2px;
+	font-weight: 700;
+	color: inherit
+}
+
+
+</style><title>&#39;Корни - Часто задаваемые вопросы&#39;</title>
+</head>
+<body class='typora-export typora-export-show-outline typora-export-no-collapse-outline'><div class='typora-export-content'>
+<div class="typora-export-sidebar"><div class="outline-content"><li class="outline-item-wrapper outline-h1"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#корни---часто-задаваемые-вопросы">Корни - Часто задаваемые вопросы</a></div><ul class="outline-children"><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#почему-сервисы-должны-умереть">Почему сервисы "должны умереть"? </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#как-скрыться-от-слежки-в-сети">Как скрыться от слежки в сети</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#кому-должна-принадлежать-bigdata">Кому должна принадлежать BigData? </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#kafka--это-разве-база-данных-почему-потребовалось-создать-korni-и-чем-они-похожи-и-отличаются">Kafka,  это разве база данных? почему потребовалось создать korni и чем они похожи и отличаются?</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#почему-данные-в-системе-kori3-делятся-на-две-папки-public-и-private-">Почему данные в системе kori3 делятся на две папки PUBLIC и PRIVATE ?</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#как-быть-с-шифрованием-почему-все-данные-в-контейнере-лежат-в-открытом-виде">Как быть с шифрованием? почему все данные в контейнере лежат в открытом виде?</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#почему-korni3-это-не-блокчейн">Почему korni3 это не блокчейн?</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#почему-или-зачем-korni3--не-содержит-сетевых-функций">Почему или зачем korni3  НЕ содержит сетевых функций?</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#почему-цензура-в-интернете-вредна-">Почему цензура в интернете вредна ? </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#анонимность-это-тоже-цензура">Анонимность это тоже цензура? </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#korni3-это-анонимная-сеть--это-даркнет-темный-интернет-это-одноранговая-сеть">Korni3 это анонимная сеть ? это даркнет (темный интернет)? это одноранговая сеть?</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#почему-инструмент-для-легитимного-цифрового-референдума-должен-быть-в-руках-у-народа">Почему инструмент для легитимного цифрового референдума должен быть в руках у народа?</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#откуда-появятся-данные-в-этой-системе">Откуда появятся данные в этой системе? </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#что-такое-информация-и-в-чем-отличие-от-данных">Что такое информация и в чем отличие от данных? </a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#может-ли-сервис-быть-демократичным">Может ли сервис быть демократичным?</a></div><ul class="outline-children"></ul></li><li class="outline-item-wrapper outline-h2"><div class="outline-item"><span class="outline-expander"></span><a class="outline-label" href="#за-что-я-должен-по-вашему-заплатить">За что я должен по вашему заплатить? </a></div><ul class="outline-children"></ul></li></ul></li></div></div><div id='write'  class=''><h1 id='корни---часто-задаваемые-вопросы'><span>Корни - Часто задаваемые вопросы</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n2"><a class="md-toc-inner" href="#корни---часто-задаваемые-вопросы">Корни - Часто задаваемые вопросы</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n5"><a class="md-toc-inner" href="#почему-сервисы-должны-умереть">Почему сервисы "должны умереть"? </a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n12"><a class="md-toc-inner" href="#как-скрыться-от-слежки-в-сети">Как скрыться от слежки в сети</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n17"><a class="md-toc-inner" href="#кому-должна-принадлежать-bigdata">Кому должна принадлежать BigData? </a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n23"><a class="md-toc-inner" href="#kafka--это-разве-база-данных-почему-потребовалось-создать-korni-и-чем-они-похожи-и-отличаются">Kafka,  это разве база данных? почему потребовалось создать korni и чем они похожи и отличаются?</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n39"><a class="md-toc-inner" href="#почему-данные-в-системе-kori3-делятся-на-две-папки-public-и-private-">Почему данные в системе kori3 делятся на две папки PUBLIC и PRIVATE ?</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n45"><a class="md-toc-inner" href="#как-быть-с-шифрованием-почему-все-данные-в-контейнере-лежат-в-открытом-виде">Как быть с шифрованием? почему все данные в контейнере лежат в открытом виде?</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n67"><a class="md-toc-inner" href="#почему-korni3-это-не-блокчейн">Почему korni3 это не блокчейн?</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n81"><a class="md-toc-inner" href="#почему-или-зачем-korni3--не-содержит-сетевых-функций">Почему или зачем korni3  НЕ содержит сетевых функций?</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n111"><a class="md-toc-inner" href="#почему-цензура-в-интернете-вредна-">Почему цензура в интернете вредна ? </a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n119"><a class="md-toc-inner" href="#анонимность-это-тоже-цензура">Анонимность это тоже цензура? </a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n131"><a class="md-toc-inner" href="#korni3-это-анонимная-сеть--это-даркнет-темный-интернет-это-одноранговая-сеть">Korni3 это анонимная сеть ? это даркнет (темный интернет)? это одноранговая сеть?</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n147"><a class="md-toc-inner" href="#почему-инструмент-для-легитимного-цифрового-референдума-должен-быть-в-руках-у-народа">Почему инструмент для легитимного цифрового референдума должен быть в руках у народа?</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n157"><a class="md-toc-inner" href="#откуда-появятся-данные-в-этой-системе">Откуда появятся данные в этой системе? </a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n163"><a class="md-toc-inner" href="#что-такое-информация-и-в-чем-отличие-от-данных">Что такое информация и в чем отличие от данных? </a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n182"><a class="md-toc-inner" href="#может-ли-сервис-быть-демократичным">Может ли сервис быть демократичным?</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n194"><a class="md-toc-inner" href="#за-что-я-должен-по-вашему-заплатить">За что я должен по вашему заплатить? </a></span></p></div><p>&nbsp;</p><h2 id='почему-сервисы-должны-умереть'><span>Почему сервисы &quot;должны умереть&quot;? </span></h2><p><span>Они следят за тобой и не платят за это - отчуждают (крадут) информацию о твоем поведении. Зарабатывают на ней, обучают на ней ИИ, учатся предсказывать твое поведение. (а возможность предсказывать - возможность управлять). Рекламируют тебе, и зарабатывают на этом. Навязывают свою контент политику. Они владеют всем : и контентом и доступом, а у тебя нет ничего, только обязанность платить. </span></p><p><span>Еще причина: если есть хостинг - будут проблемы с хостингом: развернуть, обслужить, надо админа, надо мониторинг итд. хостинг может быть недоступен или неисправен... </span></p><p><span>Еще причина: приложения развернутые на сервере  ограничены по числу одновременно работающих пользователей. Это ограничивает создателей ПО и это ограничивает потребителей сценариями использования.  вообще не интересно продолжать так работать. </span></p><p><span>ещё причина: приватность. то , что происходит на сервре пользователь не контролирует, приходится в приватном варианте контролировать сам сервер... это еще много проблем клиенту, поддержка. затраты итд. </span></p><p><span>Мне причин достаточно, чтобы больше не делать ПО в виде сервисов. </span></p><p>&nbsp;</p><h2 id='как-скрыться-от-слежки-в-сети'><span>Как скрыться от слежки в сети</span></h2><p><span>Ответ: 1) надо понимать как Вас отслеживают и взвешивать за и против 2) не надо пользоваться браузером и сервисами, нужно, по возможности, отказываться от этого. </span></p><p><span>Вот например статья для программистов, которая показывает какие есть базовые способы отследить уникальность браузера для сайта, на котором вы не вошли ни в какой аккаунт (Вас и там отслеживают) </span><a href='https://javascript.ru/unsorted/id' target='_blank' class='url'>https://javascript.ru/unsorted/id</a><span> . </span></p><p><span>Просмотрите эту статью, методов много, по отдельности от них можно уйти, но они подкрепляют надежность друг друга при одновременном использовании... Я встроил в свою систему &quot;более изолированный и безопасный браузер&quot;, но это всё равно не 100% решение. 100% решение - поменять способ использования интернета, научись этому здесь. </span></p><p>&nbsp;</p><h2 id='кому-должна-принадлежать-bigdata'><span>Кому должна принадлежать BigData? </span></h2><p><span>Ответ: твои данные должны принадлежать тебе. и ты можешь их кому-то продать, если хочешь, и это должно быть твое решение. Если кому-то нужна BigData (данные о поведении миллионов людей), то пусть потратят силы и купят ее у каждого из людей индивидуально, дарить корпорациям её просто так не имеет смысла. </span></p><p><span>Народ может стать участником народных проектов, в которые они могут инвестировать своё участие , в том числе, своими данными, но тут хоть будут понятны условия участия, мера участия, и ясен результат. </span></p><blockquote><p><span>В системе Korni все приложения могут писать журнал о использовании в PRIVATE часть контейнеров, которая не предназначена для автоматического обмена по сети. И чтобы получить эти данные другим людям придется обратиться к вам напрямую. </span></p></blockquote><p>&nbsp;</p><h2 id='kafka--это-разве-база-данных-почему-потребовалось-создать-korni-и-чем-они-похожи-и-отличаются'><span>Kafka,  это разве база данных? почему потребовалось создать korni и чем они похожи и отличаются?</span></h2><p><span>Kafka - это </span><del><span>распределенный</span></del><span> масштабируемый быстрый сервис локальной &quot;сети предприятия&quot; с возможностью Pub/Sub использования на особом файловом хранилище. </span></p><p><span>Формально это , конечно, не база данных. Но Это 100% элемент (кубик/звено/блок/модуль) для современной программной архитектуры backend ов сервисов , веб-приложений...  На нём можно решать массу типовых задач. </span></p><p><span>При определенных дополнительных  &quot;обвязках&quot; kafka может быть преобразован даже в sql подобную ситсему, и выглядеть для сервиса как база данных, например:   &quot;How to join a stream and a stream using ksqlDB&quot;  </span><a href='https://developer.confluent.io/tutorials/join-a-stream-to-a-stream/ksql.html' target='_blank' class='url'>https://developer.confluent.io/tutorials/join-a-stream-to-a-stream/ksql.html</a></p><p><span>Плюсы kafka для меня в том, что такое решение хранит &quot;diff&quot; или &quot;changes&quot; в журнале, который хранится в файлах и это позволяет обработать их получить sql срез текущего состояния базы (и на любой момент времени). </span></p><p><span>Минусы Kafka для меня в том, что 1) очень громоздкая штука для запуска на отдельном компьютере пользователя, даже один узел такой системы очень громоздкий (сделано для приватных серверов компаний)  2) структура файлов самой kafka не позволяет мержить папки , объединяя тем самым наборы изменений от разных пользователей (+ никак отбирать наборы изменений по датам итд). Она так спроектирована, что это невозможно. Для меня это стало слишком критическим недостатком. </span></p><p><span>Попытки сделать более kafka менее &quot;громоздкой&quot; имеются : gafka/cmd/gk/command at master · funkygao/gafka · GitHub</span>
+<a href='https://github.com/funkygao/gafka/tree/master/cmd/gk/command' target='_blank' class='url'>https://github.com/funkygao/gafka/tree/master/cmd/gk/command</a><span> , GitHub - funkygao/gafka: A full ecosystem that is built around kafka powered by golang </span><a href='https://github.com/funkygao/gafka' target='_blank' class='url'>https://github.com/funkygao/gafka</a></p><p><span>Но все равно внутри там та же самая файловая структура. Cистема korni архитектурно : </span></p><ul><li><p><span>хранит в файлах &quot;наборы изменений&quot; , они сжимаются и не индексируются (но названия самих файлов кодируют многое)  (подобное по идее звено в кафка есть)</span></p></li><li><p><span>наборы изменений преобразуются в sql  базу, которую привычно читает приложение. Изменения в sql базу писать бессмысленно - их надо через утилиту korni3 преобразовывать в наборы изменений.  (такого звена kafka не содержит)</span></p></li><li><p><span>структура данных сделана так, чтобы это была система с многими пользователями и цифровыми подписями</span></p></li></ul><p>&nbsp;</p><h2 id='почему-данные-в-системе-kori3-делятся-на-две-папки-public-и-private-'><span>Почему данные в системе kori3 делятся на две папки PUBLIC и PRIVATE ?</span></h2><p><span>папка с данными системы korni3, в которой лежат данные системы делится на две подпапки PUBLIC и PRIVATE,  если у Вас есть контенйнер данных, например , с именем test,  и в нем есть как публичные так и приватные данные, то у Вас будут папки PUBLIC/test  и  PRIVATE/test в который публичная и приватная часть этого контейнера соответственно. </span></p><p><span>Зачем делано так ? - чтобы удобнее было синхронизировать ваши контейнеры. приложения могут метить изменения как приватные и публичные, понимая это. все наборы изменений - попадают в базу данных приложения, но приложение полагает что public часть мержится с данными других пользователей. а private - только ваша личная часть (там может находится статистика использования приложения, приватные метки, которые никто не должен видеть, приватные фото итд) </span></p><p><span>Это нормально делать именно так. Например у Вас приложение &quot;альбомы фото&quot;. вы можете пользоваться этим приложением чтобы прибраться с вашими фото, разложить их в альбомы итд.  И вы можете сделать контейнер &quot;личные семейные фото&quot; и &quot;фотографии для публики&quot; и это будут разные базы с фотографиями. Но можно, в теории сделать и в одной базе, просто часть альбомов и фото будет находится в только вашей части базы, а другая часть фото будет находится в той части базы, которая в будущем может быть разделяемой и доступной каким-то другим людям. </span>
+<span>Могут быть и другие сценарии использования этой возможность. </span></p><p><span>Просто уже сейчас очевидно,  что &quot;не любые данные из базы данных вашего приложения нужно разделять между пользователями, чтобы приложение работало с многими пользователями.&quot; </span></p><blockquote><p><span>PS </span></p><p><span>Решено что контейнеры пополам делить не буду. это будут просто разные контейнеры с данными</span></p></blockquote><h2 id='как-быть-с-шифрованием-почему-все-данные-в-контейнере-лежат-в-открытом-виде'><span>Как быть с шифрованием? почему все данные в контейнере лежат в открытом виде?</span></h2><ol start='' ><li><p><span>Приложения Korni3 хранят данные в контейнерах (это как базы данных). </span></p></li><li><p><span>Приложения корни - локальные приложения, вообще без сетевых функций. </span></p></li><li><p><span>внешняя система может синхронизировать контейнер с данными (public часть контейнера) с контейнерами у других пользователей - так можно организовать коммуникацию. </span></p></li></ol><p><span>Чтобы специально ограничить круг лиц, которые читают данные вашего контейнера данных, надо соблюсти ряд мер</span></p><ul><li><p><span>не открывать данные публично (то что ушло в сеть однажды, в теории может разойтись миллионами копий и это не остановить)</span></p></li><li><p><span>ограничивать круг лиц, которым доступна синхронизация и доступ к контейнеру (также в корпорациях ограничивают доступ к файлам) </span></p></li></ul><p><span>Если ваш контейнер стал доступен другим - в теории другие могут прочитать всё, что там содержится, если захотят. </span></p><p><span>Есть и второй вариант: </span></p><blockquote><p><strong><span>Можно сделать приложение, которое кладет в открытый контейнер зашифрованные данные</span></strong></p></blockquote><p><span>Тогда контейнер можно без опаски показать всем на свете, пусть смотрят (блокчейн тоже видят вообще все, но толку мало), но то, что там находится в зашифрованном виде смогут прочитать только те, для кого доступна функция расшифровки. Так работает и блокчейн и анонимные способы связи и другие системы луковой маршрутизации итд. </span></p><blockquote><p><span>Получается что &quot;в базе&quot; нет смысла иметь изначально шифрованный контейнер, чтобы иметь все возможности приватности. </span></p></blockquote><p>&nbsp;</p><h2 id='почему-korni3-это-не-блокчейн'><span>Почему korni3 это не блокчейн?</span></h2><p><a href='https://ru.m.wikipedia.org/wiki/%D0%91%D0%BB%D0%BE%D0%BA%D1%87%D0%B5%D0%B9%D0%BD'><span>Блокчейн</span></a><span> - абстракция и реализации идеи программной архитектуры, состоящей из цепочки блоков, популярная для построения криптовалют, но может быть использована для многих других применений. </span></p><p><span>Нужно воспринимать блокчейн как журнал с записями по приципу &quot;что написано пером, то не вырубишь топором&quot;  т.е. записи которые попали в журнал никак не изменить задним числом. Именно эта особенность позволяет делать из такого журнала - &quot;бухгалтерскую книгу&quot; с взаимными переводами средств. Но &quot;бухгалтерскую книгу&quot; можно сделать не обязательно через &quot;блокчейн&quot;, это можно сделать просто в текстом файле например... </span></p><p><span>Главная фишка блокчейна - эта архитектура надежно работает в среде где никто никому не доверяет. Чтобы вести журнал переводов в файл или общем серверу, нужно доверять тому кто это ведет и месту где этот журнал хранится, нужно исключить жульничество с любой стороны... блокчейн позволяет исключить жульничество и при этом нет ни одного доверенного лица, которое ведет этот общий журнал - это главная фишка блокчейна, и это причина , что надо применять именно эту архитектуру. </span></p><blockquote><p><span>korni3 не преследует решение именно этой задачи и поэтому не обязан быть блокчейном. </span></p></blockquote><ul><li><p><span>korni3 это система управления данными для приложений, в первую очередь решает задачи самого приложения, каким бы оно не было. </span></p></li><li><p><span>koni3 не решает задачу сетевых коммуникаций. в то время как для работы блокчейна требуется чтобы узлы системы были непрерывно онлайн. (для сетевых коммуникаций существует масса других специальных приложений, которые могут быть активированы в 21-м веке &quot;одной кнопкой&quot;)</span></p></li><li><p><span>korni3 может работать оффлайн , онлайн, с сетью или без сети. блокчейн без сети не функционирует никогда. </span></p></li></ul><p>&nbsp;</p><h2 id='почему-или-зачем-korni3--не-содержит-сетевых-функций'><span>Почему или зачем korni3  НЕ содержит сетевых функций?</span></h2><p><span>korni3 служит интересам и потребностям пользователя. Пользователь хочет пользоваться своими данными в своих приложениях и не хочет лишиться этой возможности ни при каких обстоятельствах. </span></p><p><span>Ситуация разрастания контроля над сервисами, сайтами, веб приложениями как со стороны корпораций, так и со стороны &quot;дикого не профессионального контроля&quot; со стороны государства нарушает интересы пользователей. </span></p><p><span>Вводятся новые законы в РФ  по пакету Яровой и конролем за коммуникациями в сети. Вы можете бегло но достаточно подробно ознакомится с ситуацией в, например, этом не долгом обзоре </span><a href='https://youtu.be/ehu0zbWe-YU' target='_blank' class='url'>https://youtu.be/ehu0zbWe-YU</a><span> «Пакет Яровой»: все,что вы боялись знать, но хотели спросить - Дубовиков Ярослав. </span></p><p>&nbsp;</p><blockquote><p><span>Поэтому, чтобы защитить интересы пользователей : я принял решение строить новые приложения по схеме &quot;локальное приложение без сетевых функций - отдельно; сетевые функции приложения - отдельно&quot;. </span></p></blockquote><p><span>Для пользователя это изменение будет незаметно , неразличимо , но юридически это принципиально меняет ситуацию. </span></p><ul><li><p><span>приложения работают с локальными данными на машине каждого пользователя. Эту работу невозможно никак модерировать и цензурировать даже в теории, на практике - тем более. </span></p></li><li><p><span>то, что вы делаете с вашими данными локально - только ваше дело и никого не касается ни в государстве ни в корпорациях. никто не лишит Вас доступа и не помешает работе никакими санкциями ни с какой стороны. Ваш личный цифровой суверенитет - достигается этими инструментами. </span></p></li></ul><blockquote><p><span>korni3 - инструмент достижения личного, персонального, цифрового суверенитета. </span></p></blockquote><ul><li><p><span>&quot;сетевая&quot; коммуникация в системе korni3 сводится к синхронизации файлов вами ваших данных с вашей &quot;рабочей группой&quot; (которая может быть размером со всю страну и весь мир). Способов синхронизации файлов существует 100500. ... много, очень много. никакого центра для этого я не предлагаю (чтобы нечего было блокировать), я просто буду вести блог, описывая существующие и новые способы и как я это делаю. Это просто общеобразовательная информация о том , как обмениваться файлами, полезная как школьникам, студентам, так и компаниям - в этом нет ничего противозаконного. </span></p></li><li><p><span>перекрыть все способы обмена файлами никто никогда не сможет, для этого надо лишить интернета вообще всех. обмен файлами есть во всех мыслимых протоколах. </span></p></li><li><p><span>однако остаются риски которые пропадают если соблюдать мои рекомендации. (не страшно, риски есть всегда и во всех подходах на самом деле)</span></p></li></ul><p><span>При проектировании korni3 я придерживался правил, чтобы никому невозможно было предъявить иск в распространении какой - то запрещенной информации и тому подобное. </span></p><p><span>срезу скажу: тут нет факта распространения, то что пересылается (файлы) не является информацией - это данные, и нет умысла ни у кого из участников потому что система которая синхронизирует файлы не анализирует никогда (и не должна) состав этих , зашифрованных в общем случае , файлов. </span></p><p><span>данные не рассылаются - программы других пользователей их забирают сами. Они не видят и не могут определить что в них содержится. им изначально доступен лишь листинг файлов в контейнерах который содержит шаблонные имена и хеши и ничего более. </span></p><p><span>За разъяснением термина &quot;распространение&quot; направляю к этой статье: TODO </span></p><p><span>Напоминаю, что система анонимная, с точки зрения аккаунтов. в теории сетевой способ обмена может оставлять цифровой след или пользователь  сам &quot;нечаянно&quot; или &quot;неосторожно&quot;  раскрыл  свою анонимность - это нужно всегда помнить. </span></p><p><span>И обмен данными в идеале должен происходить точка-точка, без посредников. либо с посредником и шифрованием канала. Поэтому мне крайне сложно представить предъявление  аргументированного иска  &quot;распространения&quot; некоему конкретному лицу с доказательствами полученными без нарушения закона и личных границ человека. ряд методов получения подобных доказательств происходит с нарушением закона, и делает всех соучастниками  так называемого &quot;нарушения&quot; передачи данных (а не информации) о составе которых так называемый обвиняемый понятия не имел и тем более не имел умысла. </span></p><p><span>Вломиться и взять компьютер для обыска у конкретного человека - это уже крайняя наглость и нарушение всех норм. но и в этом случае : надо просто размешать контейнеры данных на скрытых шифрованных томах (читай статьи по компьютерной безопасности и повышай свою цифровую грамотность). </span></p><p>&nbsp;</p><h2 id='почему-цензура-в-интернете-вредна-'><span>Почему цензура в интернете вредна ? </span></h2><p><span>Пример США</span>
+<span>Сама идея, что цензура это зло. </span>
+<span>Мой аргумент: в США сейчас цензура СМИ есть. В результате власть пользуются ей. И в итоге точку зрения России не слышат там и не могут найти. Она не звучит. Наличие цензуры может привести даже к искажению фактов и манипуляциям и даже к ядерной войне и обоснованию уничтожения целых народов - к глобальной лжи. </span>
+<span>Мы видим к чему это ведёт на примерах, которые происходят прямо сейчас. </span></p><p><span>Решение: цензуры нет ни у кого. Вообще.</span></p><p><span>Пример России </span></p><p><span>Тут говорят, что много фейков, что люди верят всему подряд и что надо вводить цензуру. Но ёпрст: это воообще другая проблема. Это проблема стойкости людей к манипуляциям. Запрещают например майн-кампф, потому что эта книга влияет на людей... конечно влияет, это делает любая книга. Я, например, понимаю, как она влияет, но я готов к этому и я распознаю эту её манипуляцию как враждебную мне, и ясно , что на некоторых людей, со слабым критическим мышлением она окажет влияние и они манипуляцию не распознают... Но это проблема образования! Обучите людей быть готовыми к любым манипуляциям не держите их в стаде управляемых баранов, научите народ распознавать манипуляции. </span></p><p><span>Это же клиника! Вот Вам логика:  цензура - это те же санкции , только в сфере информации. Вы кричите &quot;санкции не работают&quot;, но кричите &quot;надо цензуру&quot;... так определитесь уже &quot;санкции работают или санкции не работают?&quot; и хватит держать общество за идиотов. И восприятие манипуляций это совсем другая проблема. </span></p><p><span>А цензура  это ограничение доступа к информации с целью манипуляции, лжи, обмана, и больше ничего. Это возможности порождаются в результате цензуры. И всем очевидно, что это от сатаны.</span></p><p>&nbsp;</p><h2 id='анонимность-это-тоже-цензура'><span>Анонимность это тоже цензура? </span></h2><blockquote><p><span>Есть мнение: Анонимность - это тоже своего рода цензура, поскольку пользователь скрывает от остальных часть информации о себе.</span>
+<span>И, да - сокрытие части приватной информации так же влечёт тяжёлые последствия, избежать которых можно было бы, если бы люди знали, что их собеседник болен СПИДом или был осужден за мошенничество.</span>
+<span>У каждого из нас есть свои скелеты в шкафу, которые мы по тем или иным причинам желали бы скрыть, потому что открытие этой информации влечёт для нас неблагоприятные последствия. Но сокрытие такой информации влечёт неблагоприятные последствия уже для общества, окружающего нас. Придётся выбирать, какие интересы тебе ближе - частные или общественные. Мой выбор за общественными интересами, поскольку если я не смогу никого обмануть, то и меня никто не сможет обмануть.</span></p></blockquote><p><span>Не могу согласится с этим мнением.  А как же &quot;презумпция невиновности&quot; ? с такой логикой мы все подозреваемые на ровном месте что ли? типа что-то скрываешь - виноват! это не правильно, и шовинистично.  И что , человек хочет , будто , застраховать себя , чтобы не обмануть других?  - просто не обманывай да и всё. не надо усложнять это и так все не просто. </span></p><p><span>Мы живем в 21-м веке , за нами со всех сторон следят камеры, телевизоры, микрофоны ... всё вокруг. </span></p><p><span>Что такое &quot;сознание&quot;, вы знаете? определений много, но не в них самих дело. Однако важно понимать и предложенные определения и то, что диктатура невозможна  в отношении термина &quot;сознание&quot;. </span></p><blockquote><p><span>Вот, например, одно из определений: Сознание это субъективные приватные психологические состояния, у которых есть феноменальные аспекты. </span></p></blockquote><p><span>Для человеческого индивидуума крайне важно обладание сознанием. Недопустимо отчуждение сознания, для которого крайне важны &quot;приватные психологические состояния&quot;... их нельзя достигнуть не обладая достаточной степенью приватности частной личной жизни и те, кто пытаются всех тащить в интернет по паспорту - враги &quot;сознательного в человеке&quot;, они разрушают то, что мы называем сознанием человека.</span></p><p><span>в то же время &quot;диктатура на сознанием&quot; это анти-развитие общества. потому что человеческое общество может развиваться только сознательно и за счёт него, а диктатура невозможна над этим термином. так выходит: диактатура над сознанием это отрицание развития, т.е. деградация.  Этим путем шел фашизм и он привел к деградации человека, хотя ожидалось, что это приведет к развитию. ... Учите философию психологии.</span></p><p>&nbsp;</p><p>&nbsp;</p><h2 id='korni3-это-анонимная-сеть--это-даркнет-темный-интернет-это-одноранговая-сеть'><span>Korni3 это анонимная сеть ? это даркнет (темный интернет)? это одноранговая сеть?</span></h2><p><span>korni3 - вообще никакая не сеть. korni3 не имеет сетевых функций. </span></p><p><span>korni3 лучше всего понимать как хранилище данных на вашем компьютере , которое используют ваши любимые &quot;сетевые&quot; (как-бы) приложения, которые тоже не имеют сетевых функций, вообще. </span></p><p><span>Так сделано, чтобы в этих приложениях вы могли работать с набором ваших файлов с диска и к вам и к приложениям невозможно было бы применить никакое законодательство  про  коммуникации. Таким образом вы всегда сможете в этих приложениях работать , безопасно обновлять их итд безо всяких запретов. то что вы делаете на своих дисках с вашими данными только ваше дело. </span></p><p><span>Однако структура файлов в которых система korni3 хранит данные (а не информацию) такова, что позволяет без конфликтов объединять папки от разных пользователей, тем самым замещая так называемый сетевой обмен (передавать файлы можно не только через сеть). </span></p><p><span>к вопросу анонимности</span></p><p><span>korni3 хранит изменения от имени некоторого </span><del><span>пользователя</span></del><span>  аккаунта. аккаунты в общем случае анонимные, если не специфицировать в их описании любые реквизиты любого лица, что впрочем может оказаться фейком (любой может сделать аккаунт с описанием Вася Пупкин, не обязательно это будет делать Вася Пупкин - это надо понимать). </span></p><p><span>Можно подтвердить аккаунт через любой УЦ по желанию , чтобы повысить доверие к нему, но это не обязательно. </span></p><p><span>Анонимность комплексный вопрос, в том числе психологический. Анонимность может быть раскрыта нечаянно самим лицом , никакая технология защитить от этого не может. Выбранные способы синхронизации файлов могут оставлять цифровой след по которому анонимность может быть раскрыта. </span></p><p><span>Однако при ряде мер анонимность может быть соблюдена, почти все эти меры можно обеспечить программно, при желании. </span></p><p><span>к вопросу &quot;темный интернет&quot;</span></p><p><span>темный интернет это все таки про интернет, роутинг, оверлейные сети и коммуникации. Все это может быть использовано совместно с данными которые читает и пишет приложением на технологии korni3. тут возможен взаимовыгодный симбиоз, т.к. korni3 специально &quot;transport agnostiс&quot; система. </span></p><p>&nbsp;</p><p><span>к сведению. ссылка. не совсем в тему: </span><a href='https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%BE%D0%BD%D0%B8%D0%BC%D0%BD%D1%8B%D0%B5_%D1%81%D0%B5%D1%82%D0%B8'><span>Анонимные сети</span></a><span>   Анонимные сети — компьютерные сети, созданные для достижения анонимности в Интернете и работающие поверх глобальной сети.</span></p><p><span>к сведению ссылка : Как анонимно пользоваться торрентами (5 советов) | CactusVPN</span>
+<a href='https://www.cactusvpn.com/ru/vpn/how-to-torrent-anonymously/' target='_blank' class='url'>https://www.cactusvpn.com/ru/vpn/how-to-torrent-anonymously/</a></p><p>&nbsp;</p><h2 id='почему-инструмент-для-легитимного-цифрового-референдума-должен-быть-в-руках-у-народа'><span>Почему инструмент для легитимного цифрового референдума должен быть в руках у народа?</span></h2><p><span>В России демократия, нравится это Вам или нет. Россия делает ставку во внешней политике на референдумы, в которых главная идея &quot;народ - источник власти&quot;, народ выражает свою волю - это достаточное условие , чтобы присоединять большие территории. </span></p><p><span>референдум - это волеизъявление, голосование. открытое или тайное (могут быть разные ситуации). Существует множество крипто-алгоритмов цифрового проведения голосования, которые позволяют избежать множества типов мошенничества при подсчёте голосов. </span></p><p><span>Факт : цифровое голосование можно провести без мошенничества, легитимно, с юридически значимым результатом. </span></p><p><span>Мне не известен алгоритм с помощью которого производится учет голосов сейчас, если бы даже они его назвали (а модели эти известны ученым и развиваются), то нет возможности проконтролировать его реализацию на центральном сервере. Но факт в том, что референдум должен стать инструментом в руках самого народа - источника власти. </span></p><p><span>Ясно что довести законную процедуру цифрового голосования можно только в условиях невозможности цензуры, иначе &quot;злопыхатели&quot; могут выключить сервер или даже сеть не доведя работу до финала. в системе korni3 все это становится возможным. </span></p><p><span>Есть закон по которому каждый может получить в УЦ цифровую подпись на ЭЦП носителе и подписи ей имеют юридическую силу - это лишает бессмысленности реализацию криптопротоколов, защищающих цифровое голосование от мошенничества. </span></p><p><span>Начать можно с организации мини-референдумов, например голосования не тему &quot;мы жители района против свалки&quot;. Важно, что честный подсчёт голосов важен людям  и особенно важен факт того, что инструмент прямой демократии находится в руках самого народа. </span></p><p><span>Запрещать же подобное начинание противоестественно. Нельзя же в одних случаях опираться на голоса людей, а в других случаях их запрещать и игнорировать. Народ либо источник власти, либо раб - тут должна быть в государстве полная определенность. </span></p><p>&nbsp;</p><h2 id='откуда-появятся-данные-в-этой-системе'><span>Откуда появятся данные в этой системе? </span></h2><p><span>В первую очередь, что это именно данные, а не  поток байтов описывающий внешний вид страниц, как это происходит сейчас.  Если Вы получили доступ к каким то данным, в нормальном виде (база данных), то они будут у Вас всегда, сколько захотите.  </span></p><p><span>Парсинг сайтов - законная деятельность. это данные из открытых источников. их оттуда легко забрать и положить в систему korni3. любой пользователь может этим заниматься и даже все пользователи могут этим заниматься. Тут важно то, что сайты и сервисы представляют данные по своему, а пользователи хотят видеть их в форме базы данных - эта проблема и решается с помощью парсинга. </span></p><p><span>Любой человек может сохранить в систему korni3 данные для себя и пользоваться потом. Так я сделаю приложение для бекапа ютуб роликов, которые мне дороги, чтобы избежать их недоступности итд. </span></p><p><span>Когда я пишу статью или ленту своих новостей меня бесит проблема множества аккаунтов на разных площадках и множества людей которые мне доступны по разным каналам связи. каждая из площадок сейчас это сервис, который может меня модерировать или  отключить - меня это не устраивает. Я кроме того хочу, чтобы моя лента еще и сохранилась у меня на компьютере навсегда. Логичное решение писать это все в приложении &quot;PR robot&quot; - просто лента с редактором, там я пишу и публикую в разные  все соц. сети и площадки автоматически одной кнопкой при этом у меня остаётся лента на компьютере в оригинальном виде. в этом же приложении меня могут читать подписчики , если все сервисы вдруг &quot;отключат&quot;. я  не ощущаю никакой ценности в этих сервисах - для меня они только функция, желательно бесплатная. после того как я познал &quot;модерацию&quot; (я задавал неудобные вопросы во время ковид локдауна) я желаю всем таким &quot;сервисам&quot; забвения. </span></p><p>&nbsp;</p><h2 id='что-такое-информация-и-в-чем-отличие-от-данных'><span>Что такое информация и в чем отличие от данных? </span></h2><p><span>Это вопрос из теории информации и из области философии познания.  вот простая цепочка объяснений:</span></p><ol start='' ><li><p><span>изменяющийся сигнал можно закодировать некоторыми единицами кодирования. в некоторых учебниках не правильно написано, что байт это &quot;единица объёма информации&quot;, это неправильно. на самом деле байт это одна из возможных комбинаторных возможностей кодирования изменений сигнала, используемая для записи этих изменений в машинную память. байт из 8и бит - тоже не единственная возможность, были машины с 6-ю битами и даже много стандартов кодирования, это связано с удобством кодирования символов и чисел. </span></p></li><li><p><span>поток таких единиц - данные. т.е. иначе : поток байтов, машинных слов,  машинных двойных слов итд это &quot;сырые данные&quot; . сказать что они обозначают невозможно - это не определено. это просто цифровая (возможно двоичная или нет) запись изменений абстрактного сигнала. </span></p></li><li><p><span>если удалось структурировать данные как-то и составить из них &quot;картотеку&quot; , то это будут уже &quot;сведения&quot;. для этого необходимо иметь &quot;признаки&quot; по которым происходила систематизация/структурирование. </span></p></li><li><p><span>&quot;сведения&quot;, которым придан смысл это &quot;информация&quot;. Однако это может быть не только смысл, но и оценка. (т.е. пропоганда - это всегда информация, а вот новости - не всегда информация, это могут быть просто сведения). смысл - философское понятие имеющее отношение к конкретному &quot;осмысляющему&quot; человеку. Информацией сведения становятся только для конкретного, &quot;осмысляющего&quot; человека. </span></p></li><li><p><span>если человек &quot;действиями&quot; проверил &quot;информацию&quot; на практике, то она становится его знаниями. Знания невозможно получить без личной практики. (не верьте тому, кто утверждает обратное). </span></p></li></ol><p><span>уже здесь я вижу противоречие в законах : &quot;информацию невозможно передавать машинным методом&quot;, т.к. осмысление должен производить субъект - человек. смысл сведений - субъективный приватный опыт человека - не передаваем. </span></p><p><span>Я могу иметь в голове образ &quot;чашки&quot;, дать вам в руки эту чашку и вы сможете сформировать в вашей голове свой образ этой же чашки, так мой образ и ваш этой чашки станут, вероятно, схожи, но я не могу передать вам образ свой чашки непосредственно. </span></p><blockquote><p><span>Наверное тут я копнул глубже обычного, но файлы - это &quot;данные&quot;. Системы передачи файлов не видят в них и не могут в них видеть &quot;информацию&quot;, они не должны даже пытаться увидеть её в данных, хотя бы потому, что такие системы не являются осознающими субъектами (и прочие менее значимые причины).</span></p></blockquote><p><span>А если кому то это покажется &quot;словоблудием&quot; , то я Вас готов познакомить с вызовами ИИ (и это уже не будущее а почти настоящее), по сравнению с которыми это всё вам уже не покажется забавным и не существенным. </span></p><p>&nbsp;</p><h2 id='может-ли-сервис-быть-демократичным'><span>Может ли сервис быть демократичным?</span></h2><p><span>Есть такое мнение: Информация сама по себе не стоит НИЧЕГО (спорно). Ценность Википедии зависит лишь от нашего к ней отношения. А вот ценность инфраструктуры, состоящей из физических компонентов, не может быть нулевой хотя бы потому, что на её производство были затрачены невосполняемые ресурсы. И аренду этих серверов оплачивает не сообщество Викимедиа фаундейшн, а тот, кто распоряжается этим фондом. Соответственно, тот, кто распоряжается фондом - распоряжается и самой Википедией. Эта группировка была создана изначально, просто до поры, пока её интересы не нарушались, она могла позволить себе оставаться в тени. Но когда произошло наступление на её интересы - она и проявилась. Можешь сколько угодно жаловаться, но факт есть факт: кто платит - тот музыку и заказывает. Википедия никогда не была демократией.</span></p><p><span>Есть такое мнение: что в &quot;демократии равных&quot; заводятся быстро &quot;группы лиц&quot; которые действуют сообща и все это превращается в &quot;демократию не равных&quot;. </span></p><p><span>Вывод: по настоящему демократичным может быть только система без общей инфраструктуры, и без цензуры, где тем кому что-то не нравится всегда могут безболезненно игнорировать давление на них. Korni3 работает именно так. </span></p><p>&nbsp;</p><p><span>Интернет по паспорту  или без ?</span></p><blockquote><p><span>Есть мнение: Нет, я не считаю, что вседозволенность и безнаказанность позволит нашему обществу обрести субъектность и научиться брать на себя ответственность. Я категорически против подобных инициатив и придерживаюсь идеи доступа в интернет &quot;по паспорту&quot;. Но при этом я считаю, что всё общество в целом должно иметь полный доступ к любой информации. В том числе к приватной. </span></p></blockquote><p><span>Я с этим мнением более не согласен чем согласен и вот почему: &quot;интернет по паспорту&quot;  это частный случай &quot;анонимного интернета без паспорта&quot; и может быть реализован в его рамках для тех задач, для которых это действительно нужно. </span></p><p><span>Для таких задач как , взаимодействие с органами власти или открытое голосование &quot;авторизация&quot; необходима. Но это всего лишь 1% от всех операций человека. </span></p><p><span>Попытка выключить себя из &quot;агрессивной интернет среды&quot; для страны с амбициями России - равноценна самоизоляции и самоубийству, добровольному ограничению влияния на внешний мир. так лидерами не становятся. </span></p><p>&nbsp;</p><h2 id='за-что-я-должен-по-вашему-заплатить'><span>За что я должен по вашему заплатить? </span></h2><p><span>Многие люди придерживаются такого мнения:</span></p><blockquote><p><span>я не готов платить за то, чего НЕ СУЩЕСТВУЕТ ФИЗИЧЕСКИ. Участие в такой сети может быть только добровольным, а плата производится посредством поддержания работоспособности инфраструктуры (по аналогии с торрентами - каждый сам оплачивает свой интернет, покупает жёсткие диски и обслуживает своё оборудование). Потому торренты и не монетизируются, что если просить плату за доступ, то часть аудитории, на которую и так переложены издержки, просто отсеется. Это приведёт к уменьшению числа абонентов сети и исчезновению из неё части информации🤷‍♂</span>
+<span>Если же ты за плату несёшь издержки по обеспечению работоспособности инфраструктуры, то вся инфраструктура зависит от тебя - её в любой момент у тебя могут отобрать и отключить. Распределённые базы данных на таких условиях не работают, поскольку будут слишком уязвимы</span></p></blockquote><p><span>Тут я отвечу , что я и такие люди говорим о разных штуках в разной парадигме. </span></p><p><span>наверное надо тут сказать, что есть </span></p><ol start='' ><li><p><span>те кто ждёт готовое решение для себя и надеется, что его интересы учтут, и если не учтут - то придется это проглотить и уйти плакать, есть кактус.</span></p></li><li><p><span>те, кто хочет контролировать свою информацию не зависимо от внешних ситуаций. </span></p></li></ol><p><span>И ценности за которые люди готовы платить, очевидно, разные. </span></p><p><span>Для меня то что &quot;не существует физически&quot; может иметь цену. Например обученная модель ИИ для решения разных задач может стоить миллиарды, даже если эта функция не нужна сейчас моему бизнесу, она может быть использована позже. Программное обеспечение, которое я заказал или разработал, или курс обучения... стоят реальных денег, моя персональная информация, которую у меня украли и продали без моего ведома итд. </span></p><p><span>Тезис про &quot;распределенные базы, которые не работают&quot; не конкретен. Баз десятки и сотни видов, некоторые из них успешно работают внутри гугла и амазона, а  некоторые и просто общедоступны... </span></p><p><span>Я наоборот утверждаю, что отсутствие инфраструктуры - это отсутствие проблем с инфраструктурой и даже независимость от инфраструктуры и это хорошо. Не надо забывать какую задачу мы решаем: МЫ ЗАБИРАЕМ КОНТРОЛЬ НАД НАШИМИ ДАННЫМИ СЕБЕ. Это ответственное действие, а не инфантильная надежда на чужую инфраструктуру и чужие советы.</span></p><p><span>Поставьте себя на место блогера который годами развивал свои каналы и аудиторию, автора ценного контента, у которого просто посторонние люди закрыли канал (пример Дмитрия Гоблина Пучкова находится на виду </span><a href='https://www.youtube.com/watch?v=KXy0YkLyTIw' target='_blank' class='url'>https://www.youtube.com/watch?v=KXy0YkLyTIw</a><span>). Хотите чтобы Вас и дальше пинали как &quot;***но&quot; - ждите &quot;решений то дяди&quot; и ничего не предпринимайте. Это ваш выбор.</span></p><p><span>Но я буду создавать контент и использовать его по новому, так, чтобы меня никто не мог остановить и не мог жить за мой счёт.</span></p><p>&nbsp;</p><p><span>И я не беру за korni3 денег и все основные приложения  я отдаю бесплатно навсегда. Там будет банер со случайной рекламой и его можно будет убрать за 1000 р один раз и навсегда. Это очень мало для постоянного пользователя. </span></p><p><span>Ещё раз: все это бесплатно. Для всех. Я просто хочу сделать интернет лучше и свободнее. </span></p><p>&nbsp;</p><p>&nbsp;</p></div></div>
+
+<script>(function(){var e=document.body.parentElement,t=[],n=null,i=document.body.classList.contains("typora-export-collapse-outline"),r=function(e,t,n){document.addEventListener(e,function(e){if(!e.defaultPrevented)for(var i=e.target;i&&i!=this;i=i.parentNode)if(i.matches(t)){!1===n.call(i,e)&&(e.preventDefault(),e.stopPropagation());break}},!1)};function o(){return e.scrollTop}r("click",".outline-expander",function(e){var t=this.closest(".outline-item-wrapper").classList;return t.contains("outline-item-open")?t.remove("outline-item-open"):t.add("outline-item-open"),d(),!1}),r("click",".outline-item",function(e){var t=this.querySelector(".outline-label");if(location.hash="#"+t.getAttribute("href"),i){var n=this.closest(".outline-item-wrapper").classList;n.contains("outline-item-open")||n.add("outline-item-open"),c(),n.add("outline-item-active")}});var a,s,l=function(){var e=o();n=null;for(var i=0;i<t.length&&t[i][1]-e<60;i++)n=t[i]},c=function(){document.querySelectorAll(".outline-item-active").forEach(e=>e.classList.remove("outline-item-active")),document.querySelectorAll(".outline-item-single.outline-item-open").forEach(e=>e.classList.remove("outline-item-open"))},d=function(){if(n){c();var e=document.querySelector('.outline-label[href="#'+(CSS.escape?CSS.escape(n[0]):n[0])+'"]');if(e)if(i){var t=e.closest(".outline-item-open>ul>.outline-item-wrapper");if(t)t.classList.add("outline-item-active");else{for(var r=(e=e.closest(".outline-item-wrapper")).parentElement.closest(".outline-item-wrapper");r;)r=(e=r).parentElement.closest(".outline-item-wrapper");e.classList.add("outline-item-active")}}else e.closest(".outline-item-wrapper").classList.add("outline-item-active")}};window.addEventListener("scroll",function(e){a&&clearTimeout(a),a=setTimeout(function(){l(),d()},300)});var u=function(){s=setTimeout(function(){!function(){t=[];var e=o();document.querySelector("#write").querySelectorAll("h1, h2, h3, h4, h5, h6").forEach(n=>{var i=n.getAttribute("id");t.push([i,e+n.getBoundingClientRect().y])})}(),l(),d()},300)};window.addEventListener("resize",function(e){s&&clearTimeout(s),u()}),u()})();</script><script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(87491348, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript></noscript><div><img src="https://mc.yandex.ru/watch/87491348" style="position:absolute; left:-9999px;" alt=""></div>
+<!-- /Yandex.Metrika counter --></body>
+</html>

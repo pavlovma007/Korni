@@ -1,0 +1,1538 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+:root {
+  --mermaid-theme: night;
+}
+
+[lang='mermaid'] .label {
+  color: #333;
+}
+
+/* CSS Document */
+
+/** code highlight */
+
+.cm-s-inner .cm-variable,
+.cm-s-inner .cm-operator,
+.cm-s-inner .cm-property {
+    color: #b8bfc6;
+}
+
+.cm-s-inner .cm-keyword {
+    color: #C88FD0;
+}
+
+.cm-s-inner .cm-tag {
+    color: #7DF46A;
+}
+
+.cm-s-inner .cm-attribute {
+    color: #7575E4;
+}
+
+.CodeMirror div.CodeMirror-cursor {
+    border-left: 1px solid #b8bfc6;
+    z-index: 3;
+}
+
+.cm-s-inner .cm-string {
+    color: #D26B6B;
+}
+
+.cm-s-inner .cm-comment,
+.cm-s-inner.cm-comment {
+    color: #DA924A;
+}
+
+.cm-s-inner .cm-header,
+.cm-s-inner .cm-def,
+.cm-s-inner.cm-header,
+.cm-s-inner.cm-def {
+    color: #8d8df0;
+}
+
+.cm-s-inner .cm-quote,
+.cm-s-inner.cm-quote {
+    color: #57ac57;
+}
+
+.cm-s-inner .cm-hr {
+    color: #d8d5d5;
+}
+
+.cm-s-inner .cm-link {
+    color: #d3d3ef;
+}
+
+.cm-s-inner .cm-negative {
+    color: #d95050;
+}
+
+.cm-s-inner .cm-positive {
+    color: #50e650;
+}
+
+.cm-s-inner .cm-string-2 {
+    color: #f50;
+}
+
+.cm-s-inner .cm-meta,
+.cm-s-inner .cm-qualifier {
+    color: #b7b3b3;
+}
+
+.cm-s-inner .cm-builtin {
+    color: #f3b3f8;
+}
+
+.cm-s-inner .cm-bracket {
+    color: #997;
+}
+
+.cm-s-inner .cm-atom,
+.cm-s-inner.cm-atom {
+    color: #84B6CB;
+}
+
+.cm-s-inner .cm-number {
+    color: #64AB8F;
+}
+
+.cm-s-inner .cm-variable {
+    color: #b8bfc6;
+}
+
+.cm-s-inner .cm-variable-2 {
+    color: #9FBAD5;
+}
+
+.cm-s-inner .cm-variable-3 {
+    color: #1cc685;
+}
+
+.CodeMirror-selectedtext,
+.CodeMirror-selected {
+    background: #4a89dc;
+    color: #fff !important;
+    text-shadow: none;
+}
+
+.CodeMirror-gutters {
+    border-right: none;
+}
+
+/* CSS Document */
+
+/** markdown source **/
+.cm-s-typora-default .cm-header, 
+.cm-s-typora-default .cm-property
+{
+    color: #cebcca;
+}
+
+.CodeMirror.cm-s-typora-default div.CodeMirror-cursor{
+    border-left: 3px solid #b8bfc6;
+}
+
+.cm-s-typora-default .cm-comment {
+    color: #9FB1FF;
+}
+
+.cm-s-typora-default .cm-string {
+    color: #A7A7D9
+}
+
+.cm-s-typora-default .cm-atom, .cm-s-typora-default .cm-number {
+    color: #848695;
+    font-style: italic;
+}
+
+.cm-s-typora-default .cm-link {
+    color: #95B94B;
+}
+
+.cm-s-typora-default .CodeMirror-activeline-background {
+    background: rgba(51, 51, 51, 0.72);
+}
+
+.cm-s-typora-default .cm-comment, .cm-s-typora-default .cm-code {
+	color: #8aa1e1;
+}@import "";
+@import "";
+@import "";
+
+:root {
+    --bg-color:  #363B40;
+    --side-bar-bg-color: #2E3033;
+    --text-color: #b8bfc6;
+
+    --select-text-bg-color:#4a89dc;
+
+    --item-hover-bg-color: #0a0d16;
+    --control-text-color: #b7b7b7;
+    --control-text-hover-color: #eee;
+    --window-border: 1px solid #555;
+
+    --active-file-bg-color: rgb(34, 34, 34);
+    --active-file-border-color: #8d8df0;
+
+    --primary-color: #a3d5fe;
+
+    --active-file-text-color: white;
+    --item-hover-bg-color: #70717d;
+    --item-hover-text-color: white;
+    --primary-color: #6dc1e7;
+
+    --rawblock-edit-panel-bd: #333;
+
+    --search-select-bg-color: #428bca;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    background: #363B40;
+    background: var(--bg-color);
+    fill: currentColor;
+    line-height: 1.625rem;
+}
+
+#write {
+    max-width: 914px;
+}
+
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea,
+div.code-tooltip-content {
+    color: #b8bfc6;
+    border-color: transparent;
+}
+
+div.code-tooltip,
+.md-hover-tip .md-arrow:after {
+    background: #333;
+}
+
+.native-window #md-notification {
+    border: 1px solid #70717d;
+}
+
+.popover.bottom > .arrow:after {
+    border-bottom-color: #333;
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea {
+    font-family: "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+}
+
+hr {
+    height: 2px;
+    border: 0;
+    margin: 24px 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lucida Grande", "Corbel", sans-serif;
+    font-weight: normal;
+    clear: both;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    margin: 0;
+    padding: 0;
+    color: #DEDEDE
+}
+
+h1 {
+    font-size: 2.5rem;
+    /* 36px */
+    line-height: 2.75rem;
+    /* 40px */
+    margin-bottom: 1.5rem;
+    /* 24px */
+    letter-spacing: -1.5px;
+}
+
+h2 {
+    font-size: 1.63rem;
+    /* 24px */
+    line-height: 1.875rem;
+    /* 30px */
+    margin-bottom: 1.5rem;
+    /* 24px */
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 1.17rem;
+    /* 18px */
+    line-height: 1.5rem;
+    /* 24px */
+    margin-bottom: 1.5rem;
+    /* 24px */
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 1.12rem;
+    /* 16px */
+    line-height: 1.375rem;
+    /* 22px */
+    margin-bottom: 1.5rem;
+    /* 24px */
+    color: white;
+}
+
+h5 {
+    font-size: 0.97rem;
+    /* 16px */
+    line-height: 1.25rem;
+    /* 22px */
+    margin-bottom: 1.5rem;
+    /* 24px */
+    font-weight: bold;
+}
+
+h6 {
+    font-size: 0.93rem;
+    /* 16px */
+    line-height: 1rem;
+    /* 16px */
+    margin-bottom: 0.75rem;
+    color: white;
+}
+
+@media (min-width: 980px) {
+    h3.md-focus:before,
+    h4.md-focus:before,
+    h5.md-focus:before,
+    h6.md-focus:before {
+        color: #ddd;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        position: absolute;
+        left: -1.642857143rem;
+        top: .357142857rem;
+        float: left;
+        font-size: 9px;
+        padding-left: 2px;
+        padding-right: 2px;
+        vertical-align: bottom;
+        font-weight: normal;
+        line-height: normal;
+    }
+
+    h3.md-focus:before {
+        content: 'h3';
+    }
+
+    h4.md-focus:before {
+        content: 'h4';
+    }
+
+    h5.md-focus:before {
+        content: 'h5';
+        top: 0px;
+    }
+
+    h6.md-focus:before {
+        content: 'h6';
+        top: 0px;
+    }
+}
+
+a {
+    text-decoration: none;
+    outline: 0;
+}
+
+a:hover {
+    outline: 0;
+}
+
+a:focus {
+    outline: thin dotted;
+}
+
+sup.md-footnote {
+    background-color: #555;
+    color: #ddd;
+}
+
+p {
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+
+p,
+ul,
+dd,
+ol,
+hr,
+address,
+pre,
+table,
+iframe,
+.wp-caption,
+.wp-audio-shortcode,
+.wp-video-shortcode {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    /* 24px */
+}
+
+audio:not([controls]) {
+    display: none;
+}
+
+[hidden] {
+    display: none;
+}
+
+::-moz-selection {
+    background: #4a89dc;
+    color: #fff;
+    text-shadow: none;
+}
+
+*.in-text-selection,
+::selection {
+    background: #4a89dc;
+    color: #fff;
+    text-shadow: none;
+}
+
+ul,
+ol {
+    padding: 0 0 0 1.875rem;
+    /* 30px */
+}
+
+ul {
+    list-style: square;
+}
+
+ol {
+    list-style: decimal;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+    margin: 0;
+}
+
+b,
+th,
+dt,
+strong {
+    font-weight: bold;
+}
+
+i,
+em,
+dfn,
+cite {
+    font-style: italic;
+}
+
+blockquote {
+    padding-left: 1.875rem;
+    margin: 0 0 1.875rem 1.875rem;
+    border-left: solid 2px #474d54;
+    padding-left: 30px;
+    margin-top: 35px;
+}
+
+pre,
+code,
+kbd,
+tt,
+var {
+    font-size: 0.875em;
+    font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
+code,
+tt,
+var {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+kbd {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #fff;
+    background-color: #333;
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
+}
+
+pre.md-fences {
+    padding: 10px 10px 10px 30px;
+    margin-bottom: 20px;
+    background: #333;
+}
+
+.CodeMirror-gutters {
+    background: #333;
+    border-right: 1px solid transparent;
+}
+
+.enable-diagrams pre.md-fences[lang="sequence"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="flow"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="mermaid"] .code-tooltip {
+    bottom: -2.2em;
+    right: 4px;
+}
+
+code,
+kbd,
+tt,
+var {
+    padding: 2px 5px;
+}
+
+table {
+    max-width: 100%;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th,
+td {
+    padding: 5px 10px;
+    vertical-align: top;
+}
+
+a {
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+hr {
+    background: #474d54;
+    /* variable */
+}
+
+h1 {
+    margin-top: 2em;
+}
+
+a {
+    color: #e0e0e0;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #fff;
+}
+
+.md-inline-math script {
+    color: #81b1db;
+}
+
+b,
+th,
+dt,
+strong {
+    color: #DEDEDE;
+    /* variable */
+}
+
+mark {
+    background: #D3D40E;
+}
+
+blockquote {
+    color: #9DA2A6;
+}
+
+table a {
+    color: #DEDEDE;
+    /* variable */
+}
+
+th,
+td {
+    border: solid 1px #474d54;
+    /* variable */
+}
+
+.task-list {
+    padding-left: 0;
+}
+
+.md-task-list-item {
+    padding-left: 1.25rem;
+}
+
+.md-task-list-item > input {
+    top: auto;
+}
+
+.md-task-list-item > input:before {
+    content: "";
+    display: inline-block;
+    width: 0.875rem;
+    height: 0.875rem;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid #b8bfc6;
+    background-color: #363B40;
+    margin-top: -0.4rem;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before {
+    content: '\221A';
+    /*◘*/
+    font-size: 0.625rem;
+    line-height: 0.625rem;
+    color: #DEDEDE;
+}
+
+/** quick open **/
+.auto-suggest-container {
+    border: 0px;
+    background-color: #525C65;
+}
+
+#typora-quick-open {
+    background-color: #525C65;
+}
+
+#typora-quick-open input{
+    background-color: #525C65;
+    border: 0;
+    border-bottom: 1px solid grey;
+}
+
+.typora-quick-open-item {
+    background-color: inherit;
+    color: inherit;
+}
+
+.typora-quick-open-item.active,
+.typora-quick-open-item:hover {
+    background-color: #4D8BDB;
+    color: white;
+}
+
+.typora-quick-open-item:hover {
+    background-color: rgba(77, 139, 219, 0.8);
+}
+
+.typora-search-spinner > div {
+  background-color: #fff;
+}
+
+#write pre.md-meta-block {
+    border-bottom: 1px dashed #ccc;
+    background: transparent;
+    padding-bottom: 0.6em;
+    line-height: 1.6em;
+}
+
+.btn,
+.btn .btn-default {
+    background: transparent;
+    color: #b8bfc6;
+}
+
+.ty-table-edit {
+    border-top: 1px solid gray;
+    background-color: #363B40;
+}
+
+.popover-title {
+    background: transparent;
+}
+
+.md-image>.md-meta {
+    color: #BBBBBB;
+    background: transparent;
+}
+
+.md-expand.md-image>.md-meta {
+    color: #DDD;
+}
+
+#write>h3:before,
+#write>h4:before,
+#write>h5:before,
+#write>h6:before {
+    border: none;
+    border-radius: 0px;
+    color: #888;
+    text-decoration: underline;
+    left: -1.4rem;
+    top: 0.2rem;
+}
+
+#write>h3.md-focus:before {
+    top: 2px;
+}
+
+#write>h4.md-focus:before {
+    top: 2px;
+}
+
+.md-toc-item {
+    color: #A8C2DC;
+}
+
+#write div.md-toc-tooltip {
+    background-color: #363B40;
+}
+
+.dropdown-menu .btn:hover,
+.dropdown-menu .btn:focus,
+.md-toc .btn:hover,
+.md-toc .btn:focus {
+    color: white;
+    background: black;
+}
+
+#toc-dropmenu {
+    background: rgba(50, 54, 59, 0.93);
+    border: 1px solid rgba(253, 253, 253, 0.15);
+}
+
+#toc-dropmenu .divider {
+    background-color: #9b9b9b;
+}
+
+.outline-expander:before {
+    top: 2px;
+}
+
+#typora-sidebar {
+    box-shadow: none;
+    border-right: 1px dashed;
+    border-right: none;
+}
+
+.sidebar-tabs {
+    border-bottom:0;
+}
+
+#typora-sidebar:hover .outline-title-wrapper {
+    border-left: 1px dashed;
+}
+
+.outline-title-wrapper .btn {
+    color: inherit;
+}
+
+.outline-item:hover {
+    border-color: #363B40;
+    background-color: #363B40;
+    color: white;
+}
+
+h1.md-focus .md-attr,
+h2.md-focus .md-attr,
+h3.md-focus .md-attr,
+h4.md-focus .md-attr,
+h5.md-focus .md-attr,
+h6.md-focus .md-attr,
+.md-header-span .md-attr {
+    color: #8C8E92;
+    display: inline;
+}
+
+.md-comment {
+    color: #5a95e3;
+    opacity: 0.8;
+}
+
+.md-inline-math svg {
+    color: #b8bfc6;
+}
+
+#math-inline-preview .md-arrow:after {
+    background: black;
+}
+
+.modal-content {
+    background: var(--bg-color);
+    border: 0;
+}
+
+.modal-title {
+    font-size: 1.5em;
+}
+
+.modal-content input {
+    background-color: rgba(26, 21, 21, 0.51);
+    color: white;
+}
+
+.modal-content .input-group-addon {
+    color: white;
+}
+
+.modal-backdrop {
+    background-color: rgba(174, 174, 174, 0.7);
+}
+
+.modal-content .btn-primary {
+    border-color: var(--primary-color);
+}
+
+.md-table-resize-popover {
+    background-color: #333;
+}
+
+.form-inline .input-group .input-group-addon {
+    color: white;
+}
+
+#md-searchpanel {
+    border-bottom: 1px dashed grey;
+}
+
+/** UI for electron */
+
+.context-menu,
+#spell-check-panel,
+#footer-word-count-info {
+    background-color: #42464A;
+}
+
+.context-menu.dropdown-menu .divider,
+.dropdown-menu .divider {
+    background-color: #777777;
+    opacity: 1;
+}
+
+footer {
+    color: inherit;
+}
+
+@media (max-width: 1000px) {
+    footer {
+        border-top: none;
+    }
+    footer:hover {
+        color: inherit;
+    }
+}
+
+#file-info-file-path .file-info-field-value:hover {
+    background-color: #555;
+    color: #dedede;
+}
+
+.megamenu-content,
+.megamenu-opened header {
+    background: var(--bg-color);
+}
+
+.megamenu-menu-panel h2,
+.megamenu-menu-panel h1,
+.long-btn {
+    color: inherit;
+}
+
+.megamenu-menu-panel input[type='text'] {
+    background: inherit;
+    border: 0;
+    border-bottom: 1px solid;
+}
+
+#recent-file-panel-action-btn {
+    background: inherit;
+    border: 1px grey solid;
+}
+
+.megamenu-menu-panel .dropdown-menu > li > a {
+    color: inherit;
+    background-color: #2F353A;
+    text-decoration: none;
+}
+
+.megamenu-menu-panel table td:nth-child(1) {
+    color: inherit;
+    font-weight: bold;
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(1) {
+    color: white;
+}
+
+.modal-footer .btn-default, 
+.modal-footer .btn-primary,
+.modal-footer .btn-default:not(:hover) {
+    border: 1px solid;
+    border-color: transparent;
+}
+
+.btn-primary {
+    color: white;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+    color: white;
+    border: 1px solid #ddd;
+    background-color: inherit;
+}
+
+.modal-header {
+    border-bottom: 0;
+}
+
+.modal-footer {
+    border-top: 0;
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: transparent !important;
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    color: inherit;
+}
+
+.megamenu-menu-panel .btn {
+    border: 1px solid #eee;
+    background: transparent;
+}
+
+.mouse-hover .toolbar-icon.btn:hover,
+#w-full.mouse-hover,
+#w-pin.mouse-hover {
+    background-color: inherit;
+}
+
+.typora-node::-webkit-scrollbar {
+    width: 5px;
+}
+
+.typora-node::-webkit-scrollbar-thumb:vertical {
+    background: rgba(250, 250, 250, 0.3);
+}
+
+.typora-node::-webkit-scrollbar-thumb:vertical:active {
+    background: rgba(250, 250, 250, 0.5);
+}
+
+#w-unpin {
+    background-color: #4182c4;
+}
+
+#top-titlebar, #top-titlebar * {
+    color: var(--item-hover-text-color);
+}
+
+.typora-sourceview-on #toggle-sourceview-btn,
+#footer-word-count:hover,
+.ty-show-word-count #footer-word-count {
+    background: #333333;
+}
+
+#toggle-sourceview-btn:hover {
+    color: #eee;
+    background: #333333;
+}
+
+/** focus mode */
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) * {
+    color: #686868 !important;
+}
+
+.on-focus-mode .md-end-block:not(.md-focus) img,
+.on-focus-mode .md-task-list-item:not(.md-focus-container)>input {
+    opacity: #686868 !important;
+}
+
+.on-focus-mode li[cid]:not(.md-focus-container){
+    color: #686868;
+}
+
+.on-focus-mode .md-fences.md-focus .CodeMirror-code>*:not(.CodeMirror-activeline) *,
+.on-focus-mode .CodeMirror.cm-s-inner:not(.CodeMirror-focused) * {
+    color: #686868 !important;
+}
+
+.on-focus-mode .md-focus,
+.on-focus-mode .md-focus-container {
+    color: #fff;
+}
+
+.on-focus-mode #typora-source .CodeMirror-code>*:not(.CodeMirror-activeline) * {
+    color: #686868 !important;
+}
+
+
+/*diagrams*/
+#write .md-focus .md-diagram-panel {
+    border: 1px solid #ddd;
+    margin-left: -1px;
+    width: calc(100% + 2px);
+}
+
+/*diagrams*/
+#write .md-focus.md-fences-with-lineno .md-diagram-panel {
+    margin-left: auto;
+}
+
+.md-diagram-panel-error {
+    color: #f1908e;
+}
+
+.active-tab-files #info-panel-tab-file,
+.active-tab-files #info-panel-tab-file:hover,
+.active-tab-outline #info-panel-tab-outline,
+.active-tab-outline #info-panel-tab-outline:hover {
+    color: #eee;
+}
+
+.sidebar-footer-item:hover,
+.footer-item:hover {
+    background: inherit;
+    color: white;
+}
+
+.ty-side-sort-btn.active,
+.ty-side-sort-btn:hover,
+.selected-folder-menu-item a:after {
+    color: white;
+}
+
+#sidebar-files-menu {
+    border:solid 1px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.79);
+    background-color: var(--bg-color);
+}
+
+.file-list-item {
+    border-bottom:none;
+}
+
+.file-list-item-summary {
+    opacity: 1;
+}
+
+.file-list-item.active:first-child {
+    border-top: none;
+}
+
+.file-node-background {
+    height: 32px;
+}
+
+.file-library-node.active>.file-node-content,
+.file-list-item.active {
+    color: white;
+    color: var(--active-file-text-color);
+}
+
+.file-library-node.active>.file-node-background{
+    background-color: rgb(34, 34, 34);
+    background-color: var(--active-file-bg-color);
+}
+.file-list-item.active {
+    background-color: rgb(34, 34, 34);
+    background-color: var(--active-file-bg-color);
+}
+
+#ty-tooltip {
+    background-color: black;
+    color: #eee;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+    margin-top: 0.3rem;
+    -webkit-appearance: none;
+}
+
+.md-mathjax-midline {
+    background-color: #57616b;
+    border-bottom: none;
+}
+
+footer.ty-footer {
+    border-color: #656565;
+}
+
+.ty-preferences .btn-default {
+    background: transparent;
+}
+.ty-preferences .btn-default:hover {
+    background: #57616b;
+}
+
+.ty-preferences select {
+    border: 1px solid #989698;
+    height: 21px;
+}
+
+.ty-preferences .nav-group-item.active,
+.export-item.active,
+.export-items-list-control,
+.export-detail {
+    background: var(--item-hover-bg-color);
+}
+
+.ty-preferences input[type="search"] {
+    border-color: #333;
+    background: #333;
+    line-height: 22px;
+    border-radius: 6px;
+    color: white;
+}
+
+.ty-preferences input[type="search"]:focus {
+    box-shadow: none;
+}
+
+[data-is-directory="true"] .file-node-content {
+    margin-bottom: 0;
+}
+
+.file-node-title {
+    line-height: 22px;
+}
+
+.html-for-mac .file-node-open-state, .html-for-mac .file-node-icon {
+    line-height: 26px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(230, 230, 230, 0.30);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: rgba(230, 230, 230, 0.50);
+}
+
+#typora-sidebar:hover div.sidebar-content-content::-webkit-scrollbar-thumb:horizontal {
+    background: rgba(230, 230, 230, 0.30);
+}
+
+.nav-group-item:active {
+    background-color: #474d54 !important;
+}
+
+.md-search-hit {
+    background: rgba(199, 140, 60, 0.81);
+    color: #eee;
+}
+
+.md-search-hit * {
+    color: #eee;
+}
+
+#md-searchpanel input {
+    color: white;
+}
+
+.modal-backdrop.in {
+    opacity: 1;
+    backdrop-filter: blur(1px);
+}
+
+.clear-btn-icon {
+    top: 8px;
+}
+
+/* try fix https://github.com/typora/typora-issues/issues/5253 */
+.file-node-expanded>.file-node-children {
+    display: grid;
+  }
+
+
+</style><title>Korni3</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='korni3'><span>Korni3</span></h1><blockquote><p><span>Технология личного информационного суверенитета.</span></p></blockquote><ol start='' ><li><p><code>korni3</code><span> это файловая система хранения данных, управления данными с SQL возможностями. </span></p><ol><li><span>ваши данные всегда есть как минимум у вас, и доступ к ним вам никто не может запретить, перекрыть итд. </span></li></ol></li><li><p><code>korni3</code><span> работает как быстрый &quot;дописываемый журнал&quot;, сделанный так, чтобы его частями удобно было обмениваться (а ля KAfka)</span></p></li><li><p><code>korni3</code><span> проверяет и создает &quot;Цифровые Подписи&quot;, которые есть у каждой записи, ясно кто и когда ее создал и изменил. </span></p></li><li><p><span>Ретроспектива - </span><code>korni3</code><span> может хранить историю всех изменений. </span></p></li><li><p><code>korni3</code><span> это утилита командной строки. </span></p></li><li><p><code>korni3</code><span> можно использовать как более быструю нативную (с++) замену для python утилиты </span><code>sqlite-utils</code><span> с некоторыми улучшениями. </span></p></li><li><p><code>korni3</code><span> работает как замена kafka-sql , но не требует разворачивания серверов , их доступности итд, </span><code>korni3</code><span> работает с файлами и больше поход на </span><code>git</code><span>  при использовании. </span></p></li><li><p><code>korni3</code><span> идеально подойдет как основа хранилища данных  децентрализованных сервисов , как система управления научными данными,  тем , кто парсит и обрабатывает данные, анализирует... и хочет добиться порядка в своих данных. </span></p></li><li><p><code>korni3</code><span> это &quot;транспорт агностик&quot; система - в ней нет сетевых функций и не должно их быть. Это Unix way файловый способ взаимодействия с системой.  Пользователя </span><code>korni3</code><span> юридически невозможно обвинить в &quot;распространении чего-либо&quot; т.к. в ней нет никаких транспортных функций. </span></p></li><li><p><code>korni3</code><span> сделан так, чтобы быть много-пользовательским хранилищем для децентрализованных систем , при этом не имея транспорта - это сеть , без сети. </span></p></li><li><p><span>для </span><code>korni3</code><span> существует 100500 множество &quot;сторонних&quot; способов обмена данными. Перекрыть их все совершенно. невозможно. С </span><code>korni3</code><span> можно работать даже без интернета - через флешки, через радио, через mesh сети, факс, &quot;лапшу&quot;, модемы и конечно десятки способов с разной идеологией через белый и тёмный интернет...</span></p></li><li><p><code>korni3</code><span> использует &quot;Цифровые подписи&quot;, но может использовать опционально и любое шифрование, внутри обучающих материалов будет для Вас курс по крипто-безопасности. </span></p></li></ol><p><strong><span>Планы</span></strong></p><blockquote><p><span>переделать интернет, так, чтобы пользователь там полноправным хозяином всех своих данных. </span></p></blockquote><ol start='' ><li><p><span>для </span><code>korni3</code><span>  создается такой состав графических приложений: </span></p><ol><li><span>Интернет магазин / &quot;маркетплейс&quot;, типа Avito, Kufar, Яндекс.Маркет, и многих подобных... Там будет гораздо больше категорий, в том числе спрос. </span></li><li><span>статьи с обсуждением, как , например, на Я.Дзене</span></li><li><span>Огромная база знаний, с медиа материалами (как @youtube) и с текстами, резервные копии ценных сайтов итд. </span></li><li><span>Мощная система управления знаниями (спрашивайте)  и обучения. </span></li><li><span>система управления предприятием, ERP, MES, PDM, планирование, склад, ... всё нужные модули. </span></li></ol></li></ol><p>&nbsp;</p><h2 id='synopsys'><span>SYNOPSYS</span></h2><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre>x</pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># genkey &lt;nickname&gt; [&lt;bits; 4096 by default&gt;]</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> genkey demo</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># print to stdout keys nicknames</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> keys</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">testUser</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">demo</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># korni3 login &lt;nickname&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> login demo</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">demo<span class="cm-tab" role="presentation" cm-text="	">    </span>MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAvCEIchAnnO5hIdiuFt/<span class="cm-operator">+</span>op8uBbRdh67lPjkLU6Mj00Q<span class="cm-operator">+</span>DoFuOWBb3pRfLXdd6xEg<span class="cm-operator">+</span>VUa7liBunrm99a5og/DYp98p6<span class="cm-operator">+</span>Lh68yCSzLzDm9bPkvVuRsjVjm4Fngc6/sKK<span class="cm-operator">+</span>dC04KtnDDoQ5J<span class="cm-operator">+</span>rIAHaX2WrgyTwu1Hc<span class="cm-operator">+</span>M0ENeAazSXwCNJMc<span class="cm-operator">+</span>Fgutj0ofaobRlelvx/FndZKQUFWkbVBf6LY08kSut7sPadBrKMbf1Oyg1k5FUTSbgOBvUmyIx<span class="cm-operator">+</span>qOfINCv/TsJxLCSzyCZXRJFJ40EGz1bO2XbJRf8EIWwNYk6VnKZ70dJqClBBAWxVM1w7k5t8aDyBTsEic4uLZLyIN5t9ou9klWW467pTUwhkHJbD2xG9bB/YFLOQY9bQxOx6CRbw4ZegLhk<span class="cm-operator">+</span>M3AjG3P20/ouv7psYz9o08pfgpvlkaICGklvWnCBAB4AC1FI/e83j6JVqrFTn<span class="cm-operator">+</span>ZJCVxED5OaiKqioaK2bWu7QHgo/7UgQZpKwB7qRadzg1mQ7k1Vd0wy8iBnQajc1akH4RiK/IwMqsI<span class="cm-operator">+</span>Z9JlP4vWLHWPdUQzPzghKsTj2HbBBzBhvrrMV5szYuxQj/vVYtEcNPapigWinhwdoZCFNGfXHDeKt/iph1GYqOD0krFz96K2glphFfa74CkaOjTXUnn2f4lI/Pz82GwnqFG1<span class="cm-def">/8W0LXKO4RcgxZYvUCAwEAAQ</span><span class="cm-operator">==</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># create|insert &lt;dbName&gt; &lt;tableName&gt; [&lt;jsonRecord&gt;]</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># create|insert &lt;dbName&gt; &lt;tableName&gt; # json read from stdin</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> insert test testTable <span class="cm-string">'{"id": 1, "name":"korni demo tutorial"}'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> rows test testTable <span class="cm-attribute">--csv</span> <span class="cm-attribute">--table</span> &nbsp;<span class="cm-attribute">-c</span> id <span class="cm-attribute">-c</span> zT <span class="cm-attribute">-c</span> name <span class="cm-attribute">--where</span> <span class="cm-string">'id = 1'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  id &nbsp; &nbsp; &nbsp; &nbsp;  zT  name</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">----</span> &nbsp;<span class="cm-attribute">----------</span> &nbsp;<span class="cm-attribute">---------------------</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">1</span> &nbsp;<span class="cm-number">1664036153</span>  korni demo tutorial</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">1</span> &nbsp;<span class="cm-number">1664036310</span>  korni <span class="cm-number">1</span> demo tutorial</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">1</span> &nbsp;<span class="cm-number">1664036336</span>  korni <span class="cm-number">4</span> demo tutorial</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> repack</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># korni3 file &lt;dbName&gt; &lt;fileOrDirPath&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> file test /home/mp/Qt/QtCreator-v8.0.1/bin/qt.conf</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">GFS-Qme6DcxwC2SABnttae5ndAPzNyk4G2KHmxFas7NqFHPFhy-T-bd3541672cd9a9c83d7ac8c6f74a7f6fe272f734-M-8a5ff4aeb511b1cfae11787da6e28a99-S256-7b3a3f93a63341651d7ef129ddca235f33cf061e434cd866e3d1695cb4cee402<span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string">"/home/mp/Qt/QtCreator-v8.0.1/bin/qt.conf"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{<span class="cm-string">"id"</span>:<span class="cm-string">"GFS-Qme6DcxwC2SABnttae5ndAPzNyk4G2KHmxFas7NqFHPFhy-T-bd3541672cd9a9c83d7ac8c6f74a7f6fe272f734-M-8a5ff4aeb511b1cfae11787da6e28a99-S256-7b3a3f93a63341651d7ef129ddca235f33cf061e434cd866e3d1695cb4cee402"</span>,<span class="cm-string">"path"</span>:<span class="cm-string">"\/home\/mp\/Qt\/QtCreator-v8.0.1\/bin\/qt.conf"</span>,<span class="cm-string">"size"</span>:<span class="cm-string">"84"</span>,<span class="cm-string">"creationTime"</span>:<span class="cm-string">"Thu Aug 11 12:10:22 2022\n"</span>,<span class="cm-string">"lastModTime"</span>:<span class="cm-string">"Thu Aug 11 12:10:22 2022\n"</span>,<span class="cm-string">"fileOut"</span>:<span class="cm-string">"\/home\/mp\/Qt\/QtCreator-v8.0.1\/bin\/qt.conf: ASCII text\n"</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> file test /home/mp/Qt/QtCreator-v8.0.1/bin/qt.conf <span class="cm-number">2</span>&gt;/dev/null </span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{<span class="cm-string">"id"</span>:<span class="cm-string">"GFS-Qme6DcxwC2SABnttae5ndAPzNyk4G2KHmxFas7NqFHPFhy-T-bd3541672cd9a9c83d7ac8c6f74a7f6fe272f734-M-8a5ff4aeb511b1cfae11787da6e28a99-S256-7b3a3f93a63341651d7ef129ddca235f33cf061e434cd866e3d1695cb4cee402"</span>,<span class="cm-string">"path"</span>:<span class="cm-string">"\/home\/mp\/Qt\/QtCreator-v8.0.1\/bin\/qt.conf"</span>,<span class="cm-string">"size"</span>:<span class="cm-string">"84"</span>,<span class="cm-string">"creationTime"</span>:<span class="cm-string">"Thu Aug 11 12:10:22 2022\n"</span>,<span class="cm-string">"lastModTime"</span>:<span class="cm-string">"Thu Aug 11 12:10:22 2022\n"</span>,<span class="cm-string">"fileOut"</span>:<span class="cm-string">"\/home\/mp\/Qt\/QtCreator-v8.0.1\/bin\/qt.conf: ASCII text\n"</span>}</span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> insert-files images *.gif</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">.....</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># setgeo &lt;lat like 58.05139&gt;,&lt;lat like 38.83802&gt;</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># setgeo &lt;lon like 58.05139&gt; &lt;lon like 38.83802&gt;</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># INFO : set current user current/new geoplace.</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> <span class="cm-number">58</span>.05139 <span class="cm-number">38</span>.83802</span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># просканировать журнал, чтобы обновить БД</span></span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># фильтрация изменений по дате, гео позиции, пользователям  ...</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># scan &lt;containerName&gt; [&lt;filter option&gt; см. documentation]</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> scan test <span class="cm-comment"># [options]</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># db &lt;containerName&gt;</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ sqlite3</span> &nbsp;<span class="cm-quote">`korni3 db test`</span> <span class="cm-string">'.tables'</span> </span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">files &nbsp; &nbsp; &nbsp;<span class="cm-builtin">node</span> &nbsp; &nbsp; &nbsp; testTable</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 1743px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1743px;"></div></div></div></pre><p>&nbsp;</p><h2 id='tutorial'><span>TUTORIAL </span></h2><h3 id='genkey--generate-keypairs---генерируем-пары-ключей-с-человеко-читаемым-прозвищем-'><span>genkey ; generate keypairs  ; Генерируем пары ключей с человеко-читаемым прозвищем .  </span></h3><blockquote><p><strong><span>Содержимое папки </span><code>/home/mp/.config/korni/MY-KEYS/</code><span> никому нельзя показывать!</span></strong><span> Лучше хранить это на личной &quot;флешке&quot;, а путь пробрасывать через символьную ссылку. </span></p></blockquote><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># genkey &lt;nickname&gt; [&lt;bits; 4096 by default&gt;]</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> genkey demo</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ ls</span> ~/.config/korni/MY-KEYS/demo*</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/home/mp/.config/korni/MY-KEYS/demo-pub.pem  /home/mp/.config/korni/MY-KEYS/demo-secret.pem</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 104px;"></div><div class="CodeMirror-gutters" style="display: none; height: 104px;"></div></div></div></pre><h3 id='keys--просмотр-списка-пар-ключей'><span>keys ; Просмотр списка пар ключей</span></h3><p><span>read &quot;special directory&quot; with keys</span>
+<span>print to stdout available keys (basicaly key nicknames) in format // </span><strong><span>TODO</span></strong><span>  публичные ключи</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># print to stdout keys nicknames</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> keys</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">testUser</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">demo</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 104px;"></div><div class="CodeMirror-gutters" style="display: none; height: 104px;"></div></div></div></pre><p>&nbsp;</p><h3 id='login---выбрать-рабочий-ключ'><span>login ;  выбрать рабочий ключ</span></h3><p><span>если успех: Печатает в stdout  tsv строку из двух полей псевдоним и идентификатор в виде публичного ключа. Этот длинный публичный ключ и есть внутренний идентификатор пользователя. </span></p><p><span>если ошибка: печатает в stderr сообщение ошибки</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># korni3 login &lt;nickname&gt;</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># select surrent nickname "mask" of user; And crypto key</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># if success print: &lt;usernick&gt; &lt;userid=publickkey&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> login demo</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">demo<span class="cm-tab" role="presentation" cm-text="	">    </span>MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAvCEIchAnnO5hIdiuFt/<span class="cm-operator">+</span>op8uBbRdh67lPjkLU6Mj00Q<span class="cm-operator">+</span>DoFuOWBb3pRfLXdd6xEg<span class="cm-operator">+</span>VUa7liBunrm99a5og/DYp98p6<span class="cm-operator">+</span>Lh68yCSzLzDm9bPkvVuRsjVjm4Fngc6/sKK<span class="cm-operator">+</span>dC04KtnDDoQ5J<span class="cm-operator">+</span>rIAHaX2WrgyTwu1Hc<span class="cm-operator">+</span>M0ENeAazSXwCNJMc<span class="cm-operator">+</span>Fgutj0ofaobRlelvx/FndZKQUFWkbVBf6LY08kSut7sPadBrKMbf1Oyg1k5FUTSbgOBvUmyIx<span class="cm-operator">+</span>qOfINCv/TsJxLCSzyCZXRJFJ40EGz1bO2XbJRf8EIWwNYk6VnKZ70dJqClBBAWxVM1w7k5t8aDyBTsEic4uLZLyIN5t9ou9klWW467pTUwhkHJbD2xG9bB/YFLOQY9bQxOx6CRbw4ZegLhk<span class="cm-operator">+</span>M3AjG3P20/ouv7psYz9o08pfgpvlkaICGklvWnCBAB4AC1FI/e83j6JVqrFTn<span class="cm-operator">+</span>ZJCVxED5OaiKqioaK2bWu7QHgo/7UgQZpKwB7qRadzg1mQ7k1Vd0wy8iBnQajc1akH4RiK/IwMqsI<span class="cm-operator">+</span>Z9JlP4vWLHWPdUQzPzghKsTj2HbBBzBhvrrMV5szYuxQj/vVYtEcNPapigWinhwdoZCFNGfXHDeKt/iph1GYqOD0krFz96K2glphFfa74CkaOjTXUnn2f4lI/Pz82GwnqFG1<span class="cm-def">/8W0LXKO4RcgxZYvUCAwEAAQ</span><span class="cm-operator">==</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># select not exist key - simulate error</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> login dfg</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ERROR: with this nickname keypair not exists </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># for print current user just dont use nickname parameter</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> login</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">demo<span class="cm-tab" role="presentation" cm-text="	">    </span>MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAvCEIchAnnO5hIdiuFt/<span class="cm-operator">+</span>op8uBbRdh67lPjkLU6Mj00Q<span class="cm-operator">+</span>DoFuOWBb3pRfLXdd6xEg<span class="cm-operator">+</span>VUa7liBunrm99a5og/DYp98p6<span class="cm-operator">+</span>Lh68yCSzLzDm9bPkvVuRsjVjm4Fngc6/sKK<span class="cm-operator">+</span>dC04KtnDDoQ5J<span class="cm-operator">+</span>rIAHaX2WrgyTwu1Hc<span class="cm-operator">+</span>M0ENeAazSXwCNJMc<span class="cm-operator">+</span>Fgutj0ofaobRlelvx/FndZKQUFWkbVBf6LY08kSut7sPadBrKMbf1Oyg1k5FUTSbgOBvUmyIx<span class="cm-operator">+</span>qOfINCv/TsJxLCSzyCZXRJFJ40EGz1bO2XbJRf8EIWwNYk6VnKZ70dJqClBBAWxVM1w7k5t8aDyBTsEic4uLZLyIN5t9ou9klWW467pTUwhkHJbD2xG9bB/YFLOQY9bQxOx6CRbw4ZegLhk<span class="cm-operator">+</span>M3AjG3P20/ouv7psYz9o08pfgpvlkaICGklvWnCBAB4AC1FI/e83j6JVqrFTn<span class="cm-operator">+</span>ZJCVxED5OaiKqioaK2bWu7QHgo/7UgQZpKwB7qRadzg1mQ7k1Vd0wy8iBnQajc1akH4RiK/IwMqsI<span class="cm-operator">+</span>Z9JlP4vWLHWPdUQzPzghKsTj2HbBBzBhvrrMV5szYuxQj/vVYtEcNPapigWinhwdoZCFNGfXHDeKt/iph1GYqOD0krFz96K2glphFfa74CkaOjTXUnn2f4lI/Pz82GwnqFG1<span class="cm-def">/8W0LXKO4RcgxZYvUCAwEAAQ</span><span class="cm-operator">==</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 755px;"></div><div class="CodeMirror-gutters" style="display: none; height: 755px;"></div></div></div></pre><p>&nbsp;</p><h3 id='insertcreate------добавление-данных'><span>insert/create   ;   добавление данных </span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># create|insert &lt;dbName&gt; &lt;tableName&gt; [&lt;jsonRecord&gt;]</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># create|insert &lt;dbName&gt; &lt;tableName&gt; # json read from stdin</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># вставим запись </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> insert test testTable <span class="cm-string">'{"id": 1, "name":"korni demo tutorial"}'</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ echo</span> <span class="cm-def">$?</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">0</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># вставим записи, которые приходят из консоли</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> insert test testTable </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; {<span class="cm-string">"id"</span>: <span class="cm-number">1</span>, <span class="cm-string">"name"</span>:<span class="cm-string">"korni 1 demo tutorial"</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; {<span class="cm-string">"id"</span>: <span class="cm-number">1</span>, <span class="cm-string">"name"</span>:<span class="cm-string">"korni 2 demo tutorial"</span>, <span class="cm-string">"f2"</span>: <span class="cm-atom">false</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; {<span class="cm-string">"id"</span>: <span class="cm-number">1</span>, <span class="cm-string">"name"</span>:<span class="cm-string">"korni 3 demo tutorial"</span>, <span class="cm-string">"f2"</span>: <span class="cm-atom">true</span>, <span class="cm-string">"f3"</span>:<span class="cm-string">"f3 value"</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">&gt; {<span class="cm-string">"id"</span>: <span class="cm-number">1</span>, <span class="cm-string">"name"</span>:<span class="cm-string">"korni 4 demo tutorial"</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ echo</span> <span class="cm-def">$?</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-number">0</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 416px;"></div><div class="CodeMirror-gutters" style="display: none; height: 416px;"></div></div></div></pre><p><span>В результате получим данные в БД (поле </span><code>zU</code><span> условно не показано), </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> rows test testTable <span class="cm-attribute">--csv</span> <span class="cm-attribute">--table</span> &nbsp;<span class="cm-attribute">-c</span> id <span class="cm-attribute">-c</span> zT <span class="cm-attribute">-c</span> name <span class="cm-attribute">--where</span> <span class="cm-string">'id = 1'</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  id &nbsp; &nbsp; &nbsp; &nbsp;  zT  name</span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">----</span> &nbsp;<span class="cm-attribute">----------</span> &nbsp;<span class="cm-attribute">---------------------</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">1</span> &nbsp;<span class="cm-number">1664036153</span>  korni demo tutorial</span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">1</span> &nbsp;<span class="cm-number">1664036310</span>  korni <span class="cm-number">1</span> demo tutorial</span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; <span class="cm-number">1</span> &nbsp;<span class="cm-number">1664036336</span>  korni <span class="cm-number">4</span> demo tutorial</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 156px;"></div><div class="CodeMirror-gutters" style="display: none; height: 156px;"></div></div></div></pre><p><span>или графически</span></p><p><img src="/home/mp/.config/Typora/typora-user-images/image-20220924191957634.png" referrerpolicy="no-referrer" alt="image-20220924191957634"></p><p><span>Первичным ключом является пара (</span><code>id</code><span>, </span><code>zT</code><span>), где </span><code>zT</code><span> - epoch UTC timestamp,  т.е. момент времени когда создана данныя запись. </span></p><p><span>В записи, так же, всегда присутствует публичный ключ (pubkey) пользователя, который создал запись. </span></p><p><span>Прикладное приложение может выбирать для каждого id  объекта только одну версию с наиболее поздним моментом времени создания. </span></p><p><span>То, что данные автоматически появились в таблице - это результат опtрации scan автоматической операции scan, которая вызвалась автоматичеcки при вставке записей в &quot;журнал&quot;. </span></p><p><span>На самом деле главная функция операции insert - создание записей в журнале. </span></p><ul><li><code>/home/mp/.config/korni/</code><span> - файлы системы korni3</span></li><li><code>/home/mp/.config/korni/test</code><span> - данные контейнера с именем test (это имя фигурирует в командах выше)</span></li></ul><p><span>посмотрим файлы записей таблицы tastTable, которые были созданы командой insert:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ find</span> ~/.config/korni/test <span class="cm-attribute">-type</span> f | <span class="cm-builtin">grep</span> T--testTable--</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/home/mp/.config/korni/test/tables/2022/2022-9-24/U-646/60e/e5431584f0fd0cf0f86b7fa04ff23bf3d0a554c5930786ffd7155cd29c7c/T--testTable--D-2022-9-24-GH-uf7d5zbvz7qt.csv.gz</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ find</span> ~/.config/korni/test <span class="cm-attribute">-type</span> f | <span class="cm-builtin">grep</span> T--testTable-- | xargs <span class="cm-builtin">ls</span> <span class="cm-attribute">-l</span> </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-attribute">-rw-rw-r--</span> <span class="cm-number">1</span> mp mp <span class="cm-number">6150</span> сен <span class="cm-number">24</span> <span class="cm-number">19</span>:18 /home/mp/.config/korni/test/tables/2022/2022-9-24/U-646/60e/e5431584f0fd0cf0f86b7fa04ff23bf3d0a554c5930786ffd7155cd29c7c/T--testTable--D-2022-9-24-GH-uf7d5zbvz7qt.csv.gz</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ find</span> ~/.config/korni/test <span class="cm-attribute">-type</span> f | <span class="cm-builtin">grep</span> T--testTable-- | xargs file &nbsp;</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/home/mp/.config/korni/test/tables/2022/2022-9-24/U-646/60e/e5431584f0fd0cf0f86b7fa04ff23bf3d0a554c5930786ffd7155cd29c7c/T--testTable--D-2022-9-24-GH-uf7d5zbvz7qt.csv.gz: gzip compressed data, max compression, from Unix, original size modulo <span class="cm-number">2</span>^32 <span class="cm-number">1538</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 364px;"></div><div class="CodeMirror-gutters" style="display: none; height: 364px;"></div></div></div></pre><p><span>Итак,  имеем файл с причудливым названием </span><code>T--testTable--D-2022-9-24-GH-uf7d5zbvz7qt.csv.gz</code><span>   в папке с причудливым названием </span><code>tables/2022/2022-9-24/U-646/60e/e5431584f0fd0cf0f86b7fa04ff23bf3d0a554c5930786ffd7155cd29c7c/</code></p><ul><li><span>Каждое изменение данных, продуцирует </span><strong><span>новые записи</span></strong><span> в этом и подобных файлах,  </span></li><li><span>записи добавляются автоматически предсказуемо в нужные файлы. </span></li><li><span>система дописывает файлы &quot;сегодняшнего дня&quot;, файлы предыдущих дат не трогает. </span></li><li><span>файлы сжаты gzip алгоритмом, внутри частичные подписанные ЦП записи в формате jsonnl, которые еще соответствуют определенным требованиям (созданы разными пользователями)</span></li><li><span>каждый файл дописывается только одним пользователем , разные пользователи пишут &quot;дополнения к таблицам файлы с разными именами</span></li></ul><p><span>Имя самого файла содержит : </span></p><ul><li><code>T--testTable--</code><span> имя таблицы, &quot;дополнения&quot; к которой, содержатся в файле</span></li><li><code>D-2022-9-24-</code><span> - дата создания (UTC) дополнений в этом файле </span></li><li><code>GH-uf7d5zbvz7qt</code><span>  - geoHash ; гео позиция точки , к которой относятся записи, которую пользователь мог указать, если желает.  (чтобы сразу по листингу быстрее получать обновления только интересующего региона, например для приложений с объявлениями)</span></li></ul><p><span>Имя папки содержит: </span></p><p><span>Год, дату, </span><code>sha256(user public key)</code><span> , разбитый на три части (три подпапки) по три значащих символа в первых двух частях. </span></p><p><span>Это важно , чтобы файловая система быстро могла работать с миллиардами пользователей, и при этом можно было бы продолжать получать обновления инкрементально, начиная с нужной даты, и интересоваться обновлениями по приоритетным пользователям (подписки, каналы, друзья, команда ... )</span></p><p>&nbsp;</p><p><span>Пример содердимого файлов обновлений таблиц (распакуем только две записи):  </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.7473px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ zcat</span> /home/mp/.config/korni/test/tables/2022/2022-9-24/U-646/60e/e5431584f0fd0cf0f86b7fa04ff23bf3d0a554c5930786ffd7155cd29c7c/T--testTable--D-2022-9-24-GH-uf7d5zbvz7qt.csv.gz | head <span class="cm-attribute">-n</span> <span class="cm-number">2</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{<span class="cm-string">"id"</span>:<span class="cm-string">"1"</span>,<span class="cm-string">"name"</span>:<span class="cm-string">"korni demo tutorial"</span>,<span class="cm-string">"zT"</span>:<span class="cm-string">"1664036153"</span>,<span class="cm-string">"zU"</span>:<span class="cm-string">"MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAvCEIchAnnO5hIdiuFt\/+op8uBbRdh67lPjkLU6Mj00Q+DoFuOWBb3pRfLXdd6xEg+VUa7liBunrm99a5og\/DYp98p6+Lh68yCSzLzDm9bPkvVuRsjVjm4Fngc6\/sKK+dC04KtnDDoQ5J+rIAHaX2WrgyTwu1Hc+M0ENeAazSXwCNJMc+Fgutj0ofaobRlelvx\/FndZKQUFWkbVBf6LY08kSut7sPadBrKMbf1Oyg1k5FUTSbgOBvUmyIx+qOfINCv\/TsJxLCSzyCZXRJFJ40EGz1bO2XbJRf8EIWwNYk6VnKZ70dJqClBBAWxVM1w7k5t8aDyBTsEic4uLZLyIN5t9ou9klWW467pTUwhkHJbD2xG9bB\/YFLOQY9bQxOx6CRbw4ZegLhk+M3AjG3P20\/ouv7psYz9o08pfgpvlkaICGklvWnCBAB4AC1FI\/e83j6JVqrFTn+ZJCVxED5OaiKqioaK2bWu7QHgo\/7UgQZpKwB7qRadzg1mQ7k1Vd0wy8iBnQajc1akH4RiK\/IwMqsI+Z9JlP4vWLHWPdUQzPzghKsTj2HbBBzBhvrrMV5szYuxQj\/vVYtEcNPapigWinhwdoZCFNGfXHDeKt\/iph1GYqOD0krFz96K2glphFfa74CkaOjTXUnn2f4lI\/Pz82GwnqFG1\/8W0LXKO4RcgxZYvUCAwEAAQ=="</span>,<span class="cm-string">"zS"</span>:<span class="cm-string">"ulLlynBK4i8oQF48\/66eKz0pQM+qqmOprU7eiGlBDEqTf3CRcl1NEStdGn1djEFN\n4t0WxS\/J\/3yQ2a8rFh7GbWoIAAdu4tIai2s3\/p4O0FXnEzl5rKlhFileCkbhPAME\nQzp9SrMzAmv1V1fSo5TYRTFM42or2PP2TtRdXbI8Ao+8Cq36ahlbyB5RKsv99kb6\n3gu8tUUl8OwxHE5rIx4ELLq74xLcJJxn1ipR5e156Y1PWeDEVFWK9dcfX8u1VKS4\n\/4OdRgwJsoiVEI\/2pIvUJAmoFdE8\/IoejnsBpGyc2zmFu0iqEFtsN+NWFKB0oTqJ\ndr1FMWamwpLOncuWhXcDIx1MzENCHzwRMOlVY6P5xSDfSk2WUA0rN3mMrNYgAFjL\nZDTP\/f9VFdwuE3w2TX6xw7hX5C4UTCRDQWW7BZeGWOKmMNIYDF0hok+gM9RB7HQm\npbHxH3YZPnLO64FzrN2FNKgPgg+WVXMH8IHfc4qnptmq3NKy6AufVMlqnwDKgYjB\nrI\/ttpvaNRPRr36nnHhEr5w+A3SlHZtqgimWHyNeP7bMbiTfz59D3tnYX5gQGcT3\n8lvHtZSpbm5WiiDZV300U1ecfL+pI66vefAPgJGB5mj\/+CtxiDh+QC7YWxg7veK5\n5B1nGuYvqN75Nx\/l6x8nCx+S4e9ncJQBJt75xuZVIEQ="</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{<span class="cm-string">"id"</span>:<span class="cm-string">"1"</span>,<span class="cm-string">"name"</span>:<span class="cm-string">"korni 1 demo tutorial"</span>,<span class="cm-string">"zT"</span>:<span class="cm-string">"1664036310"</span>,<span class="cm-string">"zU"</span>:<span class="cm-string">"MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAvCEIchAnnO5hIdiuFt\/+op8uBbRdh67lPjkLU6Mj00Q+DoFuOWBb3pRfLXdd6xEg+VUa7liBunrm99a5og\/DYp98p6+Lh68yCSzLzDm9bPkvVuRsjVjm4Fngc6\/sKK+dC04KtnDDoQ5J+rIAHaX2WrgyTwu1Hc+M0ENeAazSXwCNJMc+Fgutj0ofaobRlelvx\/FndZKQUFWkbVBf6LY08kSut7sPadBrKMbf1Oyg1k5FUTSbgOBvUmyIx+qOfINCv\/TsJxLCSzyCZXRJFJ40EGz1bO2XbJRf8EIWwNYk6VnKZ70dJqClBBAWxVM1w7k5t8aDyBTsEic4uLZLyIN5t9ou9klWW467pTUwhkHJbD2xG9bB\/YFLOQY9bQxOx6CRbw4ZegLhk+M3AjG3P20\/ouv7psYz9o08pfgpvlkaICGklvWnCBAB4AC1FI\/e83j6JVqrFTn+ZJCVxED5OaiKqioaK2bWu7QHgo\/7UgQZpKwB7qRadzg1mQ7k1Vd0wy8iBnQajc1akH4RiK\/IwMqsI+Z9JlP4vWLHWPdUQzPzghKsTj2HbBBzBhvrrMV5szYuxQj\/vVYtEcNPapigWinhwdoZCFNGfXHDeKt\/iph1GYqOD0krFz96K2glphFfa74CkaOjTXUnn2f4lI\/Pz82GwnqFG1\/8W0LXKO4RcgxZYvUCAwEAAQ=="</span>,<span class="cm-string">"zS"</span>:<span class="cm-string">"hWkCUCSNemMQ3t4hf\/27Y0ZnnRbQqIONmfsCvoyOKbzGL1iBNyzqo6EsuwJu6iZ8\nXFlmPyvDX5NMMxs02XFo6R+NKBTI\/AfupFbWLOEe8vUQC6K3+1IxGOihNwCOOcz+\nl3jtfJaw4sWt1aXUjvboENHh4ty8M1ddTPb8TwEHppqS\/\/81XZqEaSNOx0qoHl7M\n6pj\/ITjDBTw5ZgOgp91VtPXgDgchuDWPlhSax8viq\/Sh51BZDdtqzMVg\/7WNudsM\nIVWioI16+rSGLeyf5TodRhBLXcE0B78uNWaIF5qAs2BbcfovFf\/R37SVQDZuEAJF\nXIGJ32IMeZb06yXe2+5uSK3\/GMs2kmy3Mj1\/8Uj4IYfW9Fwg6ohCiYc45gpKd9pr\nmjRUAX1IhHcNmek7Z8y4GbxZDXQ+tQOsnxKI8i8UQwShWs2SoISKLj2BwCy2Xe2h\nr9wAdcqwH9qG5Ch94KYZRpTBq9K5+LLZvPtekvLp2u5Y101ooHNydQAGY5s0RscL\nSDLCU5Ti29RH94GlvO1JU5uzR+kCqyXRRWdU8\/+skbgwd+vZmCO+qec7+wkOEWvP\nvmkFpD2ZRXQp49Nk5ZY+KsmuW0DNnIoX4\/04\/6\/NEV9hRHWwh33YfMZZZQjzdlZ3\nIZq79pf5s3vhvy5rVtLjX2x+ieg2lFn+s5v+OwKBLgA="</span>}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 910px;"></div><div class="CodeMirror-gutters" style="display: none; height: 910px;"></div></div></div></pre><p><span>Здесь записи громоздкие. </span></p><p><span>В каждой записи есть одинаковое поле </span><code>zU</code><span> (пользователь), которое очень хорошо жмётся gzip и не влияет на размер. </span></p><p><span>В каждой записи есть поле </span><code>zS</code><span> (цифровая подпись) она есть только в сырых записях, после проверки это поле не попадает в базу данных. </span></p><p><span>Записи не обязательно формируются вами, из может формировать стороннее ПО, и при подписывании могут быть ошибки... &quot;Битые записи&quot; могут лежать в журналах, но </span><strong><span>ни одна запись с не правильной подписью не попадает в базу данных из журнала</span></strong><span>. </span></p><p><span>Этот выход можно легко обработать например </span><code>jq</code><span> утилитой. Но у нас есть вариант получше : </span><code>korni3 verify</code><span> например. </span></p><p>&nbsp;</p><h3 id='repack--пересжатие'><span>repack ; пересжатие</span></h3><p><span>При формировании файлов , для большей скорости, используется &quot;дополнений для таблиц&quot; используется &quot;дописывание gzip блоков в файл&quot;, а уже вчерашние и более старые файлы не нужно дописывать, для них можно применить наилучшее сжатие с предварительным вычислением общего словаря. </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> repack</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><p><span>эта команда сжимает все таблицы заново</span></p><p>&nbsp;</p><h3 id='file--сохранение-файлов'><span>file ; сохранение файлов </span></h3><h4 id='главный-способ'><span>главный способ</span></h4><ul><li><p><span>Файлы не правильно хранить в базе данных </span></p><ul><li><span>хотя, в ряде случаев это разумно и я позже покажу как это можно удобно делать в korni3</span></li></ul></li><li><p><span>Кроме того, удобнее и правильнее делать, используя ХЕШ по контенту. </span></p></li></ul><blockquote><p><span>Korni3 transport agnistic ! - это значит, что </span><code>korni3</code><span> не имеет и не будет иметь сетевых функций, однако предоставляет все удобства для всех систем обмена файлами. </span></p></blockquote><p><span>Пример добавления файлов в систему </span><code>korni3</code><span>:  (добавлять можно и один файл и папку рекурсивно)</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># korni3 file &lt;dbName&gt; &lt;fileOrDirPath&gt;</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> file test /home/mp/Qt/QtCreator-v8.0.1/bin/qt.conf</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">GFS-Qme6DcxwC2SABnttae5ndAPzNyk4G2KHmxFas7NqFHPFhy-T-bd3541672cd9a9c83d7ac8c6f74a7f6fe272f734-M-8a5ff4aeb511b1cfae11787da6e28a99-S256-7b3a3f93a63341651d7ef129ddca235f33cf061e434cd866e3d1695cb4cee402<span class="cm-tab" role="presentation" cm-text="	">  </span><span class="cm-string">"/home/mp/Qt/QtCreator-v8.0.1/bin/qt.conf"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{<span class="cm-string">"id"</span>:<span class="cm-string">"GFS-Qme6DcxwC2SABnttae5ndAPzNyk4G2KHmxFas7NqFHPFhy-T-bd3541672cd9a9c83d7ac8c6f74a7f6fe272f734-M-8a5ff4aeb511b1cfae11787da6e28a99-S256-7b3a3f93a63341651d7ef129ddca235f33cf061e434cd866e3d1695cb4cee402"</span>,<span class="cm-string">"path"</span>:<span class="cm-string">"\/home\/mp\/Qt\/QtCreator-v8.0.1\/bin\/qt.conf"</span>,<span class="cm-string">"size"</span>:<span class="cm-string">"84"</span>,<span class="cm-string">"creationTime"</span>:<span class="cm-string">"Thu Aug 11 12:10:22 2022\n"</span>,<span class="cm-string">"lastModTime"</span>:<span class="cm-string">"Thu Aug 11 12:10:22 2022\n"</span>,<span class="cm-string">"fileOut"</span>:<span class="cm-string">"\/home\/mp\/Qt\/QtCreator-v8.0.1\/bin\/qt.conf: ASCII text\n"</span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> file test /home/mp/Qt/QtCreator-v8.0.1/bin/qt.conf <span class="cm-number">2</span>&gt;/dev/null </span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{<span class="cm-string">"id"</span>:<span class="cm-string">"GFS-Qme6DcxwC2SABnttae5ndAPzNyk4G2KHmxFas7NqFHPFhy-T-bd3541672cd9a9c83d7ac8c6f74a7f6fe272f734-M-8a5ff4aeb511b1cfae11787da6e28a99-S256-7b3a3f93a63341651d7ef129ddca235f33cf061e434cd866e3d1695cb4cee402"</span>,<span class="cm-string">"path"</span>:<span class="cm-string">"\/home\/mp\/Qt\/QtCreator-v8.0.1\/bin\/qt.conf"</span>,<span class="cm-string">"size"</span>:<span class="cm-string">"84"</span>,<span class="cm-string">"creationTime"</span>:<span class="cm-string">"Thu Aug 11 12:10:22 2022\n"</span>,<span class="cm-string">"lastModTime"</span>:<span class="cm-string">"Thu Aug 11 12:10:22 2022\n"</span>,<span class="cm-string">"fileOut"</span>:<span class="cm-string">"\/home\/mp\/Qt\/QtCreator-v8.0.1\/bin\/qt.conf: ASCII text\n"</span>}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 443px;"></div><div class="CodeMirror-gutters" style="display: none; height: 443px;"></div></div></div></pre><p><span>Утилита печатает в STDOUT  и в STDERR каналы в разных форматах, чтобы удобнее было использоать korni3 в bash конвейерах. </span></p><ul><li><p><span>в stdout - json (nl new line ended)  в котором </span></p><ul><li><span>korni3 file id  ,  о нём подробнее ниже</span></li><li><span>путь к файлу </span></li><li><span>размер в байтах </span></li><li><span>даты создания и последней модификации </span></li><li><span>вывод диагностики test утилитой file  - информация о типе файле и его полях. </span></li><li><span>в будущем список тестов будет дополнятся. </span></li></ul></li><li><p><span>в stderr - только korni3 file id (состоит из хешей) И путь </span></p></li></ul><ol start='' ><li><span>Сам файл добавляется в систему (так что с исходного места его уже можно удалить для экономии места)</span></li><li><span>в контейнер в таблицу  &quot;files&quot; добавляется запись о нём.  (тот самый json record)</span></li></ol><p><span>вот сам файл : </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ find</span> ~/.config/korni/test <span class="cm-attribute">-type</span> f | <span class="cm-builtin">grep</span> Qme6DcxwC2SABnttae5ndAPzNyk4G2KHmxFas7NqFHPFhy</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/home/mp/.config/korni/test/files/e6/Dc/xw/GFS-Qme6DcxwC2SABnttae5ndAPzNyk4G2KHmxFas7NqFHPFhy-T-bd3541672cd9a9c83d7ac8c6f74a7f6fe272f734-M-8a5ff4aeb511b1cfae11787da6e28a99-S256-7b3a3f93a63341651d7ef129ddca235f33cf061e434cd866e3d1695cb4cee402</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 104px;"></div><div class="CodeMirror-gutters" style="display: none; height: 104px;"></div></div></div></pre><p><span>структура пути файлов</span></p><ul><li><span>korni/</span><strong><span>test</span></strong><span>/files - место для файлов в контейнере test</span></li><li><code>e6/Dc/xw/GFS-Qme6DcxwC2S...</code><span>    Qm</span><strong><span>e6</span></strong><u><span>Dc</span></u><strong><span>xw</span></strong><span>C2S    разбивка файлов по папкам , имена папок образуются как части ipfs идентификатора файла,  ipfs по умолчанию для хешей по умолчанию использует  base58 кодирование, т.е. максимальное число папок в каждой папке на каждом уровне не превышает  58^2=3364  при таком числе папок в папке файловая система  обычно не тормозит , а вот при большем числе  символов это уже 58^3=195_112 уже многовато и ФС будет тормозить при  &quot;ручной навигации&quot;,  на трёх уровнях это 3364^3=38_068_692_544  файлов если в каждой конечной папке будет только по одному файлу, что более  чем достаточно для одного контейнера, (и ничего не мешает в будущем заложить больше уровней.)</span></li></ul><p><span>сам идентификатор файла (его имя в папке korni3) содержит такие хеши, в качестве частей</span></p><ul><li><code>GFS-Qme6DcxwC2SABnttae5ndAPzNyk4G2KHmxFas7NqFHPFhy-</code><span> ipfs хеш по умолчанию, это всё таки &quot;global file system&quot;</span></li><li><code>T-bd3541672cd9a9c83d7ac8c6f74a7f6fe272f734-</code><span> torrent hash</span></li><li><code>M-8a5ff4aeb511b1cfae11787da6e28a99-</code><span> md5</span></li><li><code>S256-7b3a3f93a63341651d7ef129ddca235f33cf061e434cd866e3d1695cb4cee402</code><span>  sha256</span></li></ul><p><span>Сторонние программы, которые будут управлять содержимым легко смогут по этим хешам ориентироваться. </span>
+<span>Вы, например,  можете смело добавить вашу папку files в torrent раздачу  и по hash находить файлы для скачивания (подобные &quot;синхронизаторы&quot; я предложу в рамках другого проекта). </span></p><h4 id='другой-способ'><span>другой способ</span></h4><p><span>Добавление base64 файла в &quot;дополнения таблиц&quot; - в сами таблицы попадает в итоге BLOB поле. </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> insert-files images *.gif</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">..... </span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 52px;"></div><div class="CodeMirror-gutters" style="display: none; height: 52px;"></div></div></div></pre><p><span>По умолчанию схема полей будет такой </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sql"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sql"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">CREATE</span> <span class="cm-keyword">TABLE</span> <span class="cm-bracket">[</span>images<span class="cm-bracket">]</span> <span class="cm-bracket">(</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-bracket">[</span>id<span class="cm-bracket">]</span> <span class="cm-type">TEXT</span> <span class="cm-keyword">PRIMARY</span> <span class="cm-keyword">KEY</span><span class="cm-punctuation">,</span> // korni3 file id</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-bracket">[</span>zT<span class="cm-bracket">]</span> <span class="cm-type">LONG</span> <span class="cm-keyword">PRIMARY</span> <span class="cm-keyword">KEY</span><span class="cm-punctuation">,</span> // record creation <span class="cm-type">time</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-bracket">[</span>path<span class="cm-bracket">]</span> <span class="cm-type">TEXT</span><span class="cm-punctuation">,</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-bracket">[</span>content<span class="cm-bracket">]</span> <span class="cm-type">BLOB</span><span class="cm-punctuation">,</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-bracket">[</span>size<span class="cm-bracket">]</span> <span class="cm-type">INTEGER</span><span class="cm-punctuation">,</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-bracket">[</span>zU<span class="cm-bracket">]</span> <span class="cm-type">TEXT</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-bracket">)</span><span class="cm-punctuation">;</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 210px;"></div><div class="CodeMirror-gutters" style="display: none; height: 210px;"></div></div></div></pre><p><span>Если добавить файл снова - будет другая запись! т.к. </span><code>path</code><span> - НЕ  PRIMARY KEY. Будьте аккуратны. </span></p><p><span>Можно добавить опциями команды , например </span><code>-c path -c md5 -c mtime</code><span> ...</span></p><p><span>Доступные опции :</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">name</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The name of the file, e.g. cleo.jpg</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">path</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The path to the file relative to the root folder, e.g. pictures/cleo.jpg</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">fullpath</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The fully resolved path to the image, e.g. /home/simonw/pictures/cleo.jpg</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">sha256</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The SHA256 hash of the file contents</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">md5</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The MD5 hash of the file contents</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mode</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The permission bits of the file, as an integer - you may want to convert this to octal</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">content</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The binary file contents, which will be stored as a BLOB</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">content_text</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The text file contents, which will be stored as TEXT</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mtime</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The modification time of the file, as floating point seconds since the Unix epoch</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ctime</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The creation time of the file, as floating point seconds since the Unix epoch</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mtime_int</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The modification time as an integer rather than a float</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ctime_int</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The creation time as an integer rather than a float</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">mtime_iso</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The modification time as an ISO timestamp, e.g. 2020-07-27T04:24:06.654246</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">ctime_iso</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The creation time is an ISO timestamp</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">size</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The integer size of the file in bytes</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">stem</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The filename without the extension - for file.txt.gz this would be file.txt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">suffix</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">The file extension - for file.txt.gz this would be .gz</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 1299px;"></div><div class="CodeMirror-gutters" style="display: none; height: 1299px;"></div></div></div></pre><p>&nbsp;</p><h3 id='setgeo--указать-местоположение-пользователя'><span>setgeo ; указать местоположение пользователя </span></h3><ul><li><span>Команда получает координаты пользователя, кодирует их в формате geohash и запоминает. </span></li><li><span>не имеет отношение к контейнеру, а только к пользователю. </span></li><li><span>может быть использовано приложениями которым нужна гео функциональность из коробки</span></li><li><span>помогает просто получать обновления данных из &quot;своего региона&quot;</span></li></ul><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># setgeo &lt;lat like 58.05139&gt;,&lt;lat like 38.83802&gt;</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># setgeo &lt;lon like 58.05139&gt; &lt;lon like 38.83802&gt;</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># INFO : set current user current/new geoplace.</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> <span class="cm-number">58</span>.05139 <span class="cm-number">38</span>.83802</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 104px;"></div><div class="CodeMirror-gutters" style="display: none; height: 104px;"></div></div></div></pre><p>&nbsp;</p><h3 id='verify--проверить-записи--helper-utility--служебная-утилита'><span>verify ; проверить записи ; helper utility ; служебная утилита</span></h3><ol start='' ><li><span>Команда </span><strong><span>читает</span></strong><span> jsonnl записи </span><strong><span>с STDOUT</span></strong></li><li><span>проверяет подпись</span></li><li><span>если ок - удаляет поле подпись из записи и выводит запись на STDOUT</span></li><li><span>если ошибка - печатает их на STDERR</span></li></ol><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># korni3 verify</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># INFO: verify record from changelist files</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># record readed from stdin ; successfuly verified records go to stdout ; error print to stderr</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ korni3</span> verify</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 104px;"></div><div class="CodeMirror-gutters" style="display: none; height: 104px;"></div></div></div></pre><p>&nbsp;</p><h3 id='scan--обновить-бд-sqlite3-из-проверенных-по-подписи-дополнений-в-журналах'><span>scan ; обновить БД sqlite3 из проверенных по подписи &quot;дополнений&quot; в журналах. </span></h3><ol start='' ><li><span>Команда получает ограничения (filter), иначе обрабатывается всё </span></li><li><span>по ним проверяет дополнения (change set)  </span></li><li><span>импортирует их  в БД. </span></li></ol><p><span>на псевдокоде работу команды можно выразить так: </span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># pseudocode replace : </span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">korniFilterChangeSet(&lt;user conditions&gt;) <span class="cm-attribute">-</span>&gt; paths | &lt;split by tables; <span class="cm-keyword">set</span> <span class="cm-def">table</span><span class="cm-operator">=</span>...&gt; | xargs zcat | korni verify | sqlite-utils &lt;db&gt; import &lt;table&gt; <span class="cm-attribute">--pk</span><span class="cm-operator">=</span>id <span class="cm-attribute">--pk</span><span class="cm-operator">=</span>zT <span class="cm-attribute">--nl</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 78px;"></div><div class="CodeMirror-gutters" style="display: none; height: 78px;"></div></div></div></pre><p><span>Фильтровать изменения можно </span></p><ul><li><strong><span>по дате</span></strong><span> начиная с которой до текущего момента изменения применяются (всё, если не указана)</span></li><li><strong><span>по конкретному списку аккаунтов</span></strong><span>, или по всем, если не указано</span></li><li><strong><span>по гео локации</span></strong><span>, </span><strong><span>с указанием радиуса от гео точки</span></strong><span>, или по всей планете, если не указано иное</span></li></ul><p><span>// function </span>
+<span>//write table updates to /sqlite/ db</span>
+<span>// and filter files changes</span>
+<span>// if </span><userList><span> are empty: handl all available users , else: only from list (updates from friends?)</span>
+<span>// if </span><fromDate><span> are empty: handle all dates, else: new records from that date in past (format: 2001-09-11)</span>
+<span>// if </span><geoHashPoint><span> are empty: handle all geo positions, else: only filechanges in </span><geoRadius ><span> from point </span><geoHashPoint>
+<span>// before handle: verify sign in records</span>
+<span>// for hadnle import use the external tool: </span><code>pip3 install sqlite-utils</code><span> OR &#39;pip3 install spyql&#39; // TODO native</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 26px;"></div><div class="CodeMirror-gutters" style="display: none; height: 26px;"></div></div></div></pre><p>&nbsp;</p><h3 id='db--путь-к-базе-для-прямой-работы'><span>db ; путь к базе для прямой работы</span></h3><p><span>Утилита печатает на std out путь к файлу БД для прямой работы с базой</span></p><p><span>Надо для запросов чтения  через </span><code>sqlite3</code>
+<span>Используется например так:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="sh" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="sh"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 10.9948px; left: 3.99741px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre>x</pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-comment"># db &lt;containerName&gt;</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-comment"># $ sqlite3 `korni3 db test` 'select * from ttt limit 5;'</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> <span class="cm-def">$ korni3</span> db test </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/home/mp/.config/korni/test/database.db</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ sqlite3</span> <span class="cm-quote">`korni3 db test`</span> <span class="cm-string">'select * from ttt limit 5;'</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Error: no such table: ttt</span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ sqlite3</span> &nbsp;<span class="cm-quote">`korni3 db test`</span> <span class="cm-string">'.tables'</span> </span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">files &nbsp; &nbsp; &nbsp;<span class="cm-builtin">node</span> &nbsp; &nbsp; &nbsp; testTable</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ sqlite3</span> &nbsp;<span class="cm-quote">`korni3 db test`</span> <span class="cm-string">"select path from files where fileOut like '%PNG%' limit 3;"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/doc/qtcreator/qtcreator-dev/images/qtcreator-tooltip-long.png</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/doc/qtcreator/qtcreator-dev/images/firstplugin-pluginsetup.png</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/doc/qtcreator/qtcreator-dev/images/qtcreator-menu-item.png</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ sqlite3</span> &nbsp;<span class="cm-quote">`korni3 db test`</span> <span class="cm-string">"select distinct  fileOut from files  limit 3;"</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/home/mp/Qt/QtCreator-v8.0.1/bin/qt.conf: ASCII text</span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/home/mp/Qt/QtCreator-v8.0.1/share/doc/qtcreator/qtcreator-dev/extensionsystem-plugindetailsview.html: HTML document, ASCII text, with very long lines</span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">/home/mp/Qt/QtCreator-v8.0.1/share/doc/qtcreator/qtcreator-dev/qtcreator-dev-wizards.html: HTML document, ASCII text, with very long lines</span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-def">$ </span>(echo .headers on ; <span class="cm-builtin">echo</span> <span class="cm-string">'select * from files  limit 2;'</span>) | sqlite3 <span class="cm-attribute">-csv</span> &nbsp;<span class="cm-quote">`korni3 db test`</span> | spyql <span class="cm-string">'select id, path, size, zT from csv to orjson'</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{<span class="cm-string">"id"</span>:<span class="cm-string">"GFS-Qme6DcxwC2SABnttae5ndAPzNyk4G2KHmxFas7NqFHPFhy-T-bd3541672cd9a9c83d7ac8c6f74a7f6fe272f734-M-8a5ff4aeb511b1cfae11787da6e28a99-S256-7b3a3f93a63341651d7ef129ddca235f33cf061e434cd866e3d1695cb4cee402"</span>,<span class="cm-string">"path"</span>:<span class="cm-string">"/home/mp/Qt/QtCreator-v8.0.1/bin/qt.conf"</span>,<span class="cm-string">"size"</span>:84,<span class="cm-string">"zT"</span>:1663822473}</span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{<span class="cm-string">"id"</span>:<span class="cm-string">"GFS-Qmbm8kkiPR2MTW9if3ijReph8t77tvPzFQoFhM1dVDyTEX-T-451e2b13fffebbfedb0ed1036f51600e1a59a3dc-M-e0ad1c51fe2f8c17dfa254c1d1a59ba4-S256-f3a6e56801a8533c6987f523a7adfab0bb07f4ca30af1cf510a039b675671f3a"</span>,<span class="cm-string">"path"</span>:<span class="cm-string">"/doc/qtcreator/qtcreator-dev/extensionsystem-plugindetailsview.html"</span>,<span class="cm-string">"size"</span>:4811,<span class="cm-string">"zT"</span>:1663822565}</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 936px;"></div><div class="CodeMirror-gutters" style="display: none; height: 936px;"></div></div></div></pre><p><span>Для обработки (фильтрации, преобразования итд) данных тут есть все возможности. </span></p><p>&nbsp;</p></div></div>
+<script type="text/javascript">
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(87491348, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript></noscript><div><img src="https://mc.yandex.ru/watch/87491348" style="position:absolute; left:-9999px;" alt=""></div>
+<!-- /Yandex.Metrika counter --></body>
+</html>
