@@ -18,12 +18,15 @@ mkdir -p tmp
 
 	korni3 db tmp # it out to std:
 	#/root/.config/korni/tmp/database.db
+	
 
-	sqlite3 `korni3 db tmp` <<EEE
-		select * from testTable; 
+	/usr/bin/sqlite3 /root/.config/korni/tmp/database.db <<EEE
+.header on
+.mode line
+select * from testTable; 
 EEE
 	# смотрим файлы. 
-	find ~/.config/korni/tmp/
+	find ~/.config/korni/tmp/  -type f
 
 END
 )   | ./run.sh fromIn
