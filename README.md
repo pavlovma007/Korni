@@ -1,5 +1,15 @@
 # Технология личного цифрового суверенитета korni3
 
+исходники брать так 
+
+```bash
+$ git clone -b main --single-branch https://github.com/pavlovma007/Korni.git
+# сборка докер образа и запуск с demo-тестом так 
+$ ./quick-start.sh
+```
+
+
+
 * [Главное](docs/Главное.md)
 * [Юридический взгляд на проект корни](docs/Юридический%20взгляд%20на%20проект%20корни.md)
 * [korni3-FAQ](docs/korni3-FAQ.md)
