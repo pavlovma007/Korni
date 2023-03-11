@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package main;
+
+message BinPacket {
+  repeated string bins = 1;
+}	
+
+message BinStream {
+  repeated BinPacket packets = 1;
+}

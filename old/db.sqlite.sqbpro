@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/home/mp/.config/korni/db.sqlite" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1777"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="C"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">insert into C(block_id, jid, key, time, value, C, author)
+select 	id as block_Id
+		,json_extract(json, '$.jid') as jid
+		,json_extract(json, '$.key') as key
+		,CAST(json_extract(json, '$.time') as INTEGER) as time  
+		,json_extract(json, '$.value') as value
+		,json_extract(json, '$.C') as C
+		,json_extract(json, '$.author') as author
+from _blocks 
+where 	json_extract(json, '$.type') = 'C' 
+		and id not in (select id from C) 
+		and time&gt;0 
+		and time&lt;strftime('%s', 'now')
+		and (
+			(C='S' AND 
+				-- key is new
+				(select count() 
+				from C
+				where 
+					jid='DZo2ev2zBQBpbgCOb2ymW/3KdDH31/0V'
+					and key='1'
+				limit 1) = 0			
+			)
+			or 
+			( C='R' AND
+					-- you can rewrite
+					(SELECT sum(json_quote(json_extract(can, '$.R'))='1') as summ
+					from P  
+					where 
+						userid='ccdaff8c28710175ef559f64d12b3e14' 
+						and jid='DZo2ev2zBQBpbgCOb2ymW/3KdDH31/0V'
+					limit 1) &gt; 0		
+			)
+		);
+</sql><sql name="SQL 2">SELECT sum(json_quote(json_extract(can, '$.S'))='1') as summ
+from P  
+where 
+	userid='ccdaff8c28710175ef559f64d12b3e14' 
+	and jid='DZo2ev2zBQBpbgCOb2ymW/3KdDH31/0V'
+limit 1;</sql><sql name="SQL 3">select count() 
+from C
+where 
+	jid='DZo2ev2zBQBpbgCOb2ymW/3KdDH31/0V'
+	and key='1'
+limit 1
+;</sql><sql name="SQL 1"></sql><current_tab id="3"/></tab_sql></sqlb_project>

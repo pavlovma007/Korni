@@ -1,0 +1,57 @@
+#!/bin/bash
+# принимает на вход одну строку base64(jsonBlock)~bin ; на выход попытка расшифровать или пустая строка
+
+# DEBUG
+#SECRETSPATH=~/.config/korni/secrets.txt
+
+DECRYPTED=''
+
+tryDecrypt() {
+	#f=$1
+	#rawblock=$1
+	#binBase64=$(echo $rawblock | jq -r .bin 2>/dev/null )
+	binBase64=$1
+	#echo $binBase64
+
+	secrets=$(< $SECRETSPATH)
+	
+	# [[ $? != 0 ]] && continue
+	#binF=$(echo $rawblock | jq -r .bin)
+	#signF=$(echo $rawblock | jq -r .sign)
+	#[[ $? != 0 ]] && continue
+	
+	for S in $secrets ; do 
+		# try decript 
+		#echo secret= $S
+		#echo -pass "pass:$S"
+		
+		# un base64
+		block=$( base64 -d <(echo $binBase64) | \
+			# decrypt symmetric \
+			openssl enc -d -aes-256-cbc -salt -pass "pass:$S" -- 2>/dev/null )
+		# print decripted json
+		
+		DECRYPTED=$block
+		#echo $block
+		
+		[[ $? != 0 ]] &&  exit 
+	done
+	echo ''
+}
+
+# bin prod
+read binBase64 
+read sign
+#binBase64=$1 # better ? 
+
+# test 
+#binBase64='U2FsdGVkX1+e0l7VhoVixfKMOqwMkzYqAT3v30FzRU6QNJ0sKX+eMlwJULyFS/v7MbegXp5MdFAyfqQp3pXLLC7mIbS9EVYVdeixdayfM5V/SvRJNwc3vX0NjgZkS6fHVQmk1OSQAw8C8dOS6aHqEsG7TQVtz2IystYlHsE71di4bU/v/kD1lLaEQA57reA9SQrrJLF6eVPWNqAVqpnr9QppdepkJ0E6ItG0Bp12XHE1PcrVd7GfZSQo2UiB6CNsXk1J7oF671lfbOqP/KX6sqjEe5qyS2eAs+jZobXE+5mMQj93lVRzer4SMGum9R6crWN/GZvHTwfHDvWNwiZsglZXFNIV+n8xCjbTgJv3epB6zooz9fIESuxIBBhA8npojDxAWI4utc0V7rlj6YvCEg=='
+
+tryDecrypt $binBase64
+#echo $DECRYPTED
+
+# try sign verify
+#sign='3brmJMeMLj/u1BBxrxR/OrAH7Ns6uYMNgBZ3ryABoH/qDrwgQanAIgsBsf4DQ9ahNfy2rdhQUeV59u3Ei29EVeMXbWU7eaJ5gSUtuJqjFHqIEXsCgZ748mr82z65tP2UHShcdZC5alNBHsgAkO0xHwad0RPrIYtRVZJvkDW3Ivw='
+verifyResult=$(echo $DECRYPTED | openssl dgst -sha1 -verify $PUBKEY -signature <( echo $sign | base64 -d ) -- )
+[[ $? == 0 ]] && echo $DECRYPTED || echo ''
+

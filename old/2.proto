@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package korni;
+
+message BinPacket {
+  bytes bin = 1;
+  bytes sign = 2;
+}
+
+message PacketStream {
+  repeated BinPacket packets = 1;
+}
