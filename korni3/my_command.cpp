@@ -4,6 +4,7 @@
 #include <iostream> // stdin stdout stderr open close
 #include <sys/wait.h>
 #include <unistd.h>
+#include <array>
 
 // OK
 void /*std::string */ execCommand(const std::string cmd, int& out_exitStatus,
