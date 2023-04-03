@@ -71,3 +71,9 @@ Korni3 помогает организовать синхронизацию мн
 2. [x] ACID для одной ячейки
 
 [Сборник ссылок на теорию caspaxos, подборка здесь](caspaxos/link-collection.md)
+
+
+
+PS 
+
+> CASPaxos is not PAXOS. But it's  no wrong!  - me
