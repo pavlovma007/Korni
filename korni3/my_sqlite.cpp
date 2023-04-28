@@ -432,7 +432,7 @@ Record sqliteSelectFileByHash(sqlite3* db, const string& hash) // throws LockErr
                   "SELECT id, MAX(zT) zT FROM [files]  GROUP BY id "
                   ") b ON a.id = b.id AND a.zT = b.zT WHERE a.id LIKE ?";
 
-    sqlite3_stmt* stmt;
+    sqlite3_stmt* stmt = nullptr;
     auto trysql = [db, stmt](const string& sql, const string& param) mutable {
         Record r;
 
