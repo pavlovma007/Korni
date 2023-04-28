@@ -25,7 +25,7 @@
 
 using namespace std;
 namespace pt = boost::property_tree;
-
+#define EXIT_LOCK 100
 // Buffer for file read operations. The buffer must be able to accomodate
 // the RSA signature in whole (e.g. 4096-bit RSA key produces 512 byte signature)
 //#define BUFFER_SIZE 512
@@ -541,7 +541,7 @@ bool korniCreateRecord(
             if (!db)
             {
                 cerr << "ERROR: can not open sqlite database by path" << dbPath << endl;
-                exit(1);
+                exit(EXIT_FAILURE);
             }
             else
             {
@@ -571,7 +571,27 @@ bool korniCreateRecord(
                             r[pos->first] = make_tuple('t', s);
                     }
                 }
-                sqliteInsertRecordSet(db, tableName, RecordSet{ r }, isIgnore);
+                auto atempt = [&]() {
+                    sqliteInsertRecordSet(db, tableName, RecordSet{ r }, isIgnore);
+                };
+                int atempts = 0;
+            label:
+                try
+                {
+                    atempt();
+                }
+                catch (LockError)
+                {
+                    atempts += 1;
+                    sleep(1); // 1 second
+                    if (atempts < 3)
+                        goto label;
+                    else
+                    {
+                        std::cerr << "ERROR: wait & make 3 atempt , but db locked";
+                        exit(EXIT_LOCK);
+                    }
+                }
                 result = 0;
             }
         }
@@ -1531,43 +1551,50 @@ void parseCommandLine(int argc, char** argv)
         string hash(argv[3]);
         sqlite3* db = sqliteOpen(korniPathOfDatabase(containerName));
 
-        Record r = sqliteSelectFileByHash(db, hash);
-        string korniFileId;
-        for (auto f : r)
+        try
         {
-            if (f.first == "id")
-                korniFileId = get<1>(f.second);
-        }
-        cerr << korniFileId << endl;
-        string path = korniGetFilePathInDisk(containerName, korniFileId);
-        if (path.length() > 0)
-        {
-            cout << path << endl;
-            exit(EXIT_SUCCESS);
-        }
-        else
-        {
-            cerr << "not found";
-            exit(EXIT_FAILURE);
-        }
+            Record r = sqliteSelectFileByHash(db, hash); // throw s LockError
+            string korniFileId;
+            for (auto f : r)
+            {
+                if (f.first == "id")
+                    korniFileId = get<1>(f.second);
+            }
+            cerr << korniFileId << endl;
+            string path = korniGetFilePathInDisk(containerName, korniFileId);
+            if (path.length() > 0)
+            {
+                cout << path << endl;
+                exit(EXIT_SUCCESS);
+            }
+            else
+            {
+                cerr << "not found";
+                exit(EXIT_FAILURE);
+            }
 
-        //        boost::property_tree::ptree jsontree;
-        //        for (auto f : r)
-        //        {
-        //            // TODO if else if if else if .... type
-        //            jsontree.put<string>(f.first, get<1>(f.second));
-        //        }
-        //        stringstream ss;
-        //        ss.str("");
-        //        ss.clear();
-        //        boost::property_tree::json_parser::write_json(ss, jsontree, false);
-        //        string jsonForSign = ss.str();
-        //        jsonForSign.replace(jsonForSign.find_last_of("\n"), 1, "");
-        //        cout << jsonForSign << endl;
-        //        if (r.size() > 0)
-        //            exit(EXIT_SUCCESS);
-        //        else
-        //            exit(EXIT_FAILURE);
+            //        boost::property_tree::ptree jsontree;
+            //        for (auto f : r)
+            //        {
+            //            // TODO if else if if else if .... type
+            //            jsontree.put<string>(f.first, get<1>(f.second));
+            //        }
+            //        stringstream ss;
+            //        ss.str("");
+            //        ss.clear();
+            //        boost::property_tree::json_parser::write_json(ss, jsontree, false);
+            //        string jsonForSign = ss.str();
+            //        jsonForSign.replace(jsonForSign.find_last_of("\n"), 1, "");
+            //        cout << jsonForSign << endl;
+            //        if (r.size() > 0)
+            //            exit(EXIT_SUCCESS);
+            //        else
+            //            exit(EXIT_FAILURE);
+        }
+        catch (LockError)
+        {
+            exit(EXIT_LOCK);
+        }
     }
 
     //    // TODO remove
@@ -1741,6 +1768,7 @@ int test()
     return 0;
 }
 
+// ret EXIT 1 - error , EXIT 0 - ok , EXIT 100 - db locked, need wait
 int main(int argc, char** argv)
 {
     ::pw = getpwuid(getuid());

@@ -9,6 +9,8 @@
 
 using namespace std;
 
+class LockError : exception {};
+
 // util
 void stringReplaceAll(string& s, const string& search, const string& replace);
 
@@ -25,8 +27,9 @@ typedef vector<Record> RecordSet;
 
 sqlite3* sqliteOpen(const string& dbPath);
 int sqliteClose(sqlite3* db);
-// TODO test , db in Lock mode , handle errors ...
-void sqliteInsertRecordSet(sqlite3* db, const string& tableName, const RecordSet& recordSet,  bool isIgnode=false);
+// TODO test , handle errors ...
+void sqliteInsertRecordSet(sqlite3* db, const string& tableName, const RecordSet& recordSet,  bool isIgnode=false); // // throws LockEror
+
 // simple INSERT
     //INSERT OR IGNORE INTO "test2" ("id", "zT", "f1", "f2")
     //select '200', '206', 'NULL', 'f2-value2'
@@ -41,7 +44,7 @@ void sqliteInsertRecordSet(sqlite3* db, const string& tableName, const RecordSet
 // возвращает последнюю по времени запись с таким идентификатором. юзера не учитывает  - просто последняя по времени
 Record sqliteSelectRecordById(sqlite3* db, const string& table, const string& id);
 
-Record sqliteSelectFileByHash(sqlite3* db, const string& hash);
+Record sqliteSelectFileByHash(sqlite3* db, const string& hash); // throws LockError
 
 string recordToString(const Record& r);
 

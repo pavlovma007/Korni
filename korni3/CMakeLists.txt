@@ -5,6 +5,7 @@ project(korni3 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 11)
 #set(CMAKE_CXX_STANDARD 17) # no need to manually adjust the CXXFLAGS
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(SQLITE_THREADSAFE 1)
 
 
 add_executable(korni3 main.cpp my_sha256.cpp my_crypto_utils.cpp

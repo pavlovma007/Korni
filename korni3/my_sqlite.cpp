@@ -17,7 +17,6 @@ sqlite3* sqliteOpen(const string& dbPath)
     sqlite3* db;
     int rc;
     rc = sqlite3_open(dbPath.c_str(), &db);
-
     if (rc)
     {
         fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
@@ -25,6 +24,10 @@ sqlite3* sqliteOpen(const string& dbPath)
     }
     else
     {
+        rc = sqlite3_threadsafe();
+        if (rc == 0)
+            fprintf(stderr, "ERROR: sqlite lib compiled not in thread save mode\n");
+
         //        fprintf(stderr, "Opened database successfully\n");
         return db;
     }
@@ -38,7 +41,7 @@ int sqliteClose(sqlite3* db)
 };
 
 void sqliteInsertRecordSet(sqlite3* db, const string& tableName, const RecordSet& recordSet,
-                           bool isIgnode)
+                           bool isIgnode) // throws LockEror
 {
     map<string /*name*/, char /*type*/> fieldsCollection;
     for (auto& record : recordSet)
@@ -204,6 +207,13 @@ void sqliteInsertRecordSet(sqlite3* db, const string& tableName, const RecordSet
         }
         if (rc == SQLITE_DONE)
             sqlite3_finalize(stmt);
+        if (rc == SQLITE_BUSY)
+            throw LockError();
+        if (rc == SQLITE_LOCKED)
+        {
+            sqlite3_reset(stmt);
+            throw LockError();
+        }
     };
     execOneNoPrintError(computeCreateTable(), " create table ");
     for (const string& s : computeAlterTable())
@@ -213,15 +223,28 @@ void sqliteInsertRecordSet(sqlite3* db, const string& tableName, const RecordSet
         [&db](const std::function<tuple<string, vector<string>, bool>()>& computeInsert) {
             // improve perfomabce
             char* sErrMsg = nullptr;
-            int rc = sqlite3_exec(db, "PRAGMA synchronous = OFF", NULL, NULL, &sErrMsg);
-            if (rc)
-                cerr << string(sErrMsg) << endl;
-            rc = sqlite3_exec(db, "PRAGMA journal_mode = MEMORY", NULL, NULL, &sErrMsg);
-            if (rc)
-                cerr << string(sErrMsg) << endl;
+            int rc = 0;
+            //            int rc = sqlite3_exec(db, "PRAGMA synchronous = OFF", NULL, NULL, &sErrMsg);
+            //            if (rc)
+            //                cerr << string(sErrMsg) << endl;
+            //            rc = sqlite3_exec(db, "PRAGMA journal_mode = MEMORY", NULL, NULL, &sErrMsg);
+            //            if (rc)
+            //                cerr << string(sErrMsg) << endl;
+
+            auto endTransaction = [&]() {
+                int rc = sqlite3_exec(db, "END TRANSACTION ;", NULL, NULL, &sErrMsg);
+                if (rc)
+                    cerr << "ERROR: sqlite code=" << rc << " is a :" << sErrMsg << endl;
+                // LockError ? - no i think
+            };
+
             rc = sqlite3_exec(db, "BEGIN TRANSACTION", NULL, NULL, &sErrMsg);
             if (rc)
-                cerr << string(sErrMsg) << endl;
+            {
+                cerr << "ERROR: sqlite" << string(sErrMsg) << endl;
+                //                endTransaction();
+                //                throw LockError();
+            }
 
             sqlite3_stmt* stmt;
 
@@ -233,16 +256,22 @@ void sqliteInsertRecordSet(sqlite3* db, const string& tableName, const RecordSet
                 // TODO if sql is same - not prepare.  if other - finalize
                 string sql = get<0>(ins);
                 //                cout << sql << endl; // TODO remove
+                auto params = get<1>(ins);
                 isNeedStop = get<2>(ins);
 
                 rc = sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, NULL);
                 if (rc != SQLITE_OK)
                     cerr << string(sqlite3_errmsg(db)) << endl;
+                if (rc == SQLITE_BUSY)
+                    throw LockError();
+                if (rc == SQLITE_LOCKED)
+                    throw LockError(); // not step - same beh as in busy
+
                 string v;
-                for (std::size_t index = 0; index < get<1>(ins).size(); ++index)
+                for (std::size_t index = 0; index < params.size(); ++index)
                 {
                     // Using parameters ("?") is not
-                    v = get<1>(ins)[index];
+                    v = params[index];
                     rc = sqlite3_bind_text(stmt, index + 1, v.c_str(), -1, SQLITE_TRANSIENT);
                     if (rc != SQLITE_OK)
                     {                                      // really necessary, but recommended
@@ -251,40 +280,50 @@ void sqliteInsertRecordSet(sqlite3* db, const string& tableName, const RecordSet
                         //            throw errmsg;                      // injection attacks.
                         break; // TODO error
                     }
+                    if (rc == SQLITE_BUSY || rc == SQLITE_LOCKED)
+                        throw LockError();
                 }
                 // exec insert
                 if (rc == SQLITE_OK)
+                {
                     rc = sqlite3_step(stmt);
 
-                if (rc != SQLITE_ROW && rc != SQLITE_DONE)
-                {
-                    string errmsg(sqlite3_errmsg(db));
-                    if (errmsg.size())
-                        cerr << errmsg << endl;
+                    if (rc != SQLITE_ROW && rc != SQLITE_DONE)
+                    {
+                        string errmsg(sqlite3_errmsg(db));
+                        if (errmsg.size())
+                            cerr << errmsg << endl;
 
-                    int bytes;
-                    const unsigned char* text;
-                    bytes = sqlite3_column_bytes(stmt, 0);
-                    text = sqlite3_column_text(stmt, 0);
-                    if (bytes && text)
-                        cout << bytes << text << endl;
+                        int bytes;
+                        const unsigned char* text;
+                        bytes = sqlite3_column_bytes(stmt, 0);
+                        text = sqlite3_column_text(stmt, 0);
+                        if (bytes && text)
+                            cout << bytes << text << endl;
 
-                    //    cout << "INSERT RESULT " << sqlite3_column_text(stmt, 0) << sqlite3_column_text(stmt, 1)
-                    //         << sqlite3_column_int(stmt, 2) << endl;
+                        //    cout << "INSERT RESULT " << sqlite3_column_text(stmt, 0) << sqlite3_column_text(stmt, 1)
+                        //         << sqlite3_column_int(stmt, 2) << endl;
+                    }
+                    if (rc == SQLITE_DONE)
+                    {
+                        //        sqlite3_finalize(stmt);
+                        //        throw string("customer not found");
+                    }
+                    if (rc == SQLITE_BUSY)
+                        throw LockError();
+                    if (rc == SQLITE_LOCKED)
+                    {
+                        //                        sqlite3_reset(stmt);
+                        throw LockError();
+                    }
                 }
-                if (rc == SQLITE_DONE)
-                {
-                    //        sqlite3_finalize(stmt);
-                    //        throw string("customer not found");
-                }
+
                 sqlite3_reset(stmt);
                 sqlite3_clear_bindings(stmt);
-                //
                 sqlite3_finalize(stmt);
             } while (!isNeedStop);
 
-            rc = sqlite3_exec(db, "END TRANSACTION ;", NULL, NULL, &sErrMsg);
-            //            cerr << rc << sErrMsg << endl;
+            endTransaction();
         };
     if (!isIgnode)
         execInsert(computeInsert);
@@ -383,7 +422,7 @@ Record sqliteSelectRecordById(sqlite3* db, const string& table, const string& id
     }
 };
 
-Record sqliteSelectFileByHash(sqlite3* db, const string& hash)
+Record sqliteSelectFileByHash(sqlite3* db, const string& hash) // throws LockError
 {
     string sql1 = "SELECT a.* FROM [files] a INNER JOIN ( "
                   "SELECT id, MAX(zT) zT FROM [files]  GROUP BY id "
@@ -430,6 +469,7 @@ Record sqliteSelectFileByHash(sqlite3* db, const string& hash)
                 //
                 sqlite3_finalize(stmt);
             }
+
             if (rc == SQLITE_ROW)
             {
                 //
@@ -477,7 +517,14 @@ Record sqliteSelectFileByHash(sqlite3* db, const string& hash)
                 sqlite3_finalize(stmt);
                 return make_pair(false, r);
             }
+            else if (rc == SQLITE_LOCKED || rc == SQLITE_BUSY)
+            {
+                throw LockError();
+                return make_pair(false, r);
+            }
         }
+
+        return make_pair(false, r);
     };
     auto r1 = trysql(sql1, hash);
     if (r1.first)
