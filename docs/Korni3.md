@@ -549,3 +549,6 @@ $ (echo .headers on ; echo 'select * from files  limit 2;') | sqlite3 -csv  `kor
 
 Для обработки (фильтрации, преобразования итд) данных тут есть все возможности. 
 
+
+TODO 
+* [ ] переделать epoch из секунд в точнее , поле zT

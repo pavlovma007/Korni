@@ -50,6 +50,7 @@ struct passwd* pw;
 string KORNIEXEPATH = "";
 } // namespace
 
+// TODO надо точнее, чем секунды т.к. id+zT используеся как идентификатор записей
 int systemCurrentEpochTimestamp()
 {
     time_t now = time(0);
