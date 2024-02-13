@@ -18,6 +18,7 @@ cp /usr/local/bin/korni3 .
 cp ../icon.png .
 ldd `which korni3 `| awk '{print $3}' | xargs -I {} sh -c 'cp {} ./'
 
+# PATCH / docs : https://docs.appimage.org/packaging-guide/manual.html#id2
 sed -i -e 's#/usr#././#g' korni3
 sed -i -e 's#/usr#././#g' libc.so.6
 sed -i -e 's#/usr#././#g' libcrypto.so.1.1
@@ -52,8 +53,6 @@ Comment='платформа личного цифрового суверенит
 EOF
 #MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
 
-#mkdir -p usr/bin/
-#mv ./opt/brave.com/brave/* usr/bin/ ; rm -rf ./opt
 
 AppRun="AppRun"
 if  [ ! -f ../$AppRun ]; then
@@ -70,17 +69,16 @@ cd ..
 pwd 
 VERSION=""
 # to korni3--x86_64.AppImage
-#'appimagetool-x86_64.AppImage' --appimage-extract
 ARCH='x86_64' VERSION=$VERSION './appimagetool-x86_64.AppImage' -v -n ./$APP.AppDir/
 #ARCH='x86_64' VERSION=$VERSION './appimagetool-x86_64.AppImage'  ./$APP.AppDir/
 
-#mksquashfs Korni.AppDir/ Korni3.squashfs -root-owned -noappend
-#cat Korni.AppDir/korni3  > korni3.AppImage
-#cat Korni3.squashfs >> korni3.AppImage
-#chmod a+x korni3.AppImage
-#rm Korni3.squashfs
+	#mksquashfs Korni.AppDir/ Korni3.squashfs -root-owned -noappend
+	#cat Korni.AppDir/korni3  > korni3.AppImage
+	#cat Korni3.squashfs >> korni3.AppImage
+	#chmod a+x korni3.AppImage
+	#rm Korni3.squashfs
 
-## CLEAR TODO 
-#if [ -d "./$APP.AppDir/" ] ; then
-#  rm -rf ./$APP.AppDir
-#fi
+# CLEAR 
+if [ -d "./$APP.AppDir/" ] ; then
+  rm -rf ./$APP.AppDir
+fi
