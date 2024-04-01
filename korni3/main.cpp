@@ -1283,10 +1283,26 @@ void parseCommandLine(int argc, char** argv)
     // login # when no nickname - just print current selected user info (nick + publickey or id) // TODO
     // select surrent nickname "mask" of user; And crypto key
     // if success print: <usernick> <userid=publickkey>
-    if (argc == 3 && (strcmp(argv[1], "login") == 0))
+    if ((argc == 3 || argc == 2) && (strcmp(argv[1], "login") == 0))
     {
-        string nickname = argv[2];
-        korniLogin(nickname);
+        if (argc == 3)
+        {
+            string nickname = argv[2];
+            korniLogin(nickname);
+        }
+        else if (argc == 2)
+        {
+            string loginPath(::LOGINPATH);
+            loginPath.replace(loginPath.find("~"), 1, ::pw->pw_dir);
+            string currentLogin = filesystemReadFileIntoString(loginPath);
+            if (currentLogin.empty())
+                exit(EXIT_FAILURE);
+            else
+            {
+                cout << currentLogin << endl << korniUserId() << endl;
+                exit(EXIT_SUCCESS);
+            }
+        }
     }
 
     // create|insert <dbName> <tableName> [<jsonRecord>] [--skip-db-update] [--ignore]
