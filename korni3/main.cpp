@@ -803,7 +803,9 @@ bool korniStoreFile(
 // OK
 string korniGetFilePathInDisk(const string& containerName, const string& korniFileId)
 {
+    // возвращает путь ОЖИДАЕТСЯ этот файл, не проверяя, есть ли этот файл на диске
     string gfsHash = korniFileId.substr(korniFileId.find("GFS-") + 4, 46 /*magic gfs hash len*/);
+    // parts of hash for path
     string p1 = gfsHash.substr(2, 2), p2 = gfsHash.substr(4, 2), p3 = gfsHash.substr(6, 2);
     string outdir = korniContainerDir(containerName) + ::FILESTABLENAME + "/" + p1 + "/" + p2 +
                     "/" + p3 + "/";
@@ -1610,6 +1612,7 @@ void parseCommandLine(int argc, char** argv)
         }
         catch (LockError)
         {
+            cerr << "Lock database error" << endl;
             exit(EXIT_LOCK);
         }
     }
