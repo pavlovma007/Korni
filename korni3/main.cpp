@@ -1688,6 +1688,8 @@ void parseCommandLine(int argc, char** argv)
         cout << "# db <containerName>" << endl;
         cout << "$ sqlite3  `korni3 db test` '.tables' " << endl;
         cout << "        return to stdout path to database sqlite file for use in scripts" << endl;
+        cout << "# fhtp <containerName> <file hash full or path of it>" << endl;
+        cout << "                    print path to file in storage from hash or hash part" << endl;
     }
 }
 
