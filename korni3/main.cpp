@@ -1637,62 +1637,87 @@ void parseCommandLine(int argc, char** argv)
 
     // print help
     {
-        cout << "# genkey <nickname> [<bits; 4096 by default>]" << endl;
-        cout << "$ korni3 genkey demo" << endl;
-        cout << "                                                       generate keypairs" << endl;
+        cout << "$ korni3 genkey <nickname> [<bits; 4096 by default>]" << endl;
+        cout << "$ korni3 genkey demo # for example" << endl;
+        cout << "               generate keypairs" << endl;
         cout << "" << endl;
-        cout << "# print to stdout keys nicknames" << endl;
+
         cout << "$ korni3 keys" << endl;
         cout << "testUser" << endl;
         cout << "demo" << endl;
-        cout << "                                                           list keypairs" << endl;
-        cout << "" << endl;
-        cout << "# korni3 login <nickname>" << endl;
+        cout << "               list keypairs "
+                "               print to stdout keys nicknames" << endl;
+        cout << endl;
+
+        cout << "$ korni3 login <nickname>" << endl;
         cout << "$ korni3 login demo" << endl;
-        cout << "                                           use one of keypair as current" << endl;
+        cout << "               use one of keypair as current" << endl;
         cout << "" << endl;
-        cout << "# create|insert <dbName> <tableName> [<jsonRecord>]" << endl;
-        cout << "# create|insert <dbName> <tableName> # json read from stdin" << endl;
+
+        cout << "# create|insert <dbName> <table> [<jsonRecord>]" << endl;
+        cout << "               - json read from param str" << endl;
+        cout << "# create|insert <dbName> <table>" << endl;
+        cout << "               - json read from stdin" << endl;
         cout << "$ korni3 insert test testTable '{\"id\":1, \"name\":\"korni demo tutorial\"}'"
              << endl;
-        cout << "                                     " << endl;
-        cout << "                                     " << endl;
-        cout << "$ korni3 rows test testTable --table -c id -c zT -c name --where 'id=1'" << endl;
+        cout << endl;
+
+
+        cout << "$ korni3 rows test testTable --table -c id \\" << endl;
+        cout << "                 -c zT -c name --where 'id=1'" << endl;
         cout << "  id          zT  name" << endl;
         cout << "----  ----------  ---------------------" << endl;
         cout << "   1  1664036153  korni demo tutorial" << endl;
-        cout << "                                          list table rows with condition" << endl;
+        cout << "               list table rows with condition" << endl;
         cout << "$ korni3 repack <dbName> <filter>" << endl;
-        cout << "                  repack offten table change chansets for compactisation" << endl;
+        cout << "               repack offten table change" << endl;
+        cout << "               chansets for compactisation"<< endl;
         cout << "" << endl;
-        cout << "# korni3 file <dbName> <fileOrDirPath> [--ignore] [--rm] [--empty] [--lns]"
-             << endl;
-        cout << "$ korni3 file test /home/mp/Qt/QtCreator-v8.0.1/bin/qt.conf" << endl;
-        cout << "$ korni3 file test /home/mp/Qt/QtCreator-v8.0.1/bin/qt.conf 2>/dev/null " << endl;
-        cout << "                                  add file or dir to data container test" << endl;
-        cout << "                            it print to stderr and stdout in diff format" << endl;
+
+        cout << "$ korni3 file <dbName> <fileOrDirPath> \\"<< endl;
+        cout << "       [--ignore] [--rm] [--empty] [--lns]"<< endl;
+        cout << "$ korni3 file test myFile.conf" << endl;
+        cout << "$ korni3 file test \\" << endl;
+        cout << "       /abs/path/to/myFile.conf 2>/dev/null" << endl;
+        cout << endl;
+        cout << "           add file or dir to data container test" << endl;
+        cout << "           it print to stderr and stdout in diff format" << endl;
         cout << "" << endl;
+        cout << "" << endl;
+
         cout << "$ korni3 insert-files images *.gif" << endl;
-        cout << "                        another way to store files - in table change set" << endl;
+        cout << "           another way to store files" << endl;
+        cout << "           in table change set"<<endl;
         cout << "" << endl;
+
         cout << "# setgeo <lat like 58.05139>,<lat like 38.83802>" << endl;
         cout << "# setgeo <lon like 58.05139> <lon like 38.83802>" << endl;
-        cout << "$ korni3 58.05139 38.83802" << endl;
-        cout << "                                   set current user current/new geoplace" << endl;
+        cout << "$ korni3 setgeo 58.05139 38.83802" << endl;
+        cout << "           set current user current/new geoplace" << endl;
+        cout << "           this used for encode GH in file name" << endl;
         cout << "" << endl;
-        cout << "# scan <containerName> [<filter option> см. documentation]" << endl;
-        cout << "$ korni3 scan test # [options]" << endl;
-        cout << "                                просканировать журнал, чтобы обновить БД" << endl;
-        cout << "                фильтрация изменений по дате, гео позиции, пользователям" << endl;
+
+        cout << "$korni3 scan <containerName> [<file filter option>" << endl;
+        cout << "$korni3 scan test # [options]" << endl;
+        cout << "           scan table files - build datyabase.db"<<endl;
+        cout << "           options filter changes by " << endl;
+        cout << "           * date, * geo pos, * user. examples:" << endl;
         cout << "    --date <2022-09-29> : newer the date" << endl;
-        cout << "    --geo-r <10000> : in circle with radius 10000 m around current place" << endl;
-        cout << "    --u <u pubkey> --u <u pubkey> : scan updates only for this user" << endl;
-        cout << "        " << endl;
-        cout << "# db <containerName>" << endl;
+        cout << "    --geo-r <10000> : in circle with radius" << endl;
+        cout << "           10000 m around <current place>"<<endl;
+        cout << "    --u <u pubkey> --u <u pubkey>" << endl;
+        cout << "       : scan updates only for this userS"<<endl;
+        cout << endl;
+
+        cout << "korni3 db <containerName>" << endl;
         cout << "$ sqlite3  `korni3 db test` '.tables' " << endl;
-        cout << "        return to stdout path to database sqlite file for use in scripts" << endl;
-        cout << "# fhtp <containerName> <file hash full or path of it>" << endl;
-        cout << "                    print path to file in storage from hash or hash part" << endl;
+        cout << "           return to stdout path to" << endl;
+        cout << "           sqlite database file"<<endl;
+        cout << endl;
+
+        cout << "korni3 fhtp <containerName> <file hash>" << endl;
+        cout << "           print path to file in storage" << endl;
+        cout << "           from hash or hash part"<<endl;
     }
 }
 
@@ -1793,7 +1818,9 @@ int test()
 // ret EXIT 1 - error , EXIT 0 - ok , EXIT 100 - db locked, need wait
 int main(int argc, char** argv)
 {
+    // определить где домашняя директория
     ::pw = getpwuid(getuid());
+    // тут находится исполняемый файл korni3 (надо чтобы запускать его в конвейере)
     ::KORNIEXEPATH = argv[0];
     //    if (signal(SIGINT, &sighandler) == SIG_ERR)
     //    {
