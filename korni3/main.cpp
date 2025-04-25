@@ -1129,6 +1129,7 @@ void korniFilterChangeSet(const string containerName,
 // OK
 // TODO файлы которые просканированы писать в снапшот журналы, чтобы можно было откатится на предыдущий.
 // small TODO оптимизация. использовать нативный импорт в БД - написать свой, быстрый.
+// TODO фильтр по таблицам
 void korniScanTables(const string& containerName, const string& fromDate = "",
                      const vector<string>& userList = {}, const string& geoHashPoint = "",
                      float geoRadius = 0)
@@ -1685,10 +1686,10 @@ void parseCommandLine(int argc, char** argv)
         cout << "" << endl;
         cout << "" << endl;
 
-        cout << "$ korni3 insert-files images *.gif" << endl;
-        cout << "           another way to store files" << endl;
-        cout << "           in table change set"<<endl;
-        cout << "" << endl;
+//        cout << "$ korni3 insert-files images *.gif" << endl;
+//        cout << "           another way to store files" << endl;
+//        cout << "           in table change set"<<endl;
+//        cout << "" << endl;
 
         cout << "# setgeo <lat like 58.05139>,<lat like 38.83802>" << endl;
         cout << "# setgeo <lon like 58.05139> <lon like 38.83802>" << endl;
