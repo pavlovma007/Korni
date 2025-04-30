@@ -748,6 +748,8 @@ bool korniStoreFile(
                 jsonPt.put("creationTime", creationTime);
                 jsonPt.put("lastModTime", lastModTime);
                 jsonPt.put("fileOut", cmd.ExitStatus == 0 ? cmd.stdOut : "");
+                // для совместимости добавил. по факту этого поля может даже не быть
+                jsonPt.put("isDeleted", "false");
                 stringstream ss("");
                 boost::property_tree::json_parser::write_json(ss, jsonPt, false);
                 string json{ ss.str() };
@@ -1647,7 +1649,8 @@ void parseCommandLine(int argc, char** argv)
         cout << "testUser" << endl;
         cout << "demo" << endl;
         cout << "               list keypairs "
-                "               print to stdout keys nicknames" << endl;
+                "               print to stdout keys nicknames"
+             << endl;
         cout << endl;
 
         cout << "$ korni3 login <nickname>" << endl;
@@ -1663,7 +1666,6 @@ void parseCommandLine(int argc, char** argv)
              << endl;
         cout << endl;
 
-
         cout << "$ korni3 rows test testTable --table -c id \\" << endl;
         cout << "                 -c zT -c name --where 'id=1'" << endl;
         cout << "  id          zT  name" << endl;
@@ -1672,11 +1674,11 @@ void parseCommandLine(int argc, char** argv)
         cout << "               list table rows with condition" << endl;
         cout << "$ korni3 repack <dbName> <filter>" << endl;
         cout << "               repack offten table change" << endl;
-        cout << "               chansets for compactisation"<< endl;
+        cout << "               chansets for compactisation" << endl;
         cout << "" << endl;
 
-        cout << "$ korni3 file <dbName> <fileOrDirPath> \\"<< endl;
-        cout << "       [--ignore] [--rm] [--empty] [--lns]"<< endl;
+        cout << "$ korni3 file <dbName> <fileOrDirPath> \\" << endl;
+        cout << "       [--ignore] [--rm] [--empty] [--lns]" << endl;
         cout << "$ korni3 file test myFile.conf" << endl;
         cout << "$ korni3 file test \\" << endl;
         cout << "       /abs/path/to/myFile.conf 2>/dev/null" << endl;
@@ -1686,10 +1688,10 @@ void parseCommandLine(int argc, char** argv)
         cout << "" << endl;
         cout << "" << endl;
 
-//        cout << "$ korni3 insert-files images *.gif" << endl;
-//        cout << "           another way to store files" << endl;
-//        cout << "           in table change set"<<endl;
-//        cout << "" << endl;
+        //        cout << "$ korni3 insert-files images *.gif" << endl;
+        //        cout << "           another way to store files" << endl;
+        //        cout << "           in table change set"<<endl;
+        //        cout << "" << endl;
 
         cout << "# setgeo <lat like 58.05139>,<lat like 38.83802>" << endl;
         cout << "# setgeo <lon like 58.05139> <lon like 38.83802>" << endl;
@@ -1700,25 +1702,25 @@ void parseCommandLine(int argc, char** argv)
 
         cout << "$korni3 scan <containerName> [<file filter option>" << endl;
         cout << "$korni3 scan test # [options]" << endl;
-        cout << "           scan table files - build datyabase.db"<<endl;
+        cout << "           scan table files - build datyabase.db" << endl;
         cout << "           options filter changes by " << endl;
         cout << "           * date, * geo pos, * user. examples:" << endl;
         cout << "    --date <2022-09-29> : newer the date" << endl;
         cout << "    --geo-r <10000> : in circle with radius" << endl;
-        cout << "           10000 m around <current place>"<<endl;
+        cout << "           10000 m around <current place>" << endl;
         cout << "    --u <u pubkey> --u <u pubkey>" << endl;
-        cout << "       : scan updates only for this userS"<<endl;
+        cout << "       : scan updates only for this userS" << endl;
         cout << endl;
 
         cout << "korni3 db <containerName>" << endl;
         cout << "$ sqlite3  `korni3 db test` '.tables' " << endl;
         cout << "           return to stdout path to" << endl;
-        cout << "           sqlite database file"<<endl;
+        cout << "           sqlite database file" << endl;
         cout << endl;
 
         cout << "korni3 fhtp <containerName> <file hash>" << endl;
         cout << "           print path to file in storage" << endl;
-        cout << "           from hash or hash part"<<endl;
+        cout << "           from hash or hash part" << endl;
     }
 }
 
